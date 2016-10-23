@@ -37,7 +37,7 @@ angular.module('myApp.lead',['ngRoute'])
   var path = $location.path().split('/');
 
   vm.operation = path[path.length-1];
-
+  vm.searchResults = [];
   console.log("path : "+path[path.length-1]);
 
   if(vm.operation == 'create')
@@ -65,6 +65,30 @@ angular.module('myApp.lead',['ngRoute'])
                              }
 
       };
+   }
+
+
+
+   vm.getLeads = function(){
+
+     console.log("lfc leads");
+     var data = this.search;
+     var config = {};
+
+     $http.get("http://139.59.24.29/api/leads")
+     .then(function(response) {
+
+         console.log("data "+response.data);
+         vm.searchResults = response.data;
+
+     });
+
+   };
+
+   if(vm.operation == "leads"){
+
+     vm.getLeads();
+
    }
 
   vm.getLead = function(){
@@ -148,7 +172,8 @@ angular.module('myApp.lead',['ngRoute'])
 
       console.log("delete success");
       // $location.path() = '/dashboard/home';
-      $window.location.href = '#!/leads';
+      // $window.location.href = '#!/leads';
+      vm.getLeads();
 
     })
     .error(function(){

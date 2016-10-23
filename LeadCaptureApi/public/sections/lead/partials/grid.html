@@ -1,4 +1,4 @@
-<div class="col-lg-14" ng-controller="LeadSearchCntrl">
+<div class="col-lg-14" ng-controller="LeadFormCntrl as lfc">
                   <div class="panel panel-default">
                       <div class="panel-heading">
                           Leads
@@ -15,7 +15,7 @@
                                   <div class="modal-body">
                                       Are you sure you want to remove this lead ?
                                   </div>
-                                  <div class="modal-footer" ng-controller="LeadFormCntrl as lfc">
+                                  <div class="modal-footer">
                                       <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                                       <input type="hidden" id="leadToDelete" name="leadToDelete" value = ""/>
                                       <button type="button" ng-click="lfc.deleteLead()" data-dismiss="modal" class="btn btn-danger">Delete</button>
@@ -61,7 +61,7 @@
                               </thead>
                               <tbody>
 
-                                  <tr ng-repeat="record in searchResults" class="gradeA odd" role="row">
+                                  <tr ng-repeat="record in lfc.searchResults" class="gradeA odd" role="row">
                                       <td class="sorting_1">{{record.companyName}}</td>
                                       <td>{{record.industryVertical}}</td>
                                       <td>{{record.contactSource}}</td>
