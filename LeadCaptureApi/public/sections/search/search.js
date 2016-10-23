@@ -19,7 +19,7 @@ angular.module('myApp.search',['ngRoute'])
     };
 
     $scope.searchResults = [];
-
+    $scope.selectedLead= "";
 
 
     $scope.getLeads = function(){

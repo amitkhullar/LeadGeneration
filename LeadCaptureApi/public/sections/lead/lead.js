@@ -1,5 +1,7 @@
 'use strict';
 
+
+
 angular.module('myApp.lead',['ngRoute'])
 
 .config(['$routeProvider', function($routeProvider) {
@@ -138,8 +140,10 @@ angular.module('myApp.lead',['ngRoute'])
 
   vm.deleteLead = function(){
 
-    console.log("start deletion");
-    $http.delete('http://139.59.24.29/api/leads/'+vm.leadId+'/delete', {})
+    var leadId = $("#leadToDelete").val();
+    console.log("start deletion"+leadId);
+
+    $http.delete('http://139.59.24.29/api/leads/'+leadId, {})
     .success(function(){
 
       console.log("delete success");
