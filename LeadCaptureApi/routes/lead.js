@@ -32,7 +32,7 @@ router.route('/leads/:id')
 
 
 
-        lead.contacts = contacts;
+        lead.contacts = [];
         console.log("contacts returned "+lead.contacts);
         return res.json(lead);
 
