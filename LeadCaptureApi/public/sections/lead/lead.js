@@ -31,7 +31,7 @@ angular.module('myApp.lead',['ngRoute'])
 
 }])
 
-.controller('LeadFormCntrl', function($http,$routeParams,$location) {
+.controller('LeadFormCntrl', function($http,$routeParams,$location,$window) {
 
   var vm = this;
   var path = $location.path().split('/');
@@ -147,6 +147,8 @@ angular.module('myApp.lead',['ngRoute'])
     .success(function(){
 
       console.log("delete success");
+      // $location.path() = '/dashboard/home';
+      $window.location.href = '/dashboard/home';
 
     })
     .error(function(){
