@@ -40,7 +40,7 @@ router.route('/leads/:id')
 
         }
 
-        returnData.contacts = contacts;
+        returnData.contactData = contacts;
 
         // lead.contacts = contacts;
         console.log("contacts returned "+contacts);
