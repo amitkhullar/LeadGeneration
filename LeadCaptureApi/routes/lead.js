@@ -24,17 +24,20 @@ router.route('/leads/:id')
 .get((req,res) => {
     console.log("request lead with id :"+req.params.id);
 
+    var result = {"lead1":{},"contacts1":[]};
+
     Contact.collection.find({"lead":req.params.id},function(err,contacts){
 
 
       console.log("contacts returned "+contacts);
+      result.contacts1 = contacts;
 
       Lead.findById(req.params.id, (err, lead) => {
         if (err){
           return res.send(err);
         }
-
-        res.json({"lead":lead,"contacts":contacts});
+        result.lead1 = lead;
+        res.json(result);
 
       });
 
