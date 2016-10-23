@@ -28,7 +28,7 @@ router.route('/leads/:id')
         return res.send(err);
       }
       console.log("leadid : "+req.params.id);
-      Contact.find({"lead":""+req.params.id+""},function(err,contacts){
+      Contact.collection.find({"lead":req.params.id},function(err,contacts){
 
         if(err)
         {
