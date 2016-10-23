@@ -106,22 +106,22 @@ angular.module('myApp.lead',['ngRoute'])
 
       vm.lead = {
         companyInfo       :  {
-                              companyName:response.companyName,currentStatus:response.currentStatus,industryVertical:response.industryVertical,
-                              aboutCompany:response.aboutCompany,
-                              contactSource:response.contactSource,productsOfInterest:response.productsOfInterest,
-                              companyType:response.companyType
+                              companyName:response.lead.companyName,currentStatus:response.lead.currentStatus,industryVertical:response.lead.industryVertical,
+                              aboutCompany:response.lead.aboutCompany,
+                              contactSource:response.lead.contactSource,productsOfInterest:response.lead.productsOfInterest,
+                              companyType:response.lead.companyType
                              },
 
         contacts          :  [{name:"contact 1",designation:"Designation 1", email:"contact1@lead.com", phone : "9999999999"},
                               {name:"contact 2",designation:"Designation 2", email:"contact2@lead.com", phone : "9999999998"}],
 
         address           :  {
-                               building:response.addressBuilding,town:response.addressTownStreet,city:response.addressCity,state:response.addressState,pin:response.addressPincode
+                               building:response.lead.addressBuilding,town:response.lead.addressTownStreet,city:response.lead.addressCity,state:response.lead.addressState,pin:response.lead.addressPincode
                              },
 
         additionalProfile :  {
-                              companyScale:response.companyScale,employeeCnt:response.employeeCount,travelBudget:response.travelBudget,
-                              vendorCount:response.vendorCount,vendorHandlingCount:response.vendorHandlerCount,transactionCnt:response.transactionCount,
+                              companyScale:response.lead.companyScale,employeeCnt:response.lead.employeeCount,travelBudget:response.lead.travelBudget,
+                              vendorCount:response.lead.vendorCount,vendorHandlingCount:response.lead.vendorHandlerCount,transactionCnt:response.lead.transactionCount,
                               mailingDate: new Date()
                              }
 
