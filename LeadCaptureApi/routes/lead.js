@@ -27,6 +27,13 @@ router.route('/leads/:id')
       if (err){
         return res.send(err);
       }
+
+      Contact.find({"lead":req.params.id},function(err,contacts){
+
+        lead.contacts = contacts;
+        
+      });
+
       return res.json(lead);
     });
 
@@ -66,6 +73,20 @@ router.route('/leads/:id')
 
 
 router.route('/leads')
+.get((req,res) =>
+{
+
+  Lead.find({}).sort({ createdAt: -1 })
+      .exec((err, lead) => {
+        if (err){
+          return res.send(err);
+        }
+        return res.json(lead);
+      });
+
+});
+
+router.route('/leads/stats')
 .get((req,res) =>
 {
 

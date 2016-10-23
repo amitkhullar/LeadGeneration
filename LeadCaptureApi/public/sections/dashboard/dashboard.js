@@ -11,4 +11,34 @@ angular.module('myApp.dashboard',['ngRoute'])
 .controller('DashboardCntrl', function()
 {
 
+  var vm = this;
+
+  vm.leadStats = {
+
+    new_leads : 0,
+    leads_responded : 0,
+    pending_action : 0
+
+  }
+
+  vm.getLeadStatistics = function(){
+
+    $http.get('http://139.59.24.29/api/leads/stats', data, config)
+    .success(function(){
+
+      console.log("success");
+      $window.location.href = '#!/dashboard/home';
+
+    })
+    .error(function(){
+
+      console.log("error");
+
+    });
+
+  }
+
+
+
+
 });
