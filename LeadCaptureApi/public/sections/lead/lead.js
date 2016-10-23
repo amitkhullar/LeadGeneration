@@ -152,7 +152,7 @@ angular.module('myApp.lead',['ngRoute'])
     .success(function(){
 
       console.log("success");
-      $window.location.href = '#!/leads';
+      $window.location.href = '#!/dashboard/home';
 
     })
     .error(function(){
