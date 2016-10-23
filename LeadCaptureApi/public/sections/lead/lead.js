@@ -171,9 +171,9 @@ angular.module('myApp.lead',['ngRoute'])
     .success(function(){
 
       console.log("delete success");
-      // $location.path() = '/dashboard/home';
+      $location.path() = '/dashboard/home';
       // $window.location.href = '#!/leads';
-      vm.getLeads();
+      // vm.getLeads();
 
     })
     .error(function(){
