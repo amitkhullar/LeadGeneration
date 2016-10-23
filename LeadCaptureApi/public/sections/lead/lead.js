@@ -148,7 +148,7 @@ angular.module('myApp.lead',['ngRoute'])
 
       console.log("delete success");
       // $location.path() = '/dashboard/home';
-      $window.location.href = '/dashboard/home';
+      $window.location.href = '#!/dashboard/home';
 
     })
     .error(function(){
