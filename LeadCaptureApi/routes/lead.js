@@ -24,10 +24,10 @@ router.route('/leads/:id')
 .get((req,res) => {
     console.log("request lead with id :"+req.params.id);
 
-    Contact.find({"lead":req.params.id.toString()},function(err,contacts){
+    Contact.collection.find({"lead":req.params.id},function(err,contacts){
 
 
-      console.log("contacts returned "+contacts.length);
+      console.log("contacts returned "+contacts);
 
       Lead.findById(req.params.id, (err, lead) => {
         if (err){
