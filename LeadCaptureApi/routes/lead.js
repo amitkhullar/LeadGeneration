@@ -30,6 +30,12 @@ router.route('/leads/:id')
 
       Contact.find({"lead":req.params.id},function(err,contacts){
 
+        if(err)
+        {
+          return res.json({"message":err});
+
+        }
+
         var returnData = { "lead" : lead, "contacts" : contacts };
 
         // lead.contacts = contacts;
