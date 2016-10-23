@@ -23,21 +23,25 @@ router.route('/test')
 router.route('/leads/:id')
 .get((req,res) => {
     console.log("request lead with id :"+req.params.id);
-    Lead.findById(req.params.id, (err, lead) => {
-      if (err){
-        return res.send(err);
-      }
 
-      Contact.find({"lead":req.params.id},function(err,contacts){
+    Contact.find({"lead":req.params.id},function(err,contacts){
 
 
-        console.log("contacts returned "+contacts);
-        return res.json({"lead":lead,"contacts":contacts});
+      console.log("contacts returned "+contacts);
+
+      Lead.findById(req.params.id, (err, lead) => {
+        if (err){
+          return res.send(err);
+        }
+
+        res.json({"lead":lead});
 
       });
 
 
     });
+
+
 
   });
 
