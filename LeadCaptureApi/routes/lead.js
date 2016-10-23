@@ -23,16 +23,12 @@ router.route('/test')
 router.route('/leads/:id')
 .get((req,res) => {
     console.log("request lead with id :"+req.params.id);
-
-    var returnData = { "leadData" : {}, "contactData" : {} };
-
     Lead.findById(req.params.id, (err, lead) => {
       if (err){
         return res.send(err);
       }
-      returnData.leadData = lead;
       console.log("leadid : "+req.params.id);
-      Contact.collection.find({"lead":req.params.id},function(err,contacts){
+      Contact.find({"lead":req.params.id},function(err,contacts){
 
         if(err)
         {
@@ -40,7 +36,7 @@ router.route('/leads/:id')
 
         }
 
-        returnData.contactData = contacts;
+        var returnData = {"contacts" : contacts };
 
         // lead.contacts = contacts;
         console.log("contacts returned "+contacts);
