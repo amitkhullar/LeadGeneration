@@ -30,11 +30,11 @@ router.route('/leads/:id')
 
       Contact.find({"lead":req.params.id},function(err,contacts){
 
+        var returnData = { "lead" : lead, "contacts" : contacts };
 
-
-        lead.contacts = contacts;
-        console.log("contacts returned "+lead.contacts);
-        return res.json(lead);
+        // lead.contacts = contacts;
+        console.log("contacts returned "+contacts);
+        return res.json(returnData);
 
       });
 
