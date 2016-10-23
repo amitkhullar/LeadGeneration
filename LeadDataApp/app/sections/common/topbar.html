@@ -1,0 +1,31 @@
+<nav ng-controller="TopBarCntrl as tbc" class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Lead Management</a>
+    </div>
+    <div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li><a href="#!/lead/create#section1">Company Profile</a></li>
+          <li><a href="#!/lead/create#section2">Company Contacts</a></li>
+          <li><a href="#!/lead/create#section3">Address Details</a></li>
+          <li><a href="#!/lead/create#section4">Extended Profile</a></li>
+        </ul>
+      </div>
+    </div>
+    <div ng-controller="DashboardCntrl as dc" ng-show="mac.section == 'dashboard'">
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li><a href="#!/lead/create">Create </a></li>
+          <li><a href="#!/search">Search </a></li>
+          <li><a href="#!/reports">Reports</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>

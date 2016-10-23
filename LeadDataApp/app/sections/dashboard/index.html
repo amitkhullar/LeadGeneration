@@ -1,0 +1,108 @@
+<div ng-controller="DashboardCntrl as dc">
+  <div id="page-wrapper">
+      <div class="row">
+          <div class="col-lg-12">
+              <h1 class="page-header">Dashboard</h1>
+          </div>
+          <!-- /.col-lg-12 -->
+      </div>
+      <!-- /.row -->
+      <div class="row">
+          <div class="col-lg-3 col-md-6">
+              <div class="panel panel-primary">
+                  <div class="panel-heading">
+                      <div class="row">
+                          <div class="col-xs-3">
+                              <i class="fa fa-comments fa-5x"></i>
+                          </div>
+                          <div class="col-xs-9 text-right">
+                              <div class="huge">26</div>
+                              <div>New Leads!</div>
+                          </div>
+                      </div>
+                  </div>
+                  <a href="#">
+                      <div class="panel-footer">
+                          <span class="pull-left">View Details</span>
+                          <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                          <div class="clearfix"></div>
+                      </div>
+                  </a>
+              </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+              <div class="panel panel-yellow">
+                  <div class="panel-heading">
+                      <div class="row">
+                          <div class="col-xs-3">
+                              <i class="fa fa-shopping-cart fa-5x"></i>
+                          </div>
+                          <div class="col-xs-9 text-right">
+                              <div class="huge">124</div>
+                              <div>Leads Responded!</div>
+                          </div>
+                      </div>
+                  </div>
+                  <a href="#">
+                      <div class="panel-footer">
+                          <span class="pull-left">View Details</span>
+                          <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                          <div class="clearfix"></div>
+                      </div>
+                  </a>
+              </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+              <div class="panel panel-red">
+                  <div class="panel-heading">
+                      <div class="row">
+                          <div class="col-xs-3">
+                              <i class="fa fa-support fa-5x"></i>
+                          </div>
+                          <div class="col-xs-9 text-right">
+                              <div class="huge">13</div>
+                              <div>Action Pending!</div>
+                          </div>
+                      </div>
+                  </div>
+                  <a href="#">
+                      <div class="panel-footer">
+                          <span class="pull-left">View Details</span>
+                          <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                          <div class="clearfix"></div>
+                      </div>
+                  </a>
+              </div>
+          </div>
+      </div>
+      <!-- /.row -->
+      <div class="row">
+          <div class="col-lg-9">
+
+              <!-- /.panel -->
+              <!-- <div class="panel panel-default">
+                  <div class="panel-heading">
+                      <i class="fa fa-bar-chart-o fa-fw"></i> New Leads Added
+                      <div class="pull-right">
+                          <div class="btn-group">
+                              <button type="button" class="btn btn-default btn-xs dropdown-toggle">
+                                  View Details
+                              </button>
+
+                          </div>
+                      </div>
+                  </div>
+
+              </div> -->
+              <div ng-include="'sections/search/partials/grid.html'"></div>
+              <!-- /.panel -->
+
+              <!-- /.panel -->
+          </div>
+          <!-- /.col-lg-8 -->
+
+          <!-- /.col-lg-4 -->
+      </div>
+      <!-- /.row -->
+  </div>
+</div>

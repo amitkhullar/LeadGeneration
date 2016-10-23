@@ -1,0 +1,1285 @@
+<div >
+  <div class="panel panel-default " style="margin-right:5px;">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        Address Information
+      </h4>
+    </div>
+    <div class="panel-body">
+  <div class="row" style="margin-bottom:10px;">
+    <div class="col-sm-5">
+      <label class="control-label" for="txtAddressBuilding">Building :</label>
+      <input ng-show="lfc.operation=='edit' || lfc.operation == 'create'" ng-model="lfc.lead.address.building" type="text" class="form-control" id="txtAddressBuilding" placeholder="Enter building name/number">
+      <h6 ng-show="lfc.operation == 'view'">{{lfc.lead.address.building}}</h6>
+    </div>
+    <div class="col-sm-5">
+      <label class="control-label" for="txtAddressTown">Street/Town Details :</label>
+      <input ng-show="lfc.operation=='edit' || lfc.operation == 'create'" ng-model="lfc.lead.address.town" type="text" class="form-control" id="txtAddressTown" placeholder="Enter street/town details ">
+      <h6 ng-show="lfc.operation == 'view'">{{lfc.lead.address.town}}</h6>
+    </div>
+  </div>
+  <div class="row" style="margin-bottom:10px;">
+    <div class="col-sm-5">
+      <label class="control-label" for="txtAddressCity">City :</label>
+
+      <select ng-show="lfc.operation=='edit' || lfc.operation == 'create'" ng-model="lfc.lead.address.city" name="ddlCity" id="ddlCity" class="form-control ">
+      <option>Select a City</option>
+<option > Delhi NCR</option>
+<option >New delhi</option>
+<option > Noida</option>
+<option > Gurgaon</option>
+<option > Bengaluru /Bangalore</option>
+<option > Chennai</option>
+<option > Mumbai</option>
+<option > Hyderabad</option>
+<option > Pune</option>
+<option > Kolkata</option>
+<option >Faridabad</option>
+<option >Ahmedabad</option>
+<option >Chandigarh</option>
+<option >Jaipur</option>
+<option >Surat</option>
+<option >Vadodra</option>
+<option >Coimbatore</option>
+<option >Lucknow</option>
+<option >Nagpur</option>
+<option >Indore</option>
+<option >Bhopal</option>
+<option >Vijayawada</option>
+<option >Vishakhapatnam</option>
+<option >Mysore</option>
+<option >Abohar</option>
+<option >Abu Road</option>
+<option >Achrol</option>
+<option >Adilabad</option>
+<option >Adimal</option>
+<option >Adimaly</option>
+<option >Adoor</option>
+<option >Adra</option>
+<option >Agartala</option>
+<option >Agra</option>
+<option >Ahemadnagar</option>
+<option >Ahwa</option>
+<option >Aizawl</option>
+<option >Ajmer</option>
+<option >Akola</option>
+<option >Alappuzha</option>
+<option >Alathur</option>
+<option >Alibagh</option>
+<option >Aligarh</option>
+<option >Allahabad</option>
+<option >Alleppy</option>
+<option >Almora</option>
+<option >Aluva</option>
+<option >Alwar</option>
+<option >Alwaye</option>
+<option >Amalapuram</option>
+<option >Amangallu</option>
+<option >Ambala</option>
+<option >Ambarnath</option>
+<option >Ambasundaram</option>
+<option >Amber</option>
+<option >Ambikapur</option>
+<option >Amethi</option>
+<option >Amlagora</option>
+<option >Amod</option>
+<option >Amona</option>
+<option >Amravati</option>
+<option >Amreli</option>
+<option >Amritsar</option>
+<option >Amroha</option>
+<option >Anakapalle</option>
+<option >Anand</option>
+<option >Anantapur</option>
+<option >Anekal</option>
+<option >Angul</option>
+<option >Anjar</option>
+<option >Ankleshwar</option>
+<option >Annamalai Nagar</option>
+<option >Arkonam</option>
+<option >Armoor</option>
+<option >Aroor</option>
+<option >Arrah</option>
+<option >Aruppukottai</option>
+<option >Asangaon</option>
+<option >Asansol</option>
+<option >Asoj</option>
+<option >Attingal</option>
+<option >Attur</option>
+<option >Auraiya</option>
+<option >Aurangabad</option>
+<option >Auroville</option>
+<option >Avinashi</option>
+<option >Badagara</option>
+<option >Badaun</option>
+<option >Baddi</option>
+<option >Badgam</option>
+<option >Badhauli</option>
+<option >Badlapur</option>
+<option >Badwani</option>
+<option >Bagalkot</option>
+<option >Baghpat</option>
+<option >Bahadurgarh</option>
+<option >Bajaj Nagar</option>
+<option >Balaghat</option>
+<option >Balangir (Bolangir)</option>
+<option >Balarampur</option>
+<option >Balasore</option>
+<option >Bali</option>
+<option >Bali (S)</option>
+<option >Ballia</option>
+<option >Balurghat</option>
+<option >Bandar (Machilipatnam)</option>
+<option >Bangarpet</option>
+<option >Bankura</option>
+<option >Bankura</option>
+<option >Banmore </option>
+<option >Banswara</option>
+<option >Bantwal</option>
+<option >Bapatla</option>
+<option >Bara</option>
+<option >Barabanki</option>
+<option >Baramati</option>
+<option >Barapani</option>
+<option >Barara</option>
+<option >Bardez</option>
+<option >Bardhhaman(Burdwan)</option>
+<option >Bardoli</option>
+<option >Bareilly</option>
+<option >Bareja</option>
+<option >Bargarh</option>
+<option >Barh</option>
+<option >Baripada</option>
+<option >Barjora</option>
+<option >Barmer(C)</option>
+<option >Barnala</option>
+<option >Barwaha</option>
+<option >Barwala</option>
+<option >Bassein</option>
+<option >Basta</option>
+<option >Basta</option>
+<option >Basti</option>
+<option >Batala</option>
+<option >Batlagundu</option>
+<option >Bavla</option>
+<option >Bawal</option>
+<option >Bawal</option>
+<option >Beawar</option>
+<option >Beed</option>
+<option >Begusarai</option>
+<option >Behror</option>
+<option >Bekal</option>
+<option >Belgaum</option>
+<option >Bellary</option>
+<option >Belthangady</option>
+<option >Berhampur</option>
+<option >Berhampur</option>
+<option >Bermo</option>
+<option >Betul</option>
+<option >Bhachav</option>
+<option >Bhadohi</option>
+<option >Bhadrak</option>
+<option >Bhadravati</option>
+<option >Bhadrawati</option>
+<option >Bhadson</option>
+<option >Bhagalpur</option>
+<option >Bhalki</option>
+<option >Bhandara</option>
+<option >Bhandara</option>
+<option >Bhandara</option>
+<option >Bhandara</option>
+<option >Bhanjan</option>
+<option >Bharatpur</option>
+<option >Bharuch</option>
+<option >Bhat</option>
+<option >Bhatinda</option>
+<option >Bhatkal</option>
+<option >Bhavani</option>
+<option >Bhavnagar</option>
+<option >Bheemunipatnam</option>
+<option >Bhilai</option>
+<option >Bhilwara</option>
+<option >Bhimavaram</option>
+<option >Bhind</option>
+<option >Bhiwadi</option>
+<option >Bhiwandi</option>
+<option >Bhiwani</option>
+<option >Bhor</option>
+<option >Bhubaneswar</option>
+<option >Bhuj</option>
+<option >Bhusawal</option>
+<option >Bidar</option>
+<option >Biharsharif</option>
+<option >Bijapur</option>
+<option >Bikaner(S)</option>
+<option >Bilari</option>
+<option >Bilaspur</option>
+<option >Bilhaur</option>
+<option >Billimora</option>
+<option >Bina</option>
+<option >Birbhum</option>
+<option >Birsinghpur</option>
+<option >Bishanpur</option>
+<option >Bodh Gaya</option>
+<option >Bokakhat</option>
+<option >Bokaro</option>
+<option >Bolpur</option>
+<option >Bommasandra</option>
+<option >Bongaigaon</option>
+<option >Bulandshahar</option>
+<option >Bundala</option>
+<option >Bundi </option>
+<option >Burdwan</option>
+<option >Burhanpur</option>
+<option >Burnpur</option>
+<option >Butibori</option>
+<option >Cannanore</option>
+<option >Canning</option>
+<option >Chaibasa</option>
+<option >Chakan</option>
+<option >Chamba</option>
+<option >Champadanga</option>
+<option >Chanderia</option>
+<option >Chandgad</option>
+<option >Chandil</option>
+<option >Chandlodia</option>
+<option >Chandrapur</option>
+<option >Changanassery</option>
+<option >Changodar</option>
+<option >Chapara</option>
+<option >Charkhi Dadri</option>
+<option >Charkhi Dadri</option>
+<option >Chaumuha</option>
+<option >Chavara</option>
+<option >Chengalpattu</option>
+<option >Chengannur</option>
+<option >Chepurupalli</option>
+<option >Cherlapally</option>
+<option >Cheruthuruthy</option>
+<option >Chevella</option>
+<option >Chhata</option>
+<option >Chhatarpur</option>
+<option >Chhatral</option>
+<option >Chhindwara</option>
+<option >Chidambaram</option>
+<option >Chikhali</option>
+<option >Chikkaballapur</option>
+<option >Chikkodi</option>
+<option >Chikmagalur</option>
+<option >Chiplun</option>
+<option >Chirala</option>
+<option >Chirawa</option>
+<option >Chirkunda</option>
+<option >Chitegaon Phata</option>
+<option >Chitradurga</option>
+<option >Chittoor</option>
+<option >Chittorgarh</option>
+<option >Chudella</option>
+<option >Cooch Bihar</option>
+<option >Coonoor</option>
+<option >Coorg</option>
+<option >Cuddalore</option>
+<option >Cuttak</option>
+<option >Dabal</option>
+<option >Dabra</option>
+<option >Dadra & Nagar Haveli</option>
+<option >Dagshai</option>
+<option >Dahanu</option>
+<option >Dahej</option>
+<option >Dahod</option>
+<option >Dalmiapuram</option>
+<option >Daman </option>
+<option >Danapur</option>
+<option >Dankanikotta</option>
+<option >Dapoli</option>
+<option >Darbhanga</option>
+<option >Darjeeling </option>
+<option >Dasua</option>
+<option >Datia</option>
+<option >Dattawadi</option>
+<option >Daund</option>
+<option >Dausa</option>
+<option >Davangree</option>
+<option >Deesa</option>
+<option >Dehgam</option>
+<option >Dehra Gopipur</option>
+<option >Dehradun</option>
+<option >Denkanikoitah</option>
+<option >Deoband</option>
+<option >Deoli</option>
+<option >Derabassi </option>
+<option >Desuri</option>
+<option >Devachi</option>
+<option >Devakottai</option>
+<option >Dewas</option>
+<option >Dhaligaon</option>
+<option >Dhamangaon</option>
+<option >Dhanani</option>
+<option >Dhanbad</option>
+<option >Dhaniakhali</option>
+<option >Dhar</option>
+<option >Dharampuram</option>
+<option >Dharamshala</option>
+<option >Dharmapuri</option>
+<option >Dharuhera</option>
+<option >Dharwad</option>
+<option >Dhenkanal</option>
+<option >Dholka</option>
+<option >Dhoraji</option>
+<option >Dhound</option>
+<option >Dhule</option>
+<option >Dibrugarh</option>
+<option >Dichpalli</option>
+<option >Digboi</option>
+<option >Dimapur</option>
+<option >Dindigul</option>
+<option >Dombivli</option>
+<option >Doraha</option>
+<option >Dudhi II</option>
+<option >Dudu</option>
+<option >Dumka</option>
+<option >Durg</option>
+<option >Durgapur</option>
+<option >Dwarahat</option>
+<option >East Godavari</option>
+<option >Edakkad</option>
+<option >Ellenabad</option>
+<option >Eluru</option>
+<option >Erandul</option>
+<option >Ernakulam</option>
+<option >Erode</option>
+<option >Etah</option>
+<option >Etawah</option>
+<option >Faizabad</option>
+<option >Faridkot</option>
+<option >Farola</option>
+<option >Farrukhabad</option>
+<option >Fatehabad</option>
+<option >Fatehgarh Sahib</option>
+<option >Fatehpur</option>
+<option >Fazilka</option>
+<option >Ferozpur</option>
+<option >Firozabad</option>
+<option >Fortsongadh</option>
+<option >Gadag</option>
+<option >Gadanki</option>
+<option >Gajanan Nagar</option>
+<option >Gajraula</option>
+<option >Gajwel</option>
+<option >Gandhidham </option>
+<option >Gandhinagar</option>
+<option >Gandipet</option>
+<option >Ganganagar</option>
+<option >Gangavathi</option>
+<option >Gangtok</option>
+<option >Ganjam</option>
+<option >Ganjbasoda</option>
+<option >Garhashanker</option>
+<option >Garhmukteshwar</option>
+<option >Garhwa</option>
+<option >Gavasad</option>
+<option >Gavsi Manapur</option>
+<option >Gaya</option>
+<option >Ghanghli</option>
+<option >Gharaunda</option>
+<option >Ghatia</option>
+<option >Ghaziabad</option>
+<option >Ghazipur</option>
+<option >Ghuma</option>
+<option >Giridih</option>
+<option >Goa</option>
+<option >Gobichettipalayam</option>
+<option >Gobindgarh</option>
+<option >Godda</option>
+<option >Godhra</option>
+<option >Gohana</option>
+<option >Goharganj</option>
+<option >Gokkak</option>
+<option >Golaghat</option>
+<option >Gonal</option>
+<option >Gondal</option>
+<option >Gondia</option>
+<option >Gooty (Guntakal)</option>
+<option >Gopalganj</option>
+<option >Gorakhpur</option>
+<option >Goraya</option>
+<option >Gota</option>
+<option >Govindpur</option>
+<option >Greater Noida</option>
+<option >Gubbi</option>
+<option >Gudalur</option>
+<option >Gudivada</option>
+<option >Gudur</option>
+<option >Gulbarga</option>
+<option >Guna</option>
+<option >Guntur</option>
+<option >Gunupur</option>
+<option >Gurdaspur</option>
+<option >Guwahati</option>
+<option >Gwalior</option>
+<option >H.D Kote</option>
+<option >Hajipur</option>
+<option >Hajipur</option>
+<option >Haldia</option>
+<option >Haldwani</option>
+<option >Haldwani II(Chorgalian)</option>
+<option >Haliyal</option>
+<option >Halol</option>
+<option >Hamirpur</option>
+<option >Hanumangarh</option>
+<option >Hapur</option>
+<option >Haridwar</option>
+<option >Harraiya</option>
+<option >Harur</option>
+<option >Hasanganj</option>
+<option >Hasanpur</option>
+<option >Hassan</option>
+<option >Hathras</option>
+<option >Haveri</option>
+<option >Hazaribag</option>
+<option >Himatnagar</option>
+<option >Hinganaghat</option>
+<option >Hingna </option>
+<option >Hingua</option>
+<option >Hiriyur</option>
+<option >Hisar</option>
+<option >Hooghly</option>
+<option >Hoshangabad</option>
+<option >Hoshiarpur</option>
+<option >Hospet</option>
+<option >Hosur</option>
+<option >Howrah</option>
+<option >Hubli</option>
+<option >Hukkeri</option>
+<option >Huzurabad</option>
+<option >Hyderabad East</option>
+<option >Hyderabad West</option>
+<option >Ibrahimpatnam</option>
+<option >Ichalkaranji</option>
+<option >Igatpuri</option>
+<option >Imphal</option>
+<option >Indapur</option>
+<option >Irinjalakuda</option>
+<option >Itanagar</option>
+<option >Itarsi</option>
+<option >Izatnagar</option>
+<option >Jabalpur</option>
+<option >Jagadhari</option>
+<option >Jagannath Puri</option>
+<option >Jagatballavpur</option>
+<option >Jagdalpur</option>
+<option >Jagdishpur</option>
+<option >Jagraon</option>
+<option >Jaisalmer</option>
+<option >Jaisamand Lake</option>
+<option >Jajpur</option>
+<option >Jalandhar</option>
+<option >Jalgaon</option>
+<option >Jalna</option>
+<option >Jalpaiguri</option>
+<option >Jamkhed</option>
+<option >Jammu</option>
+<option >Jamnagar</option>
+<option >Jamshedpur</option>
+<option >Jamwa Ramgarh</option>
+<option >Jangareddigudem</option>
+<option >Jangareddigudem</option>
+<option >Jansath</option>
+<option >Jaspur</option>
+<option >Jaunpur</option>
+<option >Jaysingpur</option>
+<option >Jetpur</option>
+<option >Jhagadia</option>
+<option >Jhajjar</option>
+<option >Jhansi</option>
+<option >Jhargram</option>
+<option >Jharsuguda</option>
+<option >Jhumritaliya</option>
+<option >Jhunjhunu</option>
+<option >Jhunjhunu (S)</option>
+<option >Jind</option>
+<option >Jodhpur</option>
+<option >Jodhpur (W)</option>
+<option >Jodia</option>
+<option >Jorhat</option>
+<option >Jugial</option>
+<option >Junagadh</option>
+<option >Junnar</option>
+<option >Junnar</option>
+<option >K N Puram</option>
+<option >Kadapa</option>
+<option >Kadapa</option>
+<option >Kadi</option>
+<option >Kahalgaon</option>
+<option >Kaikaluru</option>
+<option >Kaikattipur</option>
+<option >Kairana(Shamli)</option>
+<option >Kaithal</option>
+<option >Kakinada</option>
+<option >Kalhar</option>
+<option >Kalka</option>
+<option >Kalmeshwar</option>
+<option >Kalol</option>
+<option >Kalpa</option>
+<option >Kalpetta</option>
+<option >Kalyan</option>
+<option >Kalyani</option>
+<option >Kamptee</option>
+<option >Kancheepuram</option>
+<option >Kandari</option>
+<option >Kangayam</option>
+<option >Kangra</option>
+<option >Kaniyur</option>
+<option >Kanjirappally</option>
+<option >Kanlapirivu</option>
+<option >Kannada</option>
+<option >Kannauj</option>
+<option >Kannur</option>
+<option >Kanpur</option>
+<option >Kanyakumari</option>
+<option >Kapurthala</option>
+<option >Karad</option>
+<option >Karaikal</option>
+<option >Karaikudy</option>
+<option >Karegaon</option>
+<option >Karera</option>
+<option >Kargal</option>
+<option >Karimnagar</option>
+<option >Karjat</option>
+<option >Karkala</option>
+<option >Karnal</option>
+<option >Karumathampatti</option>
+<option >Karungapally</option>
+<option >Karur</option>
+<option >Karvi-I</option>
+<option >Karwar</option>
+<option >Kasaragod</option>
+<option >Kasganj</option>
+<option >Kashipur</option>
+<option >Kasrawad</option>
+<option >Kasrawad</option>
+<option >Katangi</option>
+<option >Kathghora</option>
+<option >Katihar</option>
+<option >Katni</option>
+<option >Kedgaon</option>
+<option >Keelavallanadu</option>
+<option >Keeranur</option>
+<option >Keonjhar</option>
+<option >Khadakwasala</option>
+<option >Khairagarh</option>
+<option >Khajuraho</option>
+<option >Khambat</option>
+<option >Khammam</option>
+<option >Khandwa</option>
+<option >Khanna</option>
+<option >Khanpur Kalan</option>
+<option >Kharach</option>
+<option >Kharagpur</option>
+<option >Kharar</option>
+<option >Khargone</option>
+<option >Khed</option>
+<option >Khetri</option>
+<option >Khopoli</option>
+<option >Khultabad</option>
+<option >Khurda</option>
+<option >Khuri bari</option>
+<option >Khurja</option>
+<option >Kichha II(Bazpur)</option>
+<option >Kichha-I</option>
+<option >Kishanganj</option>
+<option >Kishangarh</option>
+<option >Kishangarhbas (Khairthal)</option>
+<option >Kochi</option>
+<option >Kodaikanal</option>
+<option >Koduvayur</option>
+<option >Kohima</option>
+<option >Kokrajhar</option>
+<option >Kolar</option>
+<option >Kolhapur</option>
+<option >Kollam</option>
+<option >Komarapalayam</option>
+<option >Kompally</option>
+<option >Kopargaon</option>
+<option >Koppal</option>
+<option >Koraput</option>
+<option >Korba</option>
+<option >Kosi Kalan</option>
+<option >Kota</option>
+<option >Kotdasangani</option>
+<option >Kotdasanghani</option>
+<option >Kothagudem</option>
+<option >Kotirampur</option>
+<option >Kotkapura</option>
+<option >Kottakal</option>
+<option >Kottayam</option>
+<option >Kovilpatti</option>
+<option >Kovilvenni</option>
+<option >Kovvur</option>
+<option >Kozencherry</option>
+<option >Kozhikode</option>
+<option >Kozhuvanal</option>
+<option >Krihnagiri</option>
+<option >Krishna</option>
+<option >Kulappully</option>
+<option >Kulithalai</option>
+<option >Kullu</option>
+<option >Kumbakonam</option>
+<option >Kumily</option>
+<option >Kumta</option>
+<option >Kundaim</option>
+<option >Kundapur</option>
+<option >Kundli</option>
+<option >Kunnamkulam</option>
+<option >Kuppam</option>
+<option >Kurnool</option>
+<option >Kurukshetra</option>
+<option >Kutch</option>
+<option >Kutchmandvi</option>
+<option >Kuttikkanam</option>
+<option >Kuzhithurai</option>
+<option >Ladnun</option>
+<option >Lalru</option>
+<option >Lansdown II (Kotdwara)</option>
+<option >Latur</option>
+<option >Lavel</option>
+<option >Laxmangarh</option>
+<option >Leh</option>
+<option >Levengipuram</option>
+<option >Ligampally</option>
+<option >Lingsugur</option>
+<option >Lingsugur</option>
+<option >Lonawala</option>
+<option >Lonere</option>
+<option >Ludhiana</option>
+<option >Madanapalli</option>
+<option >Madhav Nagar</option>
+<option >Madikeri</option>
+<option >Madurai</option>
+<option >Mahabaleswar</option>
+<option >Mahaboobnagar</option>
+<option >Mahad</option>
+<option >Maharajganj</option>
+<option >Mahaswad</option>
+<option >Mahuva</option>
+<option >Mainpuri</option>
+<option >Malbazar</option>
+<option >Malda</option>
+<option >Malegaon</option>
+<option >Malerkotla</option>
+<option >Malgund</option>
+<option >Malkangiri</option>
+<option >Malkapur</option>
+<option >Malout</option>
+<option >Malpura</option>
+<option >Malur</option>
+<option >Malvan</option>
+<option >Manali</option>
+<option >Manamadurai</option>
+<option >Mananthody</option>
+<option >Manaparai</option>
+<option >Manavadar</option>
+<option >Mancher</option>
+<option >Mancherial</option>
+<option >Mandapeta</option>
+<option >Mandar</option>
+<option >Mandi</option>
+<option >Mandi Gobindgarh</option>
+<option >Mandideep</option>
+<option >Mandsaur</option>
+<option >Mandya</option>
+<option >Manendragarh</option>
+<option >Mangalgiri</option>
+<option >Mangalore</option>
+<option >Manipal</option>
+<option >Manjeri</option>
+<option >Mannarghat</option>
+<option >Margaon</option>
+<option >Mathura</option>
+<option >Maval</option>
+<option >Mavelikkara</option>
+<option >Mawana</option>
+<option >Mayiladuthurai</option>
+<option >Mecheri</option>
+<option >Medak</option>
+<option >Medchal</option>
+<option >Meerut</option>
+<option >Mehemedabad</option>
+<option >Mehsana</option>
+<option >Melvisharam</option>
+<option >Metoda</option>
+<option >Mettupalayam</option>
+<option >Mettur Dam</option>
+<option >Metturdam</option>
+<option >Mhow</option>
+<option >Midnapore</option>
+<option >Miraj</option>
+<option >Mirzapur</option>
+<option >Miyagam</option>
+<option >Modasa</option>
+<option >Modasa</option>
+<option >Modinagar</option>
+<option >Moga</option>
+<option >Mohali</option>
+<option >Mohindergarh</option>
+<option >Mokokchung</option>
+<option >Mongyr</option>
+<option >Moradabad</option>
+<option >Moraiya</option>
+<option >Morbi</option>
+<option >Morena</option>
+<option >Morigeri</option>
+<option >Morvi</option>
+<option >Motibhoyan</option>
+<option >Motipur</option>
+<option >Mouda</option>
+<option >Muakayam</option>
+<option >Muktsar</option>
+<option >Mullana</option>
+<option >Munda Taluka</option>
+<option >Munnar</option>
+<option >Murbad</option>
+<option >Murshidabad</option>
+<option >Murud</option>
+<option >Mussoorie</option>
+<option >Muvattupuzha</option>
+<option >Muzafarnagar</option>
+<option >Muzaffarpur</option>
+<option >Nabha</option>
+<option >Nadiad</option>
+<option >Nadurbar</option>
+<option >Nagamangala</option>
+<option >Nagapatinam</option>
+<option >Nagda</option>
+<option >Nagercoil</option>
+<option >Nagina</option>
+<option >Nahan</option>
+<option >Nahavara</option>
+<option >Nainital</option>
+<option >Nakodar</option>
+<option >Nalagarh</option>
+<option >Nalbari</option>
+<option >Nalgonda</option>
+<option >Nalia</option>
+<option >Namakkal</option>
+<option >Nanded</option>
+<option >Nandgaon</option>
+<option >Nandurbar</option>
+<option >Nandyal</option>
+<option >Nangal</option>
+<option >Nanguneri</option>
+<option >Nanjangud</option>
+<option >Naraingarh</option>
+<option >Narasaraopet</option>
+<option >Narketpally</option>
+<option >Narkhed</option>
+<option >Narnaul</option>
+<option >Narsapur</option>
+<option >Narsipatnam</option>
+<option >Nashik</option>
+<option >Nathdwara</option>
+<option >Naveri</option>
+<option >Navi Mumbai</option>
+<option >Navsari</option>
+<option >Nawanshahar</option>
+<option >Nazvidu</option>
+<option >Nedumandad</option>
+<option >Nedumangad</option>
+<option >Nedumgandam</option>
+<option >Neemrana</option>
+<option >Nellore</option>
+<option >Neora</option>
+<option >New Kandla</option>
+<option >New Panvel</option>
+<option >Newai</option>
+<option >Newsprint Nagar</option>
+<option >Nilambur</option>
+<option >Nilokheri</option>
+<option >Niphad</option>
+<option >Nitte</option>
+<option >Nizamabad</option>
+<option >Noamundi</option>
+<option >Nohar (E)</option>
+<option >North Lakhimpur</option>
+<option >Nowrangapur</option>
+<option >Nurpur</option>
+<option >Nuzvidu</option>
+<option >Okha</option>
+<option >Olatpur</option>
+<option >Omalpur</option>
+<option >Omalur</option>
+<option >Ongole</option>
+<option >Ootacamund</option>
+<option >Orai</option>
+<option >Osmanabad</option>
+<option >Others</option>
+<option >Pachmarhi</option>
+<option >Pachora</option>
+<option >Pachpahar</option>
+<option >Padra</option>
+<option >Pahalgam</option>
+<option >Paithan</option>
+<option >Palai</option>
+<option >Palakkad</option>
+<option >Palakol</option>
+<option >Palakonda</option>
+<option >Palamau</option>
+<option >Palampur</option>
+<option >Palani</option>
+<option >Palanpur</option>
+<option >Palghar</option>
+<option >Palghat</option>
+<option >Pali</option>
+<option >Pali(N) (Rohat)</option>
+<option >Palladum</option>
+<option >Pallipalayam</option>
+<option >Palodia</option>
+<option >Palwal</option>
+<option >Panaji</option>
+<option >Panchet</option>
+<option >Panchgani</option>
+<option >Panchkula </option>
+<option >Panchmahal</option>
+<option >Pandishankar</option>
+<option >Panhala</option>
+<option >Panipat</option>
+<option >Panjim</option>
+<option >Panki</option>
+<option >Pantnagar</option>
+<option >Paonta</option>
+<option >Papanasam</option>
+<option >Paradip Port </option>
+<option >Paralakhemundi</option>
+<option >Parasia</option>
+<option >Parbatpur</option>
+<option >Parbhani</option>
+<option >Pardi</option>
+<option >Parlakhmundi</option>
+<option >Partur</option>
+<option >Parwanoo </option>
+<option >Paschim Medinipur</option>
+<option >Patan</option>
+<option >Patancheru</option>
+<option >Pathaanamthitta</option>
+<option >Pathanamthitta</option>
+<option >Pathankot</option>
+<option >Patiala</option>
+<option >Patna</option>
+<option >Patratu</option>
+<option >Patti</option>
+<option >Pauri I</option>
+<option >Pauri II</option>
+<option >Peermedu</option>
+<option >Pen</option>
+<option >Perambalur</option>
+<option >Peringammala</option>
+<option >Perinthalmanna&#8206;</option>
+<option >Perundurai</option>
+<option >Peruvannamoozhy </option>
+<option >Phagwara</option>
+<option >Phalodi (S)</option>
+<option >Phaltan</option>
+<option >Phillaur</option>
+<option >Phulera (E)</option>
+<option >Piduguralla</option>
+<option >Pilani</option>
+<option >Pilibhit</option>
+<option >Pinjor</option>
+<option >Pitamberpur</option>
+<option >Pithampur</option>
+<option >Pollachi</option>
+<option >Ponnamarvathi</option>
+<option >Porbandar</option>
+<option >Port Blair</option>
+<option >Pottapalayam</option>
+<option >Prantij</option>
+<option >Prasanthi Nilayam</option>
+<option >Proddatur</option>
+<option >Puducherry (Pondicherry)</option>
+<option >Pudukottai</option>
+<option >Pulwama</option>
+<option >Punalur</option>
+<option >Punjipathra</option>
+<option >Puri</option>
+<option >Purnea</option>
+<option >Purulia</option>
+<option >Pusa</option>
+<option >Pushprajgarh</option>
+<option >Pushprajgarh</option>
+<option >Puttur</option>
+<option >Putturu</option>
+<option >Rae Bareli</option>
+<option >Raghogarh</option>
+<option >Rahuri</option>
+<option >Raichur</option>
+<option >Raigad</option>
+<option >Raigarh</option>
+<option >Raikot</option>
+<option >Raipur</option>
+<option >Raipur(Raj)</option>
+<option >Raisen</option>
+<option >Rajamundry</option>
+<option >Rajandgaon</option>
+<option >Rajapalayam</option>
+<option >Rajgangpur</option>
+<option >Rajgarh</option>
+<option >Rajgarh (HP)</option>
+<option >Rajgurunagar</option>
+<option >Rajkot</option>
+<option >Rajouri</option>
+<option >Rajpipla</option>
+<option >Rajpura</option>
+<option >Rajula</option>
+<option >Ramachandrapuram</option>
+<option >Ramanathapuram</option>
+<option >Rameshwaram</option>
+<option >Ramganj Mandi</option>
+<option >Ramnagar</option>
+<option >Rampur</option>
+<option >Rampur Bushahar</option>
+<option >Ramtek</option>
+<option >Ranaghat</option>
+<option >Ranavav</option>
+<option >Ranchi</option>
+<option >Rangareddy</option>
+<option >Ranikhet</option>
+<option >Ranipet</option>
+<option >Ranjangaon</option>
+<option >Ranni</option>
+<option >Rasayani</option>
+<option >Rasipuram</option>
+<option >Ratlam</option>
+<option >Ratnagiri</option>
+<option >Ravulapalem</option>
+<option >Rayachoti</option>
+<option >Rayagada</option>
+<option >Reasi</option>
+<option >Repalle</option>
+<option >Rewa</option>
+<option >Rewari</option>
+<option >Rishikesh</option>
+<option >Rohtak</option>
+<option >Roorkee</option>
+<option >Roorkee II</option>
+<option >Ropar</option>
+<option >Rourkela</option>
+<option >Rudrapur</option>
+<option >Ruikhairi</option>
+<option >Sabarkantha</option>
+<option >Safidon</option>
+<option >Sagar</option>
+<option >Saharanpur</option>
+<option >Sakleshpur</option>
+<option >Salem</option>
+<option >Samana</option>
+<option >Samastipur</option>
+<option >Samba</option>
+<option >Sambalpur</option>
+<option >Samrala</option>
+<option >Samrala</option>
+<option >Samrala</option>
+<option >Sanand</option>
+<option >Sanaswatdi</option>
+<option >Sandur</option>
+<option >Sangamner</option>
+<option >Sanganeshwar</option>
+<option >Sanghinagar </option>
+<option >Sangli</option>
+<option >Sangola</option>
+<option >Sangrur</option>
+<option >Sankagiri</option>
+<option >Sankaran Koil</option>
+<option >Santrampur</option>
+<option >Sarang</option>
+<option >Sarangpur</option>
+<option >Sardarshahar (S)</option>
+<option >Sarhind</option>
+<option >Saswad</option>
+<option >Satana</option>
+<option >Satara</option>
+<option >Sathiyamangalam</option>
+<option >Satna</option>
+<option >Satna</option>
+<option >Satpur</option>
+<option >Sattenapalli</option>
+<option >Satyavedu</option>
+<option >Savli</option>
+<option >Sawai Madhopur</option>
+<option >Sayan</option>
+<option >Secunderabad</option>
+<option >Sehore</option>
+<option >Semiliguda</option>
+<option >Shahapur</option>
+<option >Shahdol</option>
+<option >Shahjahanpur</option>
+<option >Shajapur</option>
+<option >Shapar</option>
+<option >Shela</option>
+<option >Shertallai</option>
+<option >Shikohabad</option>
+<option >Shikohabad</option>
+<option >Shillong </option>
+<option >Shimla</option>
+<option >Shimoga</option>
+<option >Shirdi</option>
+<option >Shirol</option>
+<option >Shirpur</option>
+<option >Shirur</option>
+<option >Shirwal</option>
+<option >Shivpuri</option>
+<option >Sholapur</option>
+<option >Shoranur</option>
+<option >Shri Rampur</option>
+<option >Sibsagar</option>
+<option >Sidhi</option>
+<option >Sidhpur</option>
+<option >Sihor</option>
+<option >Sikandrabad</option>
+<option >Sikar</option>
+<option >Silchar</option>
+<option >Siliguri</option>
+<option >Silvassa</option>
+<option >Sindhanur</option>
+<option >Singhbhum</option>
+<option >Singrauli</option>
+<option >Sinnar</option>
+<option >Sirmour</option>
+<option >Sirohi</option>
+<option >Sirsa</option>
+<option >Sirsi</option>
+<option >Sitapur</option>
+<option >Sivaganga</option>
+<option >Sivaganga</option>
+<option >Sivagangai</option>
+<option >Sivakasi</option>
+<option >Sivasagar</option>
+<option >Siwan</option>
+<option >Siwani</option>
+<option >Sola</option>
+<option >Solan</option>
+<option >Solapur</option>
+<option >Somwarpet</option>
+<option >Sonebhadra</option>
+<option >Sonepat</option>
+<option >Sopore</option>
+<option >South 24 Parganas</option>
+<option >Sridungargarh(N)Dungragarh</option>
+<option >Sriganganagar</option>
+<option >Sriharikota</option>
+<option >Srikakulam</option>
+<option >Srikalahasthi</option>
+<option >Srinagar</option>
+<option >Sriperumbudur</option>
+<option >Sullia</option>
+<option >Sultanpur</option>
+<option >Sunabeda</option>
+<option >Sunam</option>
+<option >Sundergarh</option>
+<option >Surathkal</option>
+<option >Surendranagar</option>
+<option >Ta. Waghodia</option>
+<option >Tadepalligudem</option>
+<option >Tal Himatnagar </option>
+<option >Tal Palus</option>
+<option >Tala</option>
+<option >Talaja</option>
+<option >Talala</option>
+<option >Talegaon</option>
+<option >Talukabhor </option>
+<option >Tanuku</option>
+<option >Tardal</option>
+<option >Tarikere</option>
+<option >Tasgaon</option>
+<option >Tehri</option>
+<option >Tehri Garhwal</option>
+<option >Tekanpur</option>
+<option >Tekkali</option>
+<option >Tellichery</option>
+<option >Tenali</option>
+<option >Tenkasi</option>
+<option >Tezpur</option>
+<option >Thanaghazi</option>
+<option >Thane</option>
+<option >Thangadh</option>
+<option >Thanjavur</option>
+<option >Thasra</option>
+<option >Theni</option>
+<option >Thenthirumalai</option>
+<option >Theog</option>
+<option >Thimmapur</option>
+<option >Thirumangalam</option>
+<option >Thiruraipoondi</option>
+<option >Thiruvalla</option>
+<option >Thiruvallur,Ponneri</option>
+<option >Thiruvananthapuram</option>
+<option >Thiruvannamalai</option>
+<option >Thiruvilwamala</option>
+<option >Thodupuzha</option>
+<option >Tholudur</option>
+<option >Thrissur </option>
+<option >Thuckalay</option>
+<option >Thuraiyure</option>
+<option >Tijara(N)</option>
+<option >Tijara(S)</option>
+<option >Tinsukia</option>
+<option >Tiptur</option>
+<option >Tiruchengode</option>
+<option >Tiruchirapalli</option>
+<option >Tirunelveli</option>
+<option >Tirupathi</option>
+<option >Tirupathur</option>
+<option >Tirupati</option>
+<option >Tirupattur</option>
+<option >Tirupattur</option>
+<option >Tirupur</option>
+<option >Tirur</option>
+<option >Tiruvalla</option>
+<option >Tiruvarur</option>
+<option >Tiruvellore </option>
+<option >Tiruvettipuram</option>
+<option >Titlagarh</option>
+<option >Tohana</option>
+<option >Tonk (S)</option>
+<option >Tosham</option>
+<option >Tosham</option>
+<option >Tribkakeshwar</option>
+<option >Trichur</option>
+<option >Trichy</option>
+<option >Trimbak</option>
+<option >Tumkur</option>
+<option >Tumsar</option>
+<option >Tumsar</option>
+<option >Tuticorin</option>
+<option >Udaipur</option>
+<option >Udaipurwati</option>
+<option >Udala</option>
+<option >Udgir</option>
+<option >Udhagamandalam(Ooty)</option>
+<option >Udham Singh Nagar</option>
+<option >Udhampur</option>
+<option >Udumalpet</option>
+<option >Udupi</option>
+<option >Ugar Khurd</option>
+<option >Ujjain</option>
+<option >Ulhasnagar</option>
+<option >Umaria</option>
+<option >Umiam</option>
+<option >Umrer</option>
+<option >Una</option>
+<option >Unnao</option>
+<option >Unnikulam</option>
+<option >Upleta</option>
+<option >Vadakkanchery</option>
+<option >Vadakkangulam</option>
+<option >Vaghodia</option>
+<option >Vaikom</option>
+<option >Vaishali</option>
+<option >Valia</option>
+<option >Vallabh Vidyanagar </option>
+<option >Vallabhnagar</option>
+<option >Valliyoor</option>
+<option >Valod</option>
+<option >Valparai</option>
+<option >Valsad</option>
+<option >Vaniyambadi </option>
+<option >Vapi</option>
+<option >Varanasi</option>
+<option >Varkala</option>
+<option >Vasai</option>
+<option >Vasco Da Gama</option>
+<option >Vedasandur</option>
+<option >Velhe</option>
+<option >Vellore</option>
+<option >Veraval</option>
+<option >Verna</option>
+<option >Via- Jaysingpur</option>
+<option >Vidisha</option>
+<option >Vidyanagar</option>
+<option >Vijaipur</option>
+<option >Vijapur</option>
+<option >Vijapur</option>
+<option >Vikarabad</option>
+<option >Vikom</option>
+<option >Villupuram</option>
+<option >Virajpet</option>
+<option >Viralimalai</option>
+<option >Virar</option>
+<option >Virudhunagar</option>
+<option >Visavadar</option>
+<option >Visnagar</option>
+<option >Vita</option>
+<option >Vithal Udyognagar </option>
+<option >Vizayanagaram</option>
+<option >Wada</option>
+<option >Wadi</option>
+<option >Waghodia</option>
+<option >Wai</option>
+<option >Waknaghat</option>
+<option >Waluj</option>
+<option >Wankaner</option>
+<option >Warangal</option>
+<option >Wardha</option>
+<option >Wargal</option>
+<option >West Godavari</option>
+<option >Yamunanagar</option>
+<option >Yavatmal</option>
+<option >yawal</option>
+<option >Yercaud</option>
+<option >Zahirabad</option>
+  </select>
+  <h6 ng-show="lfc.operation == 'view'">{{lfc.lead.address.city}}</h6>
+
+    </div>
+    <div class="col-sm-4">
+      <label class="control-label" for="txtAddressState"> State:</label>
+      <select ng-show="lfc.operation=='edit' || lfc.operation == 'create'" ng-model="lfc.lead.address.state" name="ddlState" id="ddlState" class="form-control">
+       <option >Select State</option>
+       <option >Andaman & Nicobar </option>
+       <option >Andhra Pradesh</option>
+       <option >Arunachal Pradesh</option>
+       <option >Assam</option>
+       <option >Bihar</option>
+       <option >Chandigarh</option>
+       <option >Chattisgarh</option>
+       <option >Dadra & Nagar Havelli</option>
+       <option >Daman & Diu</option>
+       <option >Delhi</option>
+       <option >Goa</option>
+       <option >Gujarat</option>
+       <option >Haryana</option>
+       <option >Himachal Pradesh</option>
+       <option >Jammu & Kashmir</option>
+       <option >Jharkhand</option>
+       <option >Karnataka</option>
+       <option >Kerala</option>
+       <option >Madhya Pradesh</option>
+       <option >Maharashtra</option>
+       <option >Manipur</option>
+       <option >Meghalaya</option>
+       <option >Mizoram</option>
+       <option >Nagaland</option>
+       <option >Orissa</option>
+       <option >Pondicherry</option>
+       <option >Punjab</option>
+       <option >Rajasthan</option>
+       <option >Sikkim</option>
+       <option >Tamil Nadu</option>
+       <option >Telangana</option>
+       <option >Tripura</option>
+       <option >Uttar Pradesh</option>
+       <option >Uttaranchal</option>
+       <option >West Bengal</option>
+   </select>
+   <h6 ng-show="lfc.operation == 'view'">{{lfc.lead.address.state}}</h6>
+
+    </div>
+  </div>
+  <div class="row" style="margin-bottom:10px;">
+    <div class="col-sm-5">
+      <label class="control-label" for="txtAddressPin">Pincode :</label>
+      <input ng-show="lfc.operation=='edit' || lfc.operation == 'create'" ng-model="lfc.lead.address.pin" type="text" class="form-control" id="txtAddressPin" placeholder="Enter pincode">
+      <h6 ng-show="lfc.operation == 'view'">{{lfc.lead.address.pin}}</h6>
+    </div>
+  </div>
+</div>
+</div>

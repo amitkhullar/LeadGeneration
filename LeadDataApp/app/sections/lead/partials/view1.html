@@ -1,0 +1,126 @@
+
+<div >
+    <!-- <h3>Company Profile</h3> -->
+    <div class="panel panel-default " style="margin-right:5px;">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          Company Profile
+        </h4>
+      </div>
+      <div class="panel-body">
+      <div class="row" style="margin-bottom:10px;">
+        <div class="col-sm-5">
+          <label for="txtCompanyName">Name of company :</label>
+          <input ng-show="lfc.operation=='edit' || lfc.operation == 'create'" type="text" ng-model="lfc.lead.companyInfo.companyName" class="form-control" id="txtCompanyName" placeholder="Enter company name">
+          <h6 ng-show="lfc.operation == 'view'">{{lfc.lead.companyInfo.companyName}}</h6>
+        </div>
+        <div class="col-sm-4">
+          <label for="ddlCurrentStatus">Current Status : </label>
+          <select ng-show="lfc.operation=='edit' || lfc.operation == 'create'" ng-model="lfc.lead.companyInfo.currentStatus" class="form-control" id="ddlCurrentStatus">
+            <option>Select Status</option>
+            <option>Email Sent</option>
+            <option>Responded</option>
+            <option>Contacted</option>
+            <option>Meeting</option>
+          </select>
+          <h6 ng-show="lfc.operation == 'view'">{{lfc.lead.companyInfo.currentStatus}}</h6>
+        </div>
+      </div>
+      <div class="row" style="margin-bottom:10px;">
+        <div class="col-sm-5">
+          <label class="control-label" for="ddlIndustryVertical">Industry Vertical : </label>
+          <select  ng-show="lfc.operation=='edit' || lfc.operation == 'create'" ng-model="lfc.lead.companyInfo.industryVertical" class="form-control" id="ddlIndustryVertical">
+            <option>Select Vertical</option>
+            <option>All Manufacturing Industries</option>
+            <option>All Services Industry</option>
+            <option >Advertising , Media</option>
+            <option >Airlines , Aviation , Defence</option>
+            <option >Automobile , Auto Ancillaries</option>
+            <option >BFSI</option>
+            <option >Capital Goods , Machines</option>
+            <option >Cement , Marble , Stone etc</option>
+            <option >Chemical</option>
+            <option >Construction, Infrastructure</option>
+            <option >Consulting</option>
+            <option >Consumer Durables, Home Appliances</option>
+            <option >Courier , Logistics , Packaging , Transport</option>
+            <option >E -Commerce</option>
+            <option >Electrical , Electronics</option>
+            <option >Engineering</option>
+            <option >Entertainment</option>
+            <option >Environment</option>
+            <option >Export , Import  Houses</option>
+            <option >Food , FMCG , Agriculture</option>
+            <option >Garment , Textile</option>
+            <option >Gems , Jewellery , Watches</option>
+            <option >Hospitals , Healthcare</option>
+            <option >Hotels & Restaurants</option>
+            <option >Information Technology (IT)</option>
+            <option >Institutes - Educational , Training</option>
+            <option >Iron & Steel</option>
+            <option >ITES - BPO , KPO , LPO , MT</option>
+            <option >Leather , Accessories</option>
+            <option >Mineral , Metal , Mining</option>
+            <option >Ministeries , Govt Bodies , Associations</option>
+            <option >NGOs , Trust , Charitable Institutions</option>
+            <option >Office Automation , Stationery</option>
+            <option >Paper , Publishing , Printing</option>
+            <option >Petroleum , Oil , Gas , Refineries</option>
+            <option >Pharmaceuticals , Labs</option>
+            <option >Power , Energy</option>
+            <option >Railways</option>
+            <option >Retail</option>
+            <option >Security , Safety , Facility Management</option>
+            <option >Shipping , Marine</option>
+            <option >Telecommunication , Mobile</option>
+            <option >Travel , Tourism</option>
+            <option >Wood , Plastic  Furniture , Fixtures , Fittings</option>
+          </select>
+          <h6 ng-show="lfc.operation == 'view'">{{lfc.lead.companyInfo.industryVertical}}</h6>
+        </div>
+        <div class="col-sm-4">
+          <label class="control-label" for="ddlContactSource">Contact Source : </label>
+          <select ng-show="lfc.operation=='edit' || lfc.operation == 'create'" ng-model="lfc.lead.companyInfo.contactSource" class="form-control" id="ddlContactSource">
+            <option>Select Contact Source</option>
+            <option>Linked In</option>
+            <option>Naukri</option>
+            <option>Directory</option>
+            <option>Employees</option>
+            <option>Others</option>
+          </select>
+          <h6 ng-show="lfc.operation == 'view'">{{lfc.lead.companyInfo.contactSource}}</h6>
+        </div>
+      </div>
+
+      <div class="row" style="margin-bottom:10px;">
+        <div class="col-sm-5">
+          <label class="control-label" for="txtAboutCompany">About Company :</label>
+          <textarea ng-show="lfc.operation=='edit' || lfc.operation == 'create'" ng-model="lfc.lead.companyInfo.aboutCompany" class="form-control" rows="2" placeholder="Write about company" id="txtAboutCompany"></textarea>
+          <h6 ng-show="lfc.operation == 'view'">{{lfc.lead.companyInfo.aboutCompany}}</h6>
+        </div>
+        <div class="col-sm-4">
+          <label class="control-label" for="ddlCompanyType">Company Type : </label>
+          <select ng-show="lfc.operation=='edit' || lfc.operation == 'create'" ng-model="lfc.lead.companyInfo.companyType" class="form-control" id="ddlCompanyType">
+            <option>Select Company Type</option>
+            <option>SMEs</option>
+            <option>Startups</option>
+            <option>MNC</option>
+          </select>
+          <h6 ng-show="lfc.operation == 'view'">{{lfc.lead.companyInfo.companyType}}</h6>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-5">
+          <label class="control-label" for="txtProductsInterested">Products Interested : </label>
+          <textarea ng-show="lfc.operation=='edit' || lfc.operation == 'create'" ng-model="lfc.lead.companyInfo.productsOfInterest" class="form-control" rows="2" placeholder="Enter products of interest" id="txtProductsInterested"></textarea>
+          <h6 ng-show="lfc.operation == 'view'">{{lfc.lead.companyInfo.productsOfInterest}}</h6>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+
+</div>

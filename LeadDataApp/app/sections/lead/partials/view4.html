@@ -1,0 +1,53 @@
+<div >
+  <div class="panel panel-default " style="margin-right:5px;">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        Extended Details
+      </h4>
+    </div>
+    <div class="panel-body">
+  <div class="row" style="margin-bottom:10px;">
+    <div class="col-sm-5">
+      <label class="control-label" for="txtCompanyScale">Company Scale :</label>
+      <input ng-show="lfc.operation=='edit' || lfc.operation == 'create'" type="text" ng-model="lfc.lead.additionalProfile.companyScale" class="form-control" id="txtCompanyScale" placeholder="Enter company scale">
+      <h6 ng-show="lfc.operation == 'view'">{{lfc.lead.additionalProfile.companyScale}}</h6>
+    </div>
+    <div class="col-sm-5">
+      <label class="control-label" for="txtEmployeeCnt">Employee Count :</label>
+      <input ng-show="lfc.operation=='edit' || lfc.operation == 'create'" type="text" ng-model="lfc.lead.additionalProfile.employeeCnt" class="form-control" id="txtEmployeeCnt" placeholder="Enter employee count">
+      <h6 ng-show="lfc.operation == 'view'">{{lfc.lead.additionalProfile.employeeCnt}}</h6>
+    </div>
+  </div>
+  <div class="row" style="margin-bottom:10px;">
+    <div class="col-sm-5">
+      <label class="control-label" for="txtTravelBudget"> Travel Budget:</label>
+      <input ng-show="lfc.operation=='edit' || lfc.operation == 'create'" type="text" ng-model="lfc.lead.additionalProfile.travelBudget" class="form-control" id="txtTravelBudget" placeholder="Enter travel budget">
+      <h6 ng-show="lfc.operation == 'view'">{{lfc.lead.additionalProfile.travelBudget}}</h6>
+    </div>
+    <div class="col-sm-4">
+      <label class="control-label" for="txtVendorCnt">Vendor Count :</label>
+      <input ng-show="lfc.operation=='edit' || lfc.operation == 'create'" type="text" ng-model="lfc.lead.additionalProfile.vendorCount"  class="form-control" id="txtVendorCnt" placeholder="No. of vendors">
+      <h6 ng-show="lfc.operation == 'view'">{{lfc.lead.additionalProfile.vendorCount}}</h6>
+    </div>
+  </div>
+  <div class="row" style="margin-bottom:10px;">
+    <div class="col-sm-5">
+      <label class="control-label" for="txtVendorHandlerCnt">People handling vendors</label>
+      <input ng-show="lfc.operation=='edit' || lfc.operation == 'create'" type="text" ng-model="lfc.lead.additionalProfile.vendorHandlingCount" class="form-control" id="txtVendorHandlerCnt" placeholder="No. of people handling vendors">
+      <h6 ng-show="lfc.operation == 'view'">{{lfc.lead.additionalProfile.vendorHandlingCount}}</h6>
+    </div>
+    <div class="col-sm-5">
+      <label class="control-label" for="txtTransactionCnt">Transaction Count :</label>
+      <input ng-show="lfc.operation=='edit' || lfc.operation == 'create'" type="text" ng-model="lfc.lead.additionalProfile.transactionCnt" class="form-control" id="txtTransactionCnt" placeholder="No. of transactions">
+      <h6 ng-show="lfc.operation == 'view'">{{lfc.lead.additionalProfile.transactionCnt}}</h6>
+    </div>
+  </div>
+  <div class="row" style="margin-bottom:10px;">
+    <div class="col-sm-5">
+      <label class="control-label" for="dtMailingDate">Date of mailing :</label>
+      <input ng-show="lfc.operation=='edit' || lfc.operation == 'create'" type="date" ng-model="lfc.lead.additionalProfile.mailingDate" class="form-control" id="dtMailingDate" placeholder="Mailing date">
+      <h6 ng-show="lfc.operation == 'view'">{{lfc.lead.additionalProfile.mailingDate}}</h6>
+    </div>
+  </div>
+</div>
+</div>
