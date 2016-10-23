@@ -27,8 +27,8 @@ router.route('/leads/:id')
       if (err){
         return res.send(err);
       }
-      console.log("leadid : "+lead._id);
-      Contact.find({"lead":""+lead._id+""},function(err,contacts){
+      console.log("leadid : "+req.params.id);
+      Contact.find({"lead":""+req.params.id+""},function(err,contacts){
 
         if(err)
         {
