@@ -69,11 +69,12 @@ router.route('/leads')
 router.route('/leads')
 .post((req, res) => {
 
+
   var insertedContactIds = [];
   var contacts = [];
   var leadData = req.body;
   contacts = leadData.contacts;
-
+  console.log("post request"+leadData.companyInfo);
 
   var lead = new Lead({
     companyName         : leadData.companyInfo.companyName,

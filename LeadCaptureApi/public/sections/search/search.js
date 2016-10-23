@@ -29,7 +29,7 @@ angular.module('myApp.search',['ngRoute'])
 
               };
 
-      $http.get("http://localhost:8005/api/leads")
+      $http.get("http://139.59.24.29/api/leads")
       .then(function(response) {
 
           console.log("data "+response.data);

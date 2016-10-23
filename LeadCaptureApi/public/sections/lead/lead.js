@@ -69,7 +69,7 @@ angular.module('myApp.lead',['ngRoute'])
 
     console.log("lead : "+vm.leadId);
 
-    $http.get('http://localhost:8005/api/leads/'+vm.leadId, {}, {})
+    $http.get('http://139.59.24.29/api/leads/'+vm.leadId, {}, {})
     .success(function(response){
 
       // console.log("success"+JSON.parse(response));
@@ -122,7 +122,7 @@ angular.module('myApp.lead',['ngRoute'])
             };
 
     console.log(data);
-    $http.post('http://localhost:8005/api/leads', data, config)
+    $http.post('http://139.59.24.29/api/leads', data, config)
     .success(function(){
 
       console.log("success");
@@ -139,7 +139,7 @@ angular.module('myApp.lead',['ngRoute'])
   vm.deleteLead = function(){
 
     console.log("start deletion");
-    $http.delete('http://localhost:8005/api/leads/'+vm.leadId+'/delete', {})
+    $http.delete('http://139.59.24.29/api/leads/'+vm.leadId+'/delete', {})
     .success(function(){
 
       console.log("delete success");
