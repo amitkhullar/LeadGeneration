@@ -153,7 +153,7 @@ router.route('/leads')
 
     for(var contact of contacts)
     {
-      contact.lead = lead.id;
+      contact.lead = lead._id;
     }
     console.log("contacts :"+contacts);
     Contact.collection.insertMany(contacts,function(err,inserted)

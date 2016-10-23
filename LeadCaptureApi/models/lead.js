@@ -31,7 +31,8 @@ const schema = new mongoose.Schema({
 
   completed: { type: Boolean, default: false },
   createdAt: { type: Date, default: Date.now },
-  createdBy: { type: Number, default: -1 }
+  createdBy: { type: Number, default: -1 },
+  contacts : [{ type: mongoose.Schema.Types.ObjectId, ref: 'contacts' }]
 
 });
 
