@@ -112,8 +112,7 @@ angular.module('myApp.lead',['ngRoute'])
                               companyType:response.lead.companyType
                              },
 
-        contacts          :  [{name:"contact 1",designation:"Designation 1", email:"contact1@lead.com", phone : "9999999999"},
-                              {name:"contact 2",designation:"Designation 2", email:"contact2@lead.com", phone : "9999999998"}],
+        contacts          :  response.contacts,
 
         address           :  {
                                building:response.lead.addressBuilding,town:response.lead.addressTownStreet,city:response.lead.addressCity,state:response.lead.addressState,pin:response.lead.addressPincode
