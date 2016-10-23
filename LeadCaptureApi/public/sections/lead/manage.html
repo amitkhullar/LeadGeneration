@@ -1,0 +1,49 @@
+<div id="page-wrapper" ng-controller="LeadFormCntrl as lfc" >
+  <div class="row">
+      <div class="col-lg-12">
+          <h1 class="page-header">
+            <span ng-show="lfc.operation=='create'">Create</span>
+            <span ng-show="lfc.operation=='edit'">Edit</span>
+            <span ng-show="lfc.operation=='delete'">Deleted</span>
+            Lead
+            <span ng-show="lfc.operation=='delete'"> : {{lfc.deletedLeadId}}</span>
+            <span ng-show="lfc.operation=='view'">Details</span>
+          </h1>
+      </div>
+      <!-- /.col-lg-12 -->
+  </div>
+  <!-- <div ng-include="'sections/common/topbar.html'"></div> -->
+<div ng-init="mac.section = 'lead'" id="section-parent">
+  <form>
+    <!-- <div id="section1" class="container-fluid"> -->
+    <!-- <div class="tab-content"> -->
+    <div  id="companyProfile" style="margin-bottom:20px;">
+      <div ng-include="'public/sections/lead/partials/view1.html'"></div>
+    </div>
+    <hr/>
+    <!-- </div> -->
+    <!-- <div id="section2" class="container-fluid"> -->
+    <div  id="companyContacts">
+      <div  ng-include="'public/sections/lead/partials/view2.html'"></div>
+    </div>
+    <hr/>
+    <!-- <div id="section3" class="container-fluid"> -->
+    <div  id="companyAddress">
+      <div  ng-include="'public/sections/lead/partials/view3.html'"></div>
+    </div>
+    <hr/>
+    <!-- <div id="section4" class="container-fluid"> -->
+    <div id="additionalProfile">
+      <div  ng-include="'public/sections/lead/partials/view4.html'"></div>
+    </div>
+  <!-- </div> -->
+  <div class="row">
+    <div class="col-sm-5" style="padding:10px;">
+      <button type="button" ng-show="lfc.operation == 'create'" ng-click="lfc.submitLead()" class="btn btn-primary">Submit</button>
+      <button type="button" ng-show="lfc.operation == 'edit'" ng-click="lfc.submitLead()" class="btn btn-primary">Save</button>
+      <button type="reset" ng-show="lfc.operation == 'create'" class="btn btn-primary">Reset</button>
+    </div>
+  </div>
+  </form>
+</div>
+</div>

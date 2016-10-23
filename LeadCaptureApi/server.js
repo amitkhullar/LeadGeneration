@@ -33,6 +33,14 @@ app.use(function(req, res, next) {
 // all routes are prefixed with /api
 app.use('/api', require('./routes/lead'));
 
+var serveStatic = require('serve-static');
+app.use(serveStatic(__dirname, {'index': ['/public/index.html']}))
+
+// app.get('*', function(req, res) {
+//         // console.log(__dirname);
+//         res.sendFile(__dirname+ '/public/index.html'); // load the single view file (angular will handle the page changes on the front-end)
+// });
+
 // set the port
 const port = parseInt(process.env.PORT, 10) || 8005;
 
