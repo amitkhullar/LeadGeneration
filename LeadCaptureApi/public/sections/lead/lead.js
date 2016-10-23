@@ -99,7 +99,8 @@ angular.module('myApp.lead',['ngRoute'])
     .success(function(response){
 
       // console.log("success"+JSON.parse(response));
-      console.log(vm.lead);
+      console.log(response);
+      console.log(response.contacts);
       // vm.lead.companyInfo.companyName = response.companyName;
 
 

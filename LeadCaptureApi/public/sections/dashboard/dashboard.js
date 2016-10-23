@@ -24,10 +24,10 @@ angular.module('myApp.dashboard',['ngRoute'])
   vm.getLeadStatistics = function(){
 
     $http.get('http://139.59.24.29/api/leads/stats', data, config)
-    .success(function(){
+    .success(function(response){
 
       console.log("success");
-      $window.location.href = '#!/dashboard/home';
+      vm.leadStats = response.leadStats;
 
     })
     .error(function(){
