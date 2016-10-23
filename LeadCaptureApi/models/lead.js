@@ -29,10 +29,6 @@ const schema = new mongoose.Schema({
   transactionCount:{ type: Number  },
   mailingDate:{ type: Date, default: null},
 
-  contacts:[
-      {type: mongoose.Schema.Types.ObjectId, ref: 'contacts'}
-    ],
-
   completed: { type: Boolean, default: false },
   createdAt: { type: Date, default: Date.now },
   createdBy: { type: Number, default: -1 }

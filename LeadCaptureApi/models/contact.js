@@ -9,6 +9,7 @@ const schema = new mongoose.Schema({
   designation: { type: String, maxlength: [50, 'Only 50 characters or less are allowed'] },
   email: { type: String, maxlength: [100, 'Only 100 characters or less are allowed'] },
   phone: { type: String, maxlength: [100, 'Only 100 characters or less are allowed'] },
+  lead:  { type: mongoose.Schema.Types.ObjectId, ref: 'leads'},
   createdAt: { type: Date, default: Date.now },
   createdBy: { type: Number, default: -1 }
 

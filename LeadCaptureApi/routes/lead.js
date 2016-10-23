@@ -38,16 +38,16 @@ router.route('/leads/:id')
     console.log("delete lead with id :"+req.params.id);
     Contact.collection.remove({_id:{ $in : Lead.findById(req.params.id)}})
 
-    Lead.remove({ _id: req.params.id }, function(err)
-    {
-      console.log("err"+err);
-    if (!err) {
-            res.send({"deleted":req.params.id});
-    }
-    else {
-            res.send({"message":"failed deleting"+req.params.id});
-    }
-  });
+  //   Lead.remove({ _id: req.params.id }, function(err)
+  //   {
+  //     console.log("err"+err);
+  //   if (!err) {
+  //           res.send({"deleted":req.params.id});
+  //   }
+  //   else {
+  //           res.send({"message":"failed deleting"+req.params.id});
+  //   }
+  // });
 });
 
 
@@ -102,30 +102,28 @@ router.route('/leads')
     mailingDate         : leadData.additionalProfile.mailingDate
   });
 
-  Contact.collection.insertMany(contacts,function(err,inserted)
-  {
-      if(err)
-      {
+  lead.save((err,lead) => {
+    if (err){
+      return res.send(err);
+    }
 
-      }
-      else
-      {
-          console.log("res : "+inserted.insertedIds);
-          for (var id of inserted.insertedIds)
-          {
-            console.log("id :"+id);
-            lead.contacts.push(id);
-          }
-          console.log("Lead to insert "+ lead);
+    for(contact of contacts)
+    {
+      contact.lead = lead.id;
+    }
+    console.log("contacts :"+contacts);
+    Contact.collection.insertMany(contacts,function(err,inserted)
+    {
+        if(err)
+        {
 
-          lead.save((err) => {
-            if (err){
-              return res.send(err);
-            }
+        }
+        else
+        {
+          return res.json({ message: 'New lead created! with id : '+lead.id });
+        }
 
-            return res.json({ message: 'New lead created!' });
-          });
-      }
+    });
 
   });
 
