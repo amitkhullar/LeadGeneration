@@ -36,9 +36,20 @@ router.route('/leads/:id')
 .delete((req,res) =>
 {
     console.log("delete lead with id :"+req.params.id);
-    Contact.collection.remove({lead: req.params.id});
-    Lead.collection.remove({_id:req.params.id});
-    res.send({"message":"Deleted lead with id : "+req.params.id});
+
+    Lead.remove({_id:req.params.id},function(err){
+
+      if (!err) {
+          res.send({"message":"Error deleted lead with id : "+req.params.id});
+      }
+      else {
+        Contact.collection.remove({lead: req.params.id});
+        res.send({"message":"Deleted lead with id : "+req.params.id});
+
+      }
+
+    });
+
 
   //   Lead.remove({ _id: req.params.id }, function(err)
   //   {
