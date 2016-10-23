@@ -34,7 +34,7 @@ router.route('/leads/:id')
           return res.send(err);
         }
 
-        res.json({"lead":lead});
+        res.json({"lead":lead,"contacts":contacts});
 
       });
 
