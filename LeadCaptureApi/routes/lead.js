@@ -27,20 +27,14 @@ router.route('/leads/:id')
       if (err){
         return res.send(err);
       }
-      console.log("leadid : "+req.params.id);
+
       Contact.find({"lead":req.params.id},function(err,contacts){
 
-        if(err)
-        {
-          return res.json({"message":err});
 
-        }
 
-        var returnData = {"contacts" : contacts };
-
-        // lead.contacts = contacts;
-        console.log("contacts returned "+contacts);
-        return res.json(returnData);
+        lead.contacts = contacts;
+        console.log("contacts returned "+lead.contacts);
+        return res.json(lead);
 
       });
 
