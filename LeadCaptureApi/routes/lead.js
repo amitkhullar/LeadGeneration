@@ -107,7 +107,7 @@ router.route('/leads')
       return res.send(err);
     }
 
-    for(contact of contacts)
+    for(var contact of contacts)
     {
       contact.lead = lead.id;
     }
