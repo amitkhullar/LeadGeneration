@@ -114,7 +114,7 @@ router.route('/leads/:id')
             res.json({"message":"Error for stats generation"+err});
         }
 
-        res.json({new_leads : count,leads_responded : leadCount - count,pending_action : 0});
+        res.json({new_leads : 0,leads_responded : leadCount - count,pending_action : count});
 
       });
 
