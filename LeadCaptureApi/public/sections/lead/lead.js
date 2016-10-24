@@ -143,9 +143,11 @@ angular.module('myApp.lead',['ngRoute'])
     $http.put('http://139.59.24.29/api/leads/'+vm.leadId,data,{})
      .success(function (response, status, headers) {
          vm.ServerResponse = response;
+         console.log("update response"+response);
      })
      .error(function (response, status, header, config) {
          vm.ServerResponse = {"message":"Error updating lead"};
+         console.log("error in update response"+response);
      });
 
   };
