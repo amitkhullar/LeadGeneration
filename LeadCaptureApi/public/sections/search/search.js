@@ -3,8 +3,8 @@
 angular.module('myApp.search',['ngRoute'])
 
 .config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/leads/search', {
-    templateUrl: 'sections/search',
+  $routeProvider.when('/leads/testSearch', {
+    templateUrl: 'public/sections/search/index.html',
     controller: 'LeadSearchCntrl'
   });
 
