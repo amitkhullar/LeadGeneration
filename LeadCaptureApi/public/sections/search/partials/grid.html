@@ -28,7 +28,7 @@
                               </thead>
                               <tbody>
 
-                                  <tr ng-repeat="record in lsc.searchResults | filter:lsc.searchText" class="gradeA odd" role="row">
+                                  <tr ng-repeat="record in lsc.searchResults | filter:lsc.filters.companyName" class="gradeA odd" role="row">
                                       <td class="sorting_1">{{record.companyName}}</td>
                                       <td>{{record.industryVertical}}</td>
                                       <td>{{record.contactSource}}</td>

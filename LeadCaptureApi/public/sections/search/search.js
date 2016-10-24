@@ -19,7 +19,7 @@ angular.module('myApp.search',['ngRoute'])
     };
 
     var vm = this;
-
+    vm.searchText = "";
     vm.searchResults = [];
     vm.filters = {
         companyName : "",
