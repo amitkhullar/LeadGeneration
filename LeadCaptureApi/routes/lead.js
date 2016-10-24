@@ -97,8 +97,7 @@ router.route('/leads/:id')
   {
 
     console.log("request stats");
-    Lead.count({"currentStatus":{$exists:true}},function(err,count){
-
+    Lead.count({"currentStatus":{$not: {$size: 0}}},function(err,count){
       if(err)
       {
           console.log("Error for status count");
