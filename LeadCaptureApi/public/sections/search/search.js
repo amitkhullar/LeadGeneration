@@ -27,13 +27,14 @@ angular.module('myApp.search',['ngRoute'])
         city:"",
         state:"",
         industryVertical : "",
-        companyType : [],
+        companyType : ["smes","startups","mnc"],
         contactSource : "",
         employeeCount : ""
     };
 
     vm.companyTypeFilter = function(lead){
 
+        console.log(lead.companyType);
         if(vm.filters.companyType.indexOf(lead.companyType.toLowerCase()) > -1)
         {
           return true;
