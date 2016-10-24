@@ -39,7 +39,7 @@ angular.module('myApp.search',['ngRoute'])
         vm.filters.companyType = $event.target.value;
 
       }
-      else if {vm.filters.companyType.includes($event.target.value)
+      else if (vm.filters.companyType.includes($event.target.value){
         vm.filters.companyType = vm.filters.companyType.replace($event.target.value,"");
       }
 
