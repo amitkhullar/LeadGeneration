@@ -21,6 +21,8 @@ angular.module('myApp.dashboard',['ngRoute'])
 
   }
 
+  vm.searchResults = [];
+
   vm.getLeadStatistics = function(){
 
     $http.get('http://139.59.24.29/api/leads/stats', {}, {})
@@ -39,6 +41,25 @@ angular.module('myApp.dashboard',['ngRoute'])
   };
 
   vm.getLeadStatistics();
+
+  vm.getLeads = function(){
+
+    var data = this.search;
+    var config = {
+
+            };
+
+    $http.get("http://139.59.24.29/api/leads")
+    .then(function(response) {
+
+        console.log("data "+response.data);
+        vm.searchResults = response.data;
+
+    });
+
+  };
+
+  vm.getLeads();
 
 
 
