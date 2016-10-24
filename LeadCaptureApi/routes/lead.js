@@ -21,6 +21,95 @@ router.route('/test')
 });
 
 router.route('/leads/:id')
+.put((req,res) => {
+    console.log("request lead with id :"+req.params.id);
+
+    // var result = {"lead1":{},"contacts1":[]};
+
+    var updatedLead = req.body;
+
+
+    var lead = new Lead({
+      companyName         : updatedLead.companyInfo.companyName,
+      currentStatus       : updatedLead.companyInfo.currentStatus,
+      industryVertical    : updatedLead.companyInfo.industryVertical,
+      industrySubVertical : updatedLead.companyInfo.industrySubVertical,
+      aboutCompany        : updatedLead.companyInfo.aboutCompany,
+      contactSource       : updatedLead.companyInfo.contactSource,
+      productsInterested  : updatedLead.companyInfo.productsInterested,
+      companyType         : updatedLead.companyInfo.companyType,
+      // leadCaptureDate     : leadData.companyInfo.leadCaptureDate,
+
+      addressBuilding     : updatedLead.address.building,
+      addressTownStreet   : updatedLead.address.town,
+      addressCity         : updatedLead.address.city,
+      addressState        : updatedLead.address.state,
+      addressPincode      : updatedLead.address.pin,
+
+      companyScale        : updatedLead.additionalProfile.companyScale,
+      employeeCount       : updatedLead.additionalProfile.employeeCnt,
+      travelBudget        : updatedLead.additionalProfile.travelBudget,
+      vendorCount         : updatedLead.additionalProfile.vendorCount,
+      vendorHandlerCount  : updatedLead.additionalProfile.vendorHandlingCount,
+      transactionCount    : updatedLead.additionalProfile.transactionCnt,
+      mailingDate         : updatedLead.additionalProfile.mailingDate
+    });
+
+    Lead.findOneAndUpdate({"_id": req.params.id}, lead, {new: true}, function(err, lead){
+        if(err){
+            console.log("Something wrong when updating data!");
+        }
+        console.log("updated lead id : "+lead._id);
+        console.log("updated contacts : "+updatedLead.contacts);
+        for(var contact of updatedLead.contacts)
+        {
+          contact.lead = lead._id;
+        }
+
+        Contact.collection.remove({lead: lead._id});
+
+
+        Contact.collection.insertMany(contacts,function(err,inserted)
+        {
+            if(err)
+            {
+              return res.json({ message: 'error updating lead with id : '+lead._id });
+            }
+            else
+            {
+              console.log("updated");
+              return res.json({ message: 'lead updated! with id : '+lead._id });
+            }
+
+        });
+
+
+    });
+
+    Contact.find({"lead":req.params.id},function(err,contacts){
+
+
+      console.log("contacts returned "+contacts);
+      // result.contacts1 = contacts;
+
+      Lead.findById(req.params.id, (err, lead) => {
+        if (err){
+          return res.send(err);
+        }
+        // result.lead1 = lead;
+        res.json({"lead":lead,"contacts":contacts});
+
+      });
+
+
+    });
+
+
+
+  });
+
+
+router.route('/leads/:id')
 .get((req,res) => {
     console.log("request lead with id :"+req.params.id);
 

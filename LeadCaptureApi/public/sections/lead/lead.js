@@ -137,12 +137,22 @@ angular.module('myApp.lead',['ngRoute'])
 
   vm.saveLead = function(){
 
+    var data = vm.lead;
+    console.log(data);
+
+    $http.put('http://139.59.24.29/api/leads/'+vm.leadId,data,{})
+     .success(function (response, status, headers) {
+         vm.ServerResponse = response;
+     })
+     .error(function (response, status, header, config) {
+         vm.ServerResponse = {"message":"Error updating lead"};
+     });
 
   };
 
   vm.submitLead = function(){
 
-    var data = this.lead;
+    var data = vm.lead;
     var config = {
 
             };
