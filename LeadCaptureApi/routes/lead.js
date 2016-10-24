@@ -29,7 +29,7 @@ router.route('/leads/:id')
     var updatedLead = req.body;
 
 
-    var lead = new Lead({
+    var newLead = new Lead({
       companyName         : updatedLead.companyInfo.companyName,
       currentStatus       : updatedLead.companyInfo.currentStatus,
       industryVertical    : updatedLead.companyInfo.industryVertical,
@@ -55,9 +55,12 @@ router.route('/leads/:id')
       mailingDate         : updatedLead.additionalProfile.mailingDate
     });
 
-    Lead.findOneAndUpdate({"_id": req.params.id}, lead, {new: true}, function(err, lead){
+    console.log("newLead:\n"+newLead);
+
+    Lead.findOneAndUpdate(req.params.id, newLead, {new: true}, function(err, lead){
         if(err){
-            console.log("Something wrong when updating data!");
+            console.log("Something wrong when updating data!"+err);
+            return res.json({ message: 'error updating lead with id : '+req.params.id });
         }
         console.log("updated lead id : "+lead._id);
         console.log("updated contacts : "+updatedLead.contacts);
@@ -85,26 +88,6 @@ router.route('/leads/:id')
 
 
     });
-
-    Contact.find({"lead":req.params.id},function(err,contacts){
-
-
-      console.log("contacts returned "+contacts);
-      // result.contacts1 = contacts;
-
-      Lead.findById(req.params.id, (err, lead) => {
-        if (err){
-          return res.send(err);
-        }
-        // result.lead1 = lead;
-        res.json({"lead":lead,"contacts":contacts});
-
-      });
-
-
-    });
-
-
 
   });
 
