@@ -29,7 +29,7 @@ router.route('/leads/:id')
     var updatedLead = req.body;
 
 
-    var newLead = new Lead({
+    var newLead = {
       companyName         : updatedLead.companyInfo.companyName,
       currentStatus       : updatedLead.companyInfo.currentStatus,
       industryVertical    : updatedLead.companyInfo.industryVertical,
@@ -53,16 +53,15 @@ router.route('/leads/:id')
       vendorHandlerCount  : updatedLead.additionalProfile.vendorHandlingCount,
       transactionCount    : updatedLead.additionalProfile.transactionCnt,
       mailingDate         : updatedLead.additionalProfile.mailingDate
-    });
+    };
 
     console.log("newLead:\n"+newLead);
 
-    Lead.findOneAndUpdate(req.params.id, newLead, function(err, lead){
+    Lead.findOneAndUpdate(req.params.id, newLead, {new: true}, function(err, lead){
         if(err){
             console.log("Something wrong when updating data!"+err);
             return res.json({ message: 'error updating lead with id : '+req.params.id });
         }
-
         console.log("updated lead id : "+lead._id);
         console.log("updated contacts : "+updatedLead.contacts);
         for(var contact of updatedLead.contacts)
@@ -72,7 +71,7 @@ router.route('/leads/:id')
 
         Contact.collection.remove({lead: lead._id});
 
-        
+
         Contact.collection.insertMany(contacts,function(err,inserted)
         {
             if(err)
