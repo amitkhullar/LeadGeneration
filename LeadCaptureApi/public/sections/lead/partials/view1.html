@@ -30,7 +30,7 @@
         <div class="col-sm-5">
           <label class="control-label" for="ddlIndustryVertical">Industry Vertical : </label>
           <select  ng-show="lfc.operation=='edit' || lfc.operation == 'create'" ng-model="lfc.lead.companyInfo.industryVertical" class="form-control" id="ddlIndustryVertical">
-            <option>Select Vertical</option>
+            <option value="">Select Vertical</option>
             <option>All Manufacturing Industries</option>
             <option>All Services Industry</option>
             <option >Advertising , Media</option>
@@ -81,7 +81,7 @@
         <div class="col-sm-4">
           <label class="control-label" for="ddlContactSource">Contact Source : </label>
           <select ng-show="lfc.operation=='edit' || lfc.operation == 'create'" ng-model="lfc.lead.companyInfo.contactSource" class="form-control" id="ddlContactSource">
-            <option>Select Contact Source</option>
+            <option value="">Select Contact Source</option>
             <option>Linked In</option>
             <option>Naukri</option>
             <option>Directory</option>
@@ -101,7 +101,7 @@
         <div class="col-sm-4">
           <label class="control-label" for="ddlCompanyType">Company Type : </label>
           <select ng-show="lfc.operation=='edit' || lfc.operation == 'create'" ng-model="lfc.lead.companyInfo.companyType" class="form-control" id="ddlCompanyType">
-            <option>Select Company Type</option>
+            <option value="">Select Company Type</option>
             <option>SMEs</option>
             <option>Startups</option>
             <option>MNC</option>

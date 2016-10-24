@@ -45,22 +45,21 @@ angular.module('myApp.lead',['ngRoute'])
       console.log("create section");
       vm.lead = {
         companyInfo       :  {
-                              companyName:"Test data",currentStatus:"Email Sent",industryVertical:"BFSI",
-                              aboutCompany:"Test description",
-                              contactSource:"Naukri",productsOfInterest:"Test Product",
-                              companyType:"Startups"
+                              companyName:"",currentStatus:"",industryVertical:"",
+                              aboutCompany:"",
+                              contactSource:"",productsOfInterest:"",
+                              companyType:""
                              },
 
-        contacts          :  [{name:"contact 1",designation:"Designation 1", email:"contact1@lead.com", phone : "9999999999"},
-                              {name:"contact 2",designation:"Designation 2", email:"contact2@lead.com", phone : "9999999998"}],
+        contacts          :  [],
 
         address           :  {
-                               building:"building1",town:"town1",city:"New delhi",state:"Delhi",pin:"110018"
+                               building:"",town:"",city:"",state:"",pin:""
                              },
 
         additionalProfile :  {
-                              companyScale:"scale1",employeeCnt:"10000",travelBudget:"3243243",
-                              vendorCount:"1000",vendorHandlingCount:"100",transactionCnt:"200000000",
+                              companyScale:"",employeeCnt:"",travelBudget:"",
+                              vendorCount:"",vendorHandlingCount:"",transactionCnt:"",
                               mailingDate: new Date()
                              }
 

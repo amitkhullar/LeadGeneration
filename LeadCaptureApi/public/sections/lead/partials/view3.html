@@ -23,7 +23,7 @@
       <label class="control-label" for="txtAddressCity">City :</label>
 
       <select ng-show="lfc.operation=='edit' || lfc.operation == 'create'" ng-model="lfc.lead.address.city" name="ddlCity" id="ddlCity" class="form-control ">
-      <option>Select a City</option>
+      <option value="">Select a City</option>
 <option > Delhi NCR</option>
 <option >New delhi</option>
 <option > Noida</option>
@@ -1233,7 +1233,7 @@
     <div class="col-sm-4">
       <label class="control-label" for="txtAddressState"> State:</label>
       <select ng-show="lfc.operation=='edit' || lfc.operation == 'create'" ng-model="lfc.lead.address.state" name="ddlState" id="ddlState" class="form-control">
-       <option >Select State</option>
+       <option value="" >Select State</option>
        <option >Andaman & Nicobar </option>
        <option >Andhra Pradesh</option>
        <option >Arunachal Pradesh</option>
