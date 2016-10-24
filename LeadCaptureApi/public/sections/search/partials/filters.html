@@ -1,16 +1,17 @@
+<div ng-controller="LeadSearchCntrl as lsc">
 <div class="row" style="margin-bottom:10px;">
   <div id="dataTables-example_filter" class="dataTables_filter col-lg-2">
-    <label>By Company Name :<input type="search" class="form-control input-sm" placeholder="" aria-controls="dataTables-example"></label>
+    <label>By Company Name :<input ng-model="lsc.filters.companyName" type="search" class="form-control input-sm" placeholder="" aria-controls="dataTables-example"></label>
   </div>
   <div id="dataTables-example_filter" class="dataTables_filter col-lg-2">
-    <label>By Address / Pincode :<input type="search" class="form-control input-sm" placeholder="" aria-controls="dataTables-example"></label>
+    <label>By Address / Pincode :<input ng-model="lsc.filters.addressPincode" type="search" class="form-control input-sm" placeholder="" aria-controls="dataTables-example"></label>
   </div>
 
   <div id="dataTables-example_filter" class="dataTables_filter col-lg-2">
     <label>By City :
 
-      <select name="ddlCity" id="ddlCity" class="form-control ">
-        <option selected>Select a City</option>
+      <select ng-model="lsc.filters.city" name="ddlCity" id="ddlCity" class="form-control ">
+        <option value="">Select a City</option>
 <option > Delhi NCR</option>
 <option >New delhi</option>
 <option > Noida</option>
@@ -1219,8 +1220,8 @@
   </div>
   <div id="dataTables-example_filter" class="dataTables_filter col-lg-2">
     <label>By State :
-       <select name="ddlState" id="ddlState" class="form-control">
-     <option selected>Select State</option>
+       <select ng-model="lsc.filters.state" name="ddlState" id="ddlState" class="form-control">
+     <option value="">Select State</option>
      <option >Andaman & Nicobar </option>
      <option >Andhra Pradesh</option>
      <option >Arunachal Pradesh</option>
@@ -1262,8 +1263,8 @@
   <div id="dataTables-example_filter" class="dataTables_filter col-lg-2">
     <label>By Vertical :
 
-      <select  class="form-control" id="ddlIndustryVertical">
-        <option selected>Select Vertical</option>
+      <select ng-model="lsc.filters.industryVertical"  class="form-control" id="ddlIndustryVertical">
+        <option value="">Select Vertical</option>
         <option>All Manufacturing Industries</option>
         <option>All Services Industry</option>
         <option >Advertising , Media</option>
@@ -1323,11 +1324,11 @@
       By Source :
     </label>
     <div style="padding:0 20px 20px 0px">
-      <label class="checkbox-inline"><input type="checkbox" value="">LinkedIn</label>
-      <label class="checkbox-inline"><input type="checkbox" value="">Naukri</label>
-      <label class="checkbox-inline"><input type="checkbox" value="">Directory</label>
-      <label class="checkbox-inline"><input type="checkbox" value="">Employees</label>
-      <label class="checkbox-inline"><input type="checkbox" value="">Others</label>
+      <label class="checkbox-inline"><input ng-checked="lsc.filters.contactSource == 'linkedin'" type="checkbox" value="">LinkedIn</label>
+      <label class="checkbox-inline"><input ng-checked="lsc.filters.contactSource == 'naukri'" type="checkbox" value="">Naukri</label>
+      <label class="checkbox-inline"><input ng-checked="lsc.filters.contactSource == 'directory'" type="checkbox" value="">Directory</label>
+      <label class="checkbox-inline"><input ng-checked="lsc.filters.contactSource == 'employees'" type="checkbox" value="">Employees</label>
+      <label class="checkbox-inline"><input ng-checked="lsc.filters.contactSource == 'others'" type="checkbox" value="">Others</label>
     </div>
   </div>
 </div>
@@ -1338,15 +1339,16 @@
       By Company Type :
     </label>
     <div style="padding:0 20px 20px 0px">
-      <label class="checkbox-inline"><input type="checkbox" value="">SMEs</label>
-      <label class="checkbox-inline"><input type="checkbox" value="">Startups</label>
-      <label class="checkbox-inline"><input type="checkbox" value="">MNC</label>
+      <label class="checkbox-inline"><input ng-checked="lsc.filters.companyType == 'sme'" type="checkbox" value="">SMEs</label>
+      <label class="checkbox-inline"><input ng-checked="lsc.filters.companyType == 'startup'" type="checkbox" value="">Startups</label>
+      <label class="checkbox-inline"><input ng-checked="lsc.filters.companyType == 'mnc'" type="checkbox" value="">MNC</label>
     </div>
   </div>
 </div>
 
 <div class="row" style="padding-bottom:10px;">
   <div id="dataTables-example_filter" class="dataTables_filter col-lg-2">
-    <label>No. of employees :<input type="search" class="form-control input-sm" placeholder="" aria-controls="dataTables-example"></label>
+    <label>No. of employees :<input ng-model="lsc.filters.employeeCount" type="search" class="form-control input-sm" placeholder="" aria-controls="dataTables-example"></label>
   </div>
+</div>
 </div>

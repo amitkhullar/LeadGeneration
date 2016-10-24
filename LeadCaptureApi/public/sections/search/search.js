@@ -10,7 +10,7 @@ angular.module('myApp.search',['ngRoute'])
 
 }])
 
-.controller('LeadSearchCntrl', function($scope,$http) {
+.controller('LeadSearchCntrl', function($http) {
 
     var search = {
 
@@ -18,11 +18,21 @@ angular.module('myApp.search',['ngRoute'])
 
     };
 
-    $scope.searchResults = [];
-    $scope.selectedLead= "";
+    var vm = this;
 
+    vm.searchResults = [];
+    vm.filters = {
+        companyName : "",
+        addressPincode : "",
+        city:"",
+        state:"",
+        industryVertical : "",
+        companyType : "",
+        contactSource : "",
+        employeeCount : ""
+    };
 
-    $scope.getLeads = function(){
+    vm.getLeads = function(){
 
       var data = this.search;
       var config = {
@@ -33,13 +43,13 @@ angular.module('myApp.search',['ngRoute'])
       .then(function(response) {
 
           console.log("data "+response.data);
-          $scope.searchResults = response.data;
+          vm.searchResults = response.data;
 
       });
 
     };
 
-    $scope.getLeads();
+    vm.getLeads();
 
 
 });

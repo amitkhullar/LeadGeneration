@@ -1,4 +1,4 @@
-<div class="col-lg-14" ng-controller="LeadSearchCntrl">
+<div class="col-lg-14" ng-controller="LeadSearchCntrl as lsc">
                   <div class="panel panel-default">
                       <div class="panel-heading">
                           New Leads
@@ -28,7 +28,7 @@
                               </thead>
                               <tbody>
 
-                                  <tr ng-repeat="record in searchResults" class="gradeA odd" role="row">
+                                  <tr ng-repeat="record in lsc.searchResults | filter:lsc.filters.contactSource" class="gradeA odd" role="row">
                                       <td class="sorting_1">{{record.companyName}}</td>
                                       <td>{{record.industryVertical}}</td>
                                       <td>{{record.contactSource}}</td>
