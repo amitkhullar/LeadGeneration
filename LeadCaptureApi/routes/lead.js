@@ -72,7 +72,7 @@ router.route('/leads/:id')
         Contact.collection.remove({lead: lead._id});
 
 
-        Contact.collection.insertMany(contacts,function(err,inserted)
+        Contact.collection.insertMany(updatedLead.contacts,function(err,inserted)
         {
             if(err)
             {
