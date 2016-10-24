@@ -27,7 +27,7 @@ angular.module('myApp.search',['ngRoute'])
         city:"",
         state:"",
         industryVertical : "",
-        companyType : "",
+        companyType : [],
         contactSource : "",
         employeeCount : ""
     };
