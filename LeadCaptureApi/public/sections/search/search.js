@@ -34,16 +34,18 @@ angular.module('myApp.search',['ngRoute'])
 
     vm.selectCompanyType = function($event){
 
-      if(vm.filters.companyType == ""){
+      if(vm.filters.companyType.length == 0){
 
-        vm.filters.companyType += $event.target.value;
+        vm.filters.companyType.push($event.target.value);
 
       }
-      else if (vm.filters.companyType.includes($event.target.value)){
-        vm.filters.companyType = vm.filters.companyType.replace($event.target.value,"");
+      else if (vm.filters.companyType.indexOf($event.target.value) > -1){
+        var index = vm.filters.companyType.indexOf($event.target.value);
+        vm.filters.companyType.splice(index,1);
+        // vm.filters.companyType = vm.filters.companyType.replace($event.target.value,"");
       }
       else {
-        vm.filters.companyType += $event.target.value;
+        vm.filters.companyType.push($event.target.value);
       }
 
       console.log("curr"+vm.filters.companyType);
