@@ -8,7 +8,7 @@ angular.module('myApp.dashboard',['ngRoute'])
     controller: 'DashboardCntrl'
   });
 }])
-.controller('DashboardCntrl', function()
+.controller('DashboardCntrl', function($http)
 {
 
   var vm = this;
