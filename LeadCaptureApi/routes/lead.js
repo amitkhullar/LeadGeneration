@@ -171,13 +171,30 @@ router.route('/leads/stats')
 .get((req,res) =>
 {
 
-  Lead.find({}).sort({ createdAt: -1 })
-      .exec((err, lead) => {
-        if (err){
-          return res.send(err);
-        }
-        return res.json(lead);
-      });
+  Lead.count({"currentStatus":{$exists:true}},function(err,count){
+
+    if(err)
+    {
+        console.log("Error for status count");
+        res.json({"message":"error in status count"+err});
+    }
+    console.log("responded"+count);
+
+    Lead.count({},function(err,leadCount){
+
+      if(err)
+      {
+          console.log("Error for stats generation");
+          res.json({"message":"Error for stats generation"+err});
+      }
+
+      res.json({new_leads : leadCount - count,leads_responded : count,pending_action : 0});
+
+    });
+
+  });
+
+
 
 });
 
