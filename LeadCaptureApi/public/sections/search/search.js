@@ -32,10 +32,10 @@ angular.module('myApp.search',['ngRoute'])
         employeeCount : ""
     };
 
-    vm.selectCompanyType = function(obj){
+    vm.selectCompanyType = function(obj,$event){
 
       vm.filters.companyType = obj.value;
-      console.log("curr"+obj.value);
+      console.log("curr"+$event.currentTarget);
     }
 
     vm.getLeads = function(){
