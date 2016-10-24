@@ -34,7 +34,7 @@ angular.module('myApp.search',['ngRoute'])
 
     vm.selectCompanyType = function($event){
 
-      vm.filters.companyType = obj.value;
+      // vm.filters.companyType = obj.value;
       console.log("curr"+$event.target);
     }
 
