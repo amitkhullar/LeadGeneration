@@ -34,8 +34,19 @@ angular.module('myApp.search',['ngRoute'])
 
     vm.selectCompanyType = function($event){
 
-      vm.filters.companyType = $event.target.value;
+      if(vm.filters.companyType == ""){
+
+        vm.filters.companyType = $event.target.value;
+
+      }
+      else if {vm.filters.companyType.includes($event.target.value)
+        vm.filters.companyType = vm.filters.companyType.replace($event.target.value,"");
+      }
+
       console.log("curr"+$event.target.value);
+
+
+
     }
 
     vm.getLeads = function(){
