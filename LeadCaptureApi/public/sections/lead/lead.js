@@ -144,6 +144,8 @@ angular.module('myApp.lead',['ngRoute'])
      .success(function (response, status, headers) {
          vm.ServerResponse = response;
          console.log("update response"+response);
+         $window.location.href = '#!/dashboard/home';
+
      })
      .error(function (response, status, header, config) {
          vm.ServerResponse = {"message":"Error updating lead"};
