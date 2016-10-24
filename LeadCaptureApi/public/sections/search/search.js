@@ -32,6 +32,15 @@ angular.module('myApp.search',['ngRoute'])
         employeeCount : ""
     };
 
+    vm.companyTypeFilter = function(lead){
+
+        if(vm.filters.companyType.indexOf(lead.companyType.toLowerCase()) > -1)
+        {
+          return true;
+        }
+
+    }
+
     vm.selectCompanyType = function($event){
 
       if(vm.filters.companyType.length == 0){
