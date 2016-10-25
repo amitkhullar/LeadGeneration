@@ -31,10 +31,12 @@ angular.module('myApp.lead',['ngRoute'])
 
 }])
 
-.controller('LeadFormCntrl', function($http,$routeParams,$location,$window) {
+.controller('LeadFormCntrl', function($http,$routeParams,$location,$window,myConfig) {
 
   var vm = this;
   var path = $location.path().split('/');
+
+  console.log("constant :"+myConfig.url);
 
   vm.operation = path[path.length-1];
   vm.searchResults = [];
