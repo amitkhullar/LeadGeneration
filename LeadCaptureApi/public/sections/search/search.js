@@ -27,7 +27,7 @@ angular.module('myApp.search',['ngRoute'])
         addressCity:{value:"",operator:"",regex:""},
         addressState:{value:"",operator:"",regex:""},
         industryVertical : {value:"",operator:"",regex:""},
-        companyType : {value:["smes","startups","mnc"],operator:"",regex:[]},
+        companyType : {value:["smes","startups","mnc","enterprise"],operator:"",regex:[]},
         contactSource : {value:["linkedin","naukri","directory","others","employees"],operator:"",regex:[]},
         employeeCount : {value:"",operator:"",regex:""}
     }};
