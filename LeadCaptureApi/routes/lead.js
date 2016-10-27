@@ -218,7 +218,7 @@ router.route('/leads/search')
     operators.push({"$and" : andFilters})
   }
   // console.log("operators : "+operators["$or"]);
-  Lead.find({ "$and": operators}
+  Lead.find({ "$or": operators}
   ,function(err,leads)
   {
     if(err){
