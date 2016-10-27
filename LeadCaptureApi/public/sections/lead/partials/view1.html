@@ -82,11 +82,11 @@
           <label class="control-label" for="ddlContactSource">Contact Source : </label>
           <select ng-show="lfc.operation=='edit' || lfc.operation == 'create'" ng-model="lfc.lead.companyInfo.contactSource" class="form-control" id="ddlContactSource">
             <option value="">Select Contact Source</option>
-            <option>Linked In</option>
-            <option>Naukri</option>
-            <option>Directory</option>
-            <option>Employees</option>
-            <option>Others</option>
+            <option value="LinkedIn">Linked In</option>
+            <option value="Naukri">Naukri</option>
+            <option value="Directory">Directory</option>
+            <option value="Employees">Employees</option>
+            <option value="Others">Others</option>
           </select>
           <h6 ng-show="lfc.operation == 'view'">{{lfc.lead.companyInfo.contactSource}}</h6>
         </div>

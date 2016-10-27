@@ -8,7 +8,7 @@ angular.module('myApp.dashboard',['ngRoute'])
     controller: 'DashboardCntrl'
   });
 }])
-.controller('DashboardCntrl', function($http)
+.controller('DashboardCntrl', function($http,myConfig)
 {
 
   var vm = this;
@@ -25,7 +25,7 @@ angular.module('myApp.dashboard',['ngRoute'])
 
   vm.getLeadStatistics = function(){
 
-    $http.get('http://139.59.24.29/api/leads/stats', {}, {})
+    $http.get(myConfig.url+'/api/leads/stats', {}, {})
     .success(function(response){
 
       console.log("success"+response);
@@ -49,7 +49,7 @@ angular.module('myApp.dashboard',['ngRoute'])
 
             };
 
-    $http.get("http://139.59.24.29/api/leads")
+    $http.get(myConfig.url+"/api/leads")
     .then(function(response) {
 
         console.log("data "+response.data);

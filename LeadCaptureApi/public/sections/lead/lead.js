@@ -35,9 +35,6 @@ angular.module('myApp.lead',['ngRoute'])
 
   var vm = this;
   var path = $location.path().split('/');
-
-  console.log("constant :"+myConfig.url);
-
   vm.operation = path[path.length-1];
   vm.searchResults = [];
   console.log("path : "+path[path.length-1]);
@@ -45,27 +42,28 @@ angular.module('myApp.lead',['ngRoute'])
   if(vm.operation == 'create')
   {
       console.log("create section");
-      vm.lead = {
-        companyInfo       :  {
-                              companyName:"",currentStatus:"",industryVertical:"",
-                              aboutCompany:"",
-                              contactSource:"",productsOfInterest:"",
-                              companyType:""
-                             },
+      vm.lead =  {
+    companyInfo       :  {
+                          companyName:"Test data",currentStatus:"Email Sent",industryVertical:"BFSI",
+                          aboutCompany:"Test description",
+                          contactSource:"Naukri",productsOfInterest:"Test Product",
+                          companyType:"Startups"
+                         },
 
-        contacts          :  [],
+    contacts          :  [{name:"contact 1",designation:"Designation 1", email:"contact1@lead.com", phone : "9999999999"},
+                          {name:"contact 2",designation:"Designation 2", email:"contact2@lead.com", phone : "9999999998"}],
 
-        address           :  {
-                               building:"",town:"",city:"",state:"",pin:""
-                             },
+    address           :  {
+                          building:"building1",town:"town1",city:"New delhi",state:"Delhi",pin:"110018"
+                         },
 
-        additionalProfile :  {
-                              companyScale:"",employeeCnt:"",travelBudget:"",
-                              vendorCount:"",vendorHandlingCount:"",transactionCnt:"",
-                              mailingDate: new Date()
-                             }
+    additionalProfile :  {
+                         companyScale:"scale1",employeeCnt:"10000",travelBudget:"3243243",
+                         vendorCount:"1000",vendorHandlingCount:"100",transactionCnt:"200000000",
+                         mailingDate: new Date()
+                         }
 
-      };
+  };
    }
 
 
@@ -76,7 +74,7 @@ angular.module('myApp.lead',['ngRoute'])
      var data = this.search;
      var config = {};
 
-     $http.get("http://139.59.24.29/api/leads")
+     $http.get(myConfig.url+"/api/leads")
      .then(function(response) {
 
          console.log("data "+response.data);
@@ -96,7 +94,7 @@ angular.module('myApp.lead',['ngRoute'])
 
     console.log("lead : "+vm.leadId);
 
-    $http.get('http://139.59.24.29/api/leads/'+vm.leadId, {}, {})
+    $http.get(myConfig.url+'/api/leads/'+vm.leadId, {}, {})
     .success(function(response){
 
       // console.log("success"+JSON.parse(response));
@@ -141,7 +139,7 @@ angular.module('myApp.lead',['ngRoute'])
     var data = vm.lead;
     console.log(data);
 
-    $http.put('http://139.59.24.29/api/leads/'+vm.leadId,data,{})
+    $http.put(myConfig.url+'/api/leads/'+vm.leadId,data,{})
      .success(function (response, status, headers) {
          vm.ServerResponse = response;
          console.log("update response"+response);
@@ -163,7 +161,7 @@ angular.module('myApp.lead',['ngRoute'])
             };
 
     console.log(data);
-    $http.post('http://139.59.24.29/api/leads', data, config)
+    $http.post(myConfig.url+'/api/leads', data, config)
     .success(function(){
 
       console.log("success");
@@ -183,7 +181,7 @@ angular.module('myApp.lead',['ngRoute'])
     var leadId = $("#leadToDelete").val();
     console.log("start deletion"+leadId);
 
-    $http.delete('http://139.59.24.29/api/leads/'+leadId, {})
+    $http.delete(myConfig.url+'/api/leads/'+leadId, {})
     .success(function(){
 
       console.log("delete success");

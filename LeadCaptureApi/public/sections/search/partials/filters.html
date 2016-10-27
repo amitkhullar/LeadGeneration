@@ -1,16 +1,27 @@
 <div>
 <div class="row" style="margin-bottom:10px;">
-  <div id="dataTables-example_filter" class="dataTables_filter col-lg-2">
-    <label>By Company Name :<input ng-model="lsc.filters.companyName" type="search" class="form-control input-sm" placeholder="" aria-controls="dataTables-example"></label>
+  <div id="dataTables-example_filter" class="dataTables_filter col-lg-3">
+    <label>
+      <button value="companyName" id="andForCN" ng-click="lsc.selectOperator($event,'orForCN');lsc.searchLeads();" type="button" class="btn btn-primary btn-circle">AND</button>
+      <button value="companyName" id="orForCN" ng-click="lsc.selectOperator($event,'andForCN');lsc.searchLeads();" type="button" class="btn btn-warning btn-circle">OR</button>
+      </label>
+      By Company Name :<input ng-disabled="lsc.filters.rules['companyName'].operator == ''" ng-change="lsc.searchLeads();" ng-model="lsc.filters.rules.companyName.value" type="search" class="form-control input-sm" placeholder="" aria-controls="dataTables-example">
   </div>
-  <div id="dataTables-example_filter" class="dataTables_filter col-lg-2">
-    <label>By Address / Pincode :<input ng-model="lsc.filters.addressPincode" type="search" class="form-control input-sm" placeholder="" aria-controls="dataTables-example"></label>
+  <div id="dataTables-example_filter" class="dataTables_filter col-lg-3">
+    <label>
+      <button value="addressPincode" id="andForAP" ng-click="lsc.selectOperator($event,'orForAP');lsc.searchLeads();" type="button" class="btn btn-primary btn-circle">AND</button>
+      <button value="addressPincode" id="orForAP" ng-click="lsc.selectOperator($event,'andForAP');lsc.searchLeads();" type="button" class="btn btn-warning btn-circle">OR</button>
+      </label>
+      By Pincode :<input ng-disabled="lsc.filters.rules['addressPincode'].operator == ''" ng-change="lsc.searchLeads();" ng-model="lsc.filters.rules.addressPincode.value" type="search" class="form-control input-sm" placeholder="" aria-controls="dataTables-example">
   </div>
 
   <div id="dataTables-example_filter" class="dataTables_filter col-lg-2">
-    <label>By City :
-
-      <select ng-model="lsc.filters.city" name="ddlCity" id="ddlCity" class="form-control ">
+    <label>
+      <button value="addressCity" id="andForCY" ng-click="lsc.selectOperator($event,'orForCY');lsc.searchLeads();" type="button" class="btn btn-primary btn-circle">AND</button>
+      <button value="addressCity" id="orForCY" ng-click="lsc.selectOperator($event,'andForCY');lsc.searchLeads();" type="button" class="btn btn-warning btn-circle">OR</button>
+      By City :
+    </label>
+      <select ng-disabled="lsc.filters.rules['addressCity'].operator == ''" ng-change="lsc.searchLeads();" ng-model="lsc.filters.rules.addressCity.value" name="ddlCity" id="ddlCity" class="form-control ">
         <option value="">Select a City</option>
 <option > Delhi NCR</option>
 <option >New delhi</option>
@@ -1219,8 +1230,12 @@
     </label>
   </div>
   <div id="dataTables-example_filter" class="dataTables_filter col-lg-2">
-    <label>By State :
-       <select ng-model="lsc.filters.state" name="ddlState" id="ddlState" class="form-control">
+
+    <label>
+      <button value="addressState" id="andForST" ng-click="lsc.selectOperator($event,'orForST');lsc.searchLeads();" type="button" class="btn btn-primary btn-circle">AND</button>
+      <button value="addressState" id="orForST" ng-click="lsc.selectOperator($event,'andForST');lsc.searchLeads();" type="button" class="btn btn-warning btn-circle">OR</button>
+      By State : </label>
+       <select ng-disabled="lsc.filters.rules['addressState'].operator == ''" ng-change="lsc.searchLeads();" ng-model="lsc.filters.rules.addressState.value" name="ddlState" id="ddlState" class="form-control">
      <option value="">Select State</option>
      <option >Andaman & Nicobar </option>
      <option >Andhra Pradesh</option>
@@ -1261,9 +1276,12 @@
 
   </div>
   <div id="dataTables-example_filter" class="dataTables_filter col-lg-2">
-    <label>By Vertical :
-
-      <select ng-model="lsc.filters.industryVertical"  class="form-control" id="ddlIndustryVertical">
+    <label>
+      <button value="industryVertical" id="andForIV" ng-click="lsc.selectOperator($event,'orForIV');lsc.searchLeads();" type="button" class="btn btn-primary btn-circle">AND</button>
+      <button value="industryVertical" id="orForIV" ng-click="lsc.selectOperator($event,'andForIV');lsc.searchLeads();" type="button" class="btn btn-warning btn-circle">OR</button>
+      By Vertical :
+      </label>
+      <select ng-disabled="lsc.filters.rules['industryVertical'].operator == ''" ng-change="lsc.searchLeads();" ng-model="lsc.filters.rules.industryVertical.value"  class="form-control" id="ddlIndustryVertical">
         <option value="">Select Vertical</option>
         <option>All Manufacturing Industries</option>
         <option>All Services Industry</option>
@@ -1311,7 +1329,7 @@
         <option >Wood , Plastic  Furniture , Fixtures , Fittings</option>
       </select>
 
-    </label>
+
 
 
   </div>
@@ -1321,35 +1339,49 @@
 <div class="row" style="margin-bottom:10px;">
   <div id="dataTables-example_filter" class="dataTables_filter col-lg-8">
     <label>
+      <button value="contactSource" id="andForCS" ng-click="lsc.selectOperator($event,'orForCS');lsc.searchLeads();" type="button" class="btn btn-primary btn-circle">AND</button>
+      <button value="contactSource" id="orForCS" ng-click="lsc.selectOperator($event,'andForCS');lsc.searchLeads();" type="button" class="btn btn-warning btn-circle">OR</button>
       By Source :
     </label>
     <div style="padding:0 20px 20px 0px">
-      <label class="checkbox-inline"><input ng-model="sc.filters.contactSource" ng-checked="lsc.filters.contactSource == 'linkedin'" type="checkbox" value="">LinkedIn</label>
-      <label class="checkbox-inline"><input ng-model="sc.filters.contactSource" ng-checked="lsc.filters.contactSource == 'naukri'" type="checkbox" value="">Naukri</label>
-      <label class="checkbox-inline"><input ng-model="sc.filters.contactSource" ng-checked="lsc.filters.contactSource == 'directory'" type="checkbox" value="">Directory</label>
-      <label class="checkbox-inline"><input ng-model="sc.filters.contactSource" ng-checked="lsc.filters.contactSource == 'employees'" type="checkbox" value="">Employees</label>
-      <label class="checkbox-inline"><input ng-model="sc.filters.contactSource" ng-checked="lsc.filters.contactSource == 'others'" type="checkbox" value="">Others</label>
+      <label class="checkbox-inline"><input ng-disabled="lsc.filters.rules['contactSource'].operator == ''" ng-click="lsc.selectCheckbox($event,'contactSource');lsc.searchLeads();" ng-checked="lsc.filters.rules.contactSource.value.indexOf('linkedin') > -1" type="checkbox" value="linkedin">LinkedIn</label>
+      <label class="checkbox-inline"><input ng-disabled="lsc.filters.rules['contactSource'].operator == ''"  ng-click="lsc.selectCheckbox($event,'contactSource');lsc.searchLeads();" ng-checked="lsc.filters.rules.contactSource.value.indexOf('naukri') > -1" type="checkbox" value="naukri">Naukri</label>
+      <label class="checkbox-inline"><input ng-disabled="lsc.filters.rules['contactSource'].operator == ''"  ng-click="lsc.selectCheckbox($event,'contactSource');lsc.searchLeads();" ng-checked="lsc.filters.rules.contactSource.value.indexOf('directory') > -1" type="checkbox" value="directory">Directory</label>
+      <label class="checkbox-inline"><input ng-disabled="lsc.filters.rules['contactSource'].operator == ''"  ng-click="lsc.selectCheckbox($event,'contactSource');lsc.searchLeads();" ng-checked="lsc.filters.rules.contactSource.value.indexOf('employees') > -1" type="checkbox" value="employees">Employees</label>
+      <label class="checkbox-inline"><input ng-disabled="lsc.filters.rules['contactSource'].operator == ''"  ng-click="lsc.selectCheckbox($event,'contactSource');lsc.searchLeads();" ng-checked="lsc.filters.rules.contactSource.value.indexOf('others') > -1" type="checkbox" value="others">Others</label>
     </div>
   </div>
 </div>
 
 <div class="row" style="margin-bottom:10px;">
-  <div id="dataTables-example_filter" class="dataTables_filter col-lg-8">
+  <div id="dataTables-example_filter" class="dataTables_filter col-lg-3">
     <label>
+      <button id="andForCT" value="companyType" ng-click="lsc.selectOperator($event,'orForCT');lsc.searchLeads();"  type="button" class="btn btn-primary btn-circle">AND</button>
+      <button id="orForCT"  value="companyType" ng-click="lsc.selectOperator($event,'andForCT');lsc.searchLeads();"  type="button" class="btn btn-warning btn-circle">OR</button>
       By Company Type :
     </label>
     <div style="padding:0 20px 20px 0px">
-      <input type="hidden" id="ctype" ng-model="lsc.filters.companyType" name="ctype" value=""/>
-      <label class="checkbox-inline"><input ng-click="lsc.selectCompanyType($event)" type="checkbox" value="smes">SMEs</label>
-      <label class="checkbox-inline"><input ng-click="lsc.selectCompanyType($event)" type="checkbox" value="startups">Startups</label>
-      <label class="checkbox-inline"><input ng-click="lsc.selectCompanyType($event)"  type="checkbox" value="mnc">MNC</label>
+      <input type="hidden" id="ctype" ng-model="lsc.filters.rules.companyType.value" name="ctype" value=""/>
+      <label class="checkbox-inline"><input ng-disabled="lsc.filters.rules['companyType'].operator == ''"  ng-checked="lsc.filters.rules.companyType.value.indexOf('smes') > -1" ng-click="lsc.selectCheckbox($event,'companyType');lsc.searchLeads()" type="checkbox" value="smes">SMEs</label>
+      <label class="checkbox-inline"><input ng-disabled="lsc.filters.rules['companyType'].operator == ''" ng-checked="lsc.filters.rules.companyType.value.indexOf('startups') > -1" ng-click="lsc.selectCheckbox($event,'companyType');lsc.searchLeads()" type="checkbox" value="startups">Startups</label>
+      <label class="checkbox-inline"><input ng-disabled="lsc.filters.rules['companyType'].operator == ''" ng-checked="lsc.filters.rules.companyType.value.indexOf('mnc') > -1" ng-click="lsc.selectCheckbox($event,'companyType');lsc.searchLeads()"  type="checkbox" value="mnc">MNC</label>
     </div>
+  </div>
+  <div id="dataTables-example_filter" class="dataTables_filter col-lg-3">
+    <label>
+      <button type="button" value="employeeCount" id="andForEN" ng-click="lsc.selectOperator($event,'orForEN');lsc.searchLeads();" class="btn btn-primary btn-circle">AND</button>
+      <button type="button" value="employeeCount" id="orForEN" ng-click="lsc.selectOperator($event,'andForEN');lsc.searchLeads();" class="btn btn-warning btn-circle">OR</button>
+      </label>
+      No. of employees :<input ng-disabled="lsc.filters.rules['employeeCount'].operator == ''" ng-change="lsc.searchLeads()" ng-model="lsc.filters.rules.employeeCount.value" type="search" class="form-control input-sm" placeholder="" aria-controls="dataTables-example">
   </div>
 </div>
 
 <div class="row" style="padding-bottom:10px;">
-  <div id="dataTables-example_filter" class="dataTables_filter col-lg-2">
-    <label>No. of employees :<input ng-model="lsc.filters.employeeCount" type="search" class="form-control input-sm" placeholder="" aria-controls="dataTables-example"></label>
-  </div>
+
+</div>
+<!-- <div class="row" style="padding-bottom:10px;">
+  <div class="dataTables_filter col-lg-2">
+  <button ng-show="lsc.searchResults.length == 0" ng-click="lsc.searchLeads()" type="button" class="btn btn-primary btn-sm "><span >Start Searching...</span></button>
+</div> -->
 </div>
 </div>

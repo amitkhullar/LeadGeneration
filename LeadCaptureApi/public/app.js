@@ -9,8 +9,7 @@ angular.module('myApp', [
   'myApp.version'
 ])
 .constant("myConfig", {
-        "url": "http://localhost",
-        "port": "8005"
+        "url": "http://localhost:8005"
 })
 .config(['$locationProvider','$routeProvider', function($locationProvider,$routeProvider) {
   $locationProvider.hashPrefix('!');

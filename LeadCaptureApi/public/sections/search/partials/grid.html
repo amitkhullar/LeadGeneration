@@ -1,7 +1,7 @@
-<div class="col-lg-14">
+<div class="col-lg-14" ng-show="lsc.searchResults.length > 0">
                   <div class="panel panel-default">
                       <div class="panel-heading">
-                          New Leads
+                          Leads
                       </div>
                       <!-- /.panel-heading -->
                       <div class="panel-body">
@@ -28,7 +28,7 @@
                               </thead>
                               <tbody>
 
-                                  <tr ng-repeat="record in lsc.searchResults | filter:{companyName : lsc.filters.companyName,industryVertical: lsc.filters.industryVertical } | filter : companyTypeFilter" class="gradeA odd" role="row">
+                                  <tr ng-repeat="record in lsc.searchResults | filter:{companyName : lsc.filters.companyName,industryVertical: lsc.filters.industryVertical } | filter:lsc.companyTypeFilter" class="gradeA odd" role="row">
                                       <td class="sorting_1">{{record.companyName}}</td>
                                       <td>{{record.industryVertical}}</td>
                                       <td>{{record.contactSource}}</td>
@@ -47,4 +47,17 @@
                   <!-- /.panel -->
 
               </div>
+</div>
+
+<div class="col-lg-10" ng-show="lsc.searchInitiated == true">
+    <div class="panel panel-red" ng-show="lsc.searchResults.length == 0">
+        <div class="panel-heading">
+            Information
+        </div>
+        <div class="panel-body">
+            <p>No records available for the selected criteria...</p>
+        </div>
+        
+    </div>
+    <!-- /.col-lg-4 -->
 </div>

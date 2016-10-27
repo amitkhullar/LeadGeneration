@@ -124,6 +124,115 @@ router.route('/leads/:id')
 
   });
 
+router.route('/leads/search')
+.post((req,res) =>
+{
+
+  console.log("rules : "+req.body.rules);
+  var contactSources = req.body.rules.contactSource.value;
+  var companyTypes = req.body.rules.companyType.value;
+
+  companyTypes.forEach((item,index)=>{
+
+      var exp = new RegExp(["^", companyTypes[index], "$"].join(""), "i")
+      req.body.rules.companyType.regex.push(exp);
+      companyTypes[index] = exp;
+
+  });
+
+  contactSources.forEach((item,index)=>{
+
+      var exp = new RegExp(["^", contactSources[index], "$"].join(""), "i")
+      req.body.rules.contactSource.regex.push(exp);
+      contactSources[index] = exp;
+
+  });
+
+  var exp = new RegExp(["^.*", req.body.rules.companyName.value, ".*$"].join(""), "i");
+  req.body.rules.companyName.regex = exp;
+
+  exp = new RegExp(["^", req.body.rules.industryVertical.value, "$"].join(""), "i");
+  req.body.rules.industryVertical.regex = exp;
+
+  exp = new RegExp(["^.*", req.body.rules.addressPincode.value, ".*$"].join(""), "i");
+  req.body.rules.addressPincode.regex = exp;
+
+  exp = new RegExp(["^", req.body.rules.addressCity.value, "$"].join(""), "i");
+  req.body.rules.addressCity.regex = exp;
+
+  exp = new RegExp(["^", req.body.rules.addressState.value, "$"].join(""), "i");
+  req.body.rules.addressState.regex = exp;
+
+  req.body.rules.employeeCount.regex = req.body.rules.employeeCount.value;
+
+  var andFilters = [];
+  var orFilters = [];
+  for(var filter in req.body.rules)
+  {
+    if(req.body.rules[filter].operator == 'and')
+    {
+      if(Array.isArray(req.body.rules[filter].regex)){
+        var ele = {};
+        ele[filter] = { "$in" : req.body.rules[filter].regex };
+        andFilters.push(ele);
+      }
+      else {
+        var ele = {};
+        ele[filter] = req.body.rules[filter].regex;
+        andFilters.push(ele);
+      }
+    }
+    if(req.body.rules[filter].operator == 'or')
+    {
+      if(Array.isArray(req.body.rules[filter].regex)){
+        var ele = {};
+        ele[filter] = { "$in" : req.body.rules[filter].regex };
+        orFilters.push(ele);
+      }
+      else {
+        var ele = {};
+        ele[filter] = req.body.rules[filter].regex;
+        orFilters.push(ele);
+      }
+    }
+
+  }
+  console.log("andFilters :"+andFilters+" | orFilters : "+orFilters);
+
+  // andFilters.forEach((item)=>
+  // {
+  //   console.log("and : "+item);
+  // });
+  // orFilters.forEach(function(item)
+  // {
+  //   console.log("or : "+item.filter);
+  // });
+
+  var operators = []
+  if(orFilters.length > 0)
+  {
+    operators.push({"$or" : orFilters})
+  }
+  if(andFilters.length > 0)
+  {
+    operators.push({"$and" : andFilters})
+  }
+  // console.log("operators : "+operators["$or"]);
+  Lead.find({ "$and": operators}
+  ,function(err,leads)
+  {
+    if(err){
+
+      console.log(err);
+
+    }
+    console.log("leads"+leads);
+    res.json(leads);
+  });
+
+
+});
+
 router.route('/leads/:id')
 .get((req,res) => {
     console.log("request lead with id :"+req.params.id);
