@@ -1,4 +1,4 @@
-var socket = io.connect('http://localhost:8005/api/uploads');
+var socket = io.connect('http://139.59.24.29/api/uploads');
 
 // if we get an "info" emit from the socket server then console.log the data we recive
 
