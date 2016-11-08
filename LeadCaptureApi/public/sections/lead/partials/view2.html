@@ -29,20 +29,22 @@
                 <label for="txtContactLandline">Landline : </label>
                 <div ng-repeat="landline in contact.landline">
                   <input ng-show="lfc.operation=='edit' || lfc.operation == 'create'" ng-model="landline.number" type="tel" class="form-control" id="txtContactLandline" placeholder="Enter landline number">
+                  <h6 ng-show="lfc.operation == 'view'">{{landline.number}}</h6>
                 </div>
-                <button id="addLandline" ng-click="contact.addLandline()" type="button" class="btn btn-info btn-circle btn-lg">+</button>
-                <button id="removeLandline" ng-show="contact.landline.length > 1" ng-click="contact.removeLandline()" type="button" class="btn btn-danger btn-circle btn-lg">-</button>
-                <h6 ng-show="lfc.operation == 'view'">Landline : {{contact.landline}}</h6>
+                <button id="addLandline" ng-show="(lfc.operation== 'edit' || lfc.operation == 'create')" ng-click="contact.addLandline()" type="button" class="btn btn-info btn-circle btn-lg">+</button>
+                <button id="removeLandline" ng-show="contact.landline.length > 1 && (lfc.operation== 'edit' || lfc.operation == 'create')" ng-click="contact.removeLandline()" type="button" class="btn btn-danger btn-circle btn-lg">-</button>
+
 
               </div>
               <div class="col-sm-2">
                 <label for="txtContactMobile">Mobile : </label>
                 <div ng-repeat="mobile in contact.mobile">
                   <input ng-show="lfc.operation=='edit' || lfc.operation == 'create' " ng-model="mobile.number" type="tel" class="form-control" id="txtContactMobile" placeholder="Enter mobile number">
+                  <h6 ng-show="lfc.operation == 'view'">{{mobile.number}}</h6>
                 </div>
-                <button id="addMobile" ng-click="contact.addMobile()" type="button" class="btn btn-info btn-circle btn-lg">+</button>
-                <button id="removeMobile" ng-show="contact.mobile.length > 1" ng-click="contact.removeMobile()" type="button" class="btn btn-danger btn-circle btn-lg">-</button>
-                <h6 ng-show="lfc.operation == 'view'">Mobile : {{contact.mobile}}</h6>
+                <button id="addMobile" ng-show="(lfc.operation== 'edit' || lfc.operation == 'create')" ng-click="contact.addMobile()" type="button" class="btn btn-info btn-circle btn-lg">+</button>
+                <button id="removeMobile" ng-show="contact.mobile.length > 1 && (lfc.operation== 'edit' || lfc.operation == 'create')" ng-click="contact.removeMobile()" type="button" class="btn btn-danger btn-circle btn-lg">-</button>
+
               </div>
               <div class="col-sm-12">
                 <hr/>
