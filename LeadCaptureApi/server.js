@@ -12,6 +12,7 @@ const app = express();
 
 // database connection
 require('./configs/database');
+const uploadRepo = require('./repositories/uploadRepo').uploadRepo;
 
 // configure the body-parser
 // to accept urlencoded bodies
@@ -46,7 +47,45 @@ const server = app.listen(port, () => {
 
 var io = require('socket.io').listen(server);
 
-io.sockets.on('connection', function (socket) {
-    console.log('A new user connected!');
-    socket.emit('info', { msg: 'The world is round, there is no up or down.' });
+
+var ss = require('socket.io-stream');
+var path = require('path');
+var fs = require('fs');
+var Excel = require('exceljs');
+var filename = "";
+
+io.of('/api/uploads').on('connection', function(socket) {
+  console.log('new connection for uploads established');
+  socket.emit('info', { msg: 'The world is round, there is no up or down.' });
+
+
+  socket.on('disconnect', function(){
+    console.log('user disconnected');
+  });
+
+  ss(socket).on('start-upload', function(stream, data) {
+    console.log("start upload hit");
+    filename = path.basename(data.name);
+    console.log("file : "+filename);
+    stream.pipe(fs.createWriteStream(filename));
+  });
+
+  socket.on('start-processing',function(){
+
+      console.log("start processing"+socket);
+      uploadRepo.filename = filename;
+      uploadRepo.server = server;
+      uploadRepo.process();
+
+  });
+
+  socket.on('get-progress',function(){
+    // console.log("get progress listener");
+    // console.log("progress"+uploadRepo.progress);
+    uploadRepo.socket = socket;
+
+
+  });
+
+
 });

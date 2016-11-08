@@ -5,6 +5,7 @@ angular.module('myApp', [
   'myApp.lead',
   'myApp.dashboard',
   'myApp.search',
+  'myApp.upload',
   'ngRoute',
   'myApp.version'
 ])
@@ -15,9 +16,6 @@ angular.module('myApp', [
   $locationProvider.hashPrefix('!');
   $locationProvider.html5Mode(false);
   $routeProvider.otherwise({redirectTo: '/dashboard/home'});
-
-
-
 }])
 
 .controller('MainCntrl', function() {

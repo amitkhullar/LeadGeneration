@@ -1,43 +1,65 @@
 <div >
     <div class="row">
-      <div id="pnlContactDetails1" class="col-lg-6">
+      <div id="pnlContactDetails1" class="col-lg-12">
       <div class="panel panel-default " style="margin-right:5px;">
         <div class="panel-heading">
           <h4 class="panel-title">
-            Contact 1 Details
+            Contact Details
           </h4>
         </div>
 
-          <div class="panel-body">
-            <div class="row">
-              <div class="col-sm-5">
-                <label for="txtContact1Name">Name : </label>
-                <input ng-show="lfc.operation=='edit' || lfc.operation == 'create'" ng-model="lfc.lead.contacts[0].name" type="text" class="form-control" id="txtContact1Name" placeholder="Enter contact name">
-                <h6 ng-show="lfc.operation == 'view'">{{lfc.lead.contacts[0].name}}</h6>
+          <div class="panel-body" id="contactsPanel">
+            <div class="row" ng-repeat="contact in lfc.lead.contacts">
+              <div class="col-sm-2">
+                <label for="txtContactName">Name : </label>
+                <input ng-show="lfc.operation=='edit' || lfc.operation == 'create'" ng-model="contact.name" type="text" class="form-control" id="txtContactName" placeholder="Enter contact name">
+                <h6 ng-show="lfc.operation == 'view'">{{contact.name}}</h6>
               </div>
-              <div class="col-sm-5">
-                <label for="txtContact1Desig">Designation : </label>
-                <input ng-show="lfc.operation=='edit' || lfc.operation == 'create'" ng-model="lfc.lead.contacts[0].designation" type="text" class="form-control" id="txtContact1Desig" placeholder="Enter designation">
-                <h6 ng-show="lfc.operation == 'view'">{{lfc.lead.contacts[0].designation}}</h6>
+              <div class="col-sm-2">
+                <label for="txtContactDesig">Designation : </label>
+                <input ng-show="lfc.operation=='edit' || lfc.operation == 'create'" ng-model="contact.designation" type="text" class="form-control" id="txtContactDesig" placeholder="Enter designation">
+                <h6 ng-show="lfc.operation == 'view'">{{contact.designation}}</h6>
+              </div>
+              <div class="col-sm-3">
+                <label for="txtContactEmail">Email : </label>
+                <input ng-show="lfc.operation=='edit' || lfc.operation == 'create'" ng-model="contact.email" type="email" class="form-control" id="txtContactEmail" placeholder="Enter email address">
+                <h6 ng-show="lfc.operation == 'view'">{{contact.email}}</h6>
+              </div>
+              <div class="col-sm-2">
+                <label for="txtContactLandline">Landline : </label>
+                <div ng-repeat="landline in contact.landline">
+                  <input ng-show="lfc.operation=='edit' || lfc.operation == 'create'" ng-model="landline.number" type="tel" class="form-control" id="txtContactLandline" placeholder="Enter landline number">
+                </div>
+                <button id="addLandline" ng-click="contact.addLandline()" type="button" class="btn btn-info btn-circle btn-lg">+</button>
+                <button id="removeLandline" ng-show="contact.landline.length > 1" ng-click="contact.removeLandline()" type="button" class="btn btn-danger btn-circle btn-lg">-</button>
+                <h6 ng-show="lfc.operation == 'view'">Landline : {{contact.landline}}</h6>
+
+              </div>
+              <div class="col-sm-2">
+                <label for="txtContactMobile">Mobile : </label>
+                <div ng-repeat="mobile in contact.mobile">
+                  <input ng-show="lfc.operation=='edit' || lfc.operation == 'create' " ng-model="mobile.number" type="tel" class="form-control" id="txtContactMobile" placeholder="Enter mobile number">
+                </div>
+                <button id="addMobile" ng-click="contact.addMobile()" type="button" class="btn btn-info btn-circle btn-lg">+</button>
+                <button id="removeMobile" ng-show="contact.mobile.length > 1" ng-click="contact.removeMobile()" type="button" class="btn btn-danger btn-circle btn-lg">-</button>
+                <h6 ng-show="lfc.operation == 'view'">Mobile : {{contact.mobile}}</h6>
+              </div>
+              <div class="col-sm-12">
+                <hr/>
               </div>
             </div>
+
             <div class="row">
-              <div class="col-sm-5">
-                <label for="txtContact1Email">Email : </label>
-                <input ng-show="lfc.operation=='edit' || lfc.operation == 'create'" ng-model="lfc.lead.contacts[0].email" type="email" class="form-control" id="txtContact1Email" placeholder="Enter email address">
-                <h6 ng-show="lfc.operation == 'view'">{{lfc.lead.contacts[0].email}}</h6>
-              </div>
-              <div class="col-sm-5">
-                <label for="txtContact1Phone">Phone : </label>
-                <input ng-show="lfc.operation=='edit' || lfc.operation == 'create'" ng-model="lfc.lead.contacts[0].phone" type="tel" class="form-control" id="txtContact1Phone" placeholder="Enter phone number">
-                <h6 ng-show="lfc.operation == 'view'">{{lfc.lead.contacts[0].phone}}</h6>
+              <div style="text-align:right;padding:5px;">
+                <button type="button" ng-show="['create','edit'].indexOf(lfc.operation) > -1" ng-click="lfc.addContact()" class="btn btn-info">+</button>
+                <button type="button" ng-show="['create','edit'].indexOf(lfc.operation) > -1 && lfc.lead.contacts.length > 1" ng-click="lfc.removeContact()" ng-show="lfc.operation == 'create'" class="btn btn-danger">-</button>
               </div>
             </div>
           </div>
 
       </div>
     </div>
-    <div id="pnlContactDetails2" class="col-lg-6">
+    <!-- <div id="pnlContactDetails2" class="col-lg-6">
       <div class="panel panel-default">
         <div class="panel-heading">
           <h4 class="panel-title">
@@ -64,132 +86,30 @@
                 <input ng-show="lfc.operation=='edit' || lfc.operation == 'create'" ng-model="lfc.lead.contacts[1].email" type="email" class="form-control" id="txtContact2Email" placeholder="Enter email address">
                 <h6 ng-show="lfc.operation == 'view'">{{lfc.lead.contacts[1].email}}</h6>
               </div>
+
+            </div>
+            <div class="row">
               <div class="col-sm-5">
-                <label for="txtContact2Phone">Phone : </label>
-                <input ng-show="lfc.operation=='edit' || lfc.operation == 'create'" ng-model="lfc.lead.contacts[1].phone" type="tel" class="form-control" id="txtContact2Phone" placeholder="Enter phone number">
-                <h6 ng-show="lfc.operation == 'view'">{{lfc.lead.contacts[1].phone}}</h6>
+                <label for="txtContact2Phone">Landline : </label>
+                <input ng-show="lfc.operation=='edit' || lfc.operation == 'create'" ng-model="lfc.lead.contacts[1].landline" type="tel" class="form-control" id="txtContact2Landline" placeholder="Enter landline number">
+
+                <h6 ng-show="lfc.operation == 'view'">Landline : {{lfc.lead.contacts[1].landline}}</h6>
+
+              </div>
+              <div class="col-sm-5">
+                <label for="txtContact2Phone">Mobile : </label>
+
+                <input ng-show="lfc.operation=='edit' || lfc.operation == 'create'" ng-model="lfc.lead.contacts[1].mobile" type="tel" class="form-control" id="txtContact2Mobile" placeholder="Enter mobile number">
+
+                <h6 ng-show="lfc.operation == 'view'">Mobile : {{lfc.lead.contacts[1].mobile}}</h6>
               </div>
             </div>
 
         </div>
       </div>
-    </div>
+    </div> -->
 </div>
-<div class="row" >
-      <div id="pnlContactDetails3" class="col-lg-6">
-      <div class="panel panel-default " style="margin-right:5px;">
-        <div class="panel-heading">
-          <h4 class="panel-title">
-            Contact 3 Details
-          </h4>
-        </div>
 
-          <div class="panel-body">
-            <div class="row">
-              <div class="col-sm-5">
-                <label for="txtContact3Name">Name : </label>
-                <input ng-show="lfc.operation=='edit' || lfc.operation == 'create'" ng-model="lfc.lead.contacts[2].name" type="text" class="form-control" id="txtContact3Name" placeholder="Enter contact name">
-                <h6 ng-show="lfc.operation == 'view'">{{lfc.lead.contacts[2].name}}</h6>
-              </div>
-              <div class="col-sm-5">
-                <label for="txtContact3Desig">Designation : </label>
-                <input ng-show="lfc.operation=='edit' || lfc.operation == 'create'" ng-model="lfc.lead.contacts[2].designation" type="text" class="form-control" id="txtContact3Desig" placeholder="Enter designation">
-                <h6 ng-show="lfc.operation == 'view'">{{lfc.lead.contacts[2].designation}}</h6>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-sm-5">
-                <label for="txtContact3Email">Email : </label>
-                <input ng-show="lfc.operation=='edit' || lfc.operation == 'create'" ng-model="lfc.lead.contacts[2].email" type="email" class="form-control" id="txtContact3Email" placeholder="Enter email address">
-                <h6 ng-show="lfc.operation == 'view'">{{lfc.lead.contacts[2].email}}</h6>
-              </div>
-              <div class="col-sm-5">
-                <label for="txtContact3Phone">Phone : </label>
-                <input ng-show="lfc.operation=='edit' || lfc.operation == 'create'" ng-model="lfc.lead.contacts[2].phone" type="tel" class="form-control" id="txtContact3Phone" placeholder="Enter phone number">
-                <h6 ng-show="lfc.operation == 'view'">{{lfc.lead.contacts[2].phone}}</h6>
-              </div>
-            </div>
-          </div>
-
-      </div>
-    </div>
-
-    <div id="pnlContactDetails4" class="col-lg-6" >
-      <div class="panel panel-default ">
-        <div class="panel-heading">
-          <h4 class="panel-title">
-            Contact 4 Details
-          <!-- </h4> -->
-        </div>
-
-          <div class="panel-body">
-            <div class="row">
-              <div class="col-sm-5">
-                <label for="txtContact4Name">Name : </label>
-                <input ng-show="lfc.operation=='edit' || lfc.operation == 'create'" ng-model="lfc.lead.contacts[3].name" type="text" class="form-control" id="txtContact4Name" placeholder="Enter contact name">
-                <h6 ng-show="lfc.operation == 'view'">{{lfc.lead.contacts[3].name}}</h6>
-              </div>
-              <div class="col-sm-5">
-                <label for="txtContact4Desig">Designation : </label>
-                <input ng-show="lfc.operation=='edit' || lfc.operation == 'create'" ng-model="lfc.lead.contacts[3].designation" type="text" class="form-control" id="txtContact4Desig" placeholder="Enter designation">
-                <h6 ng-show="lfc.operation == 'view'">{{lfc.lead.contacts[3].designation}}</h6>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-sm-5">
-                <label for="txtContact4Email">Email : </label>
-                <input ng-show="lfc.operation=='edit' || lfc.operation == 'create'" ng-model="lfc.lead.contacts[3].email" type="email" class="form-control" id="txtContact4Email" placeholder="Enter email address">
-                <h6 ng-show="lfc.operation == 'view'">{{lfc.lead.contacts[3].email}}</h6>
-              </div>
-              <div class="col-sm-5">
-                <label for="txtContact4Phone">Phone : </label>
-                <input ng-show="lfc.operation=='edit' || lfc.operation == 'create'" ng-model="lfc.lead.contacts[3].phone" type="tel" class="form-control" id="txtContact4Phone" placeholder="Enter phone number">
-                <h6 ng-show="lfc.operation == 'view'">{{lfc.lead.contacts[3].phone}}</h6>
-              </div>
-            </div>
-          </div>
-
-      </div>
-    </div>
-      <!-- <div class="panel panel-default col-lg-4">
-        <div class="panel-heading">
-          <h4 class="panel-title">
-            Contact 5 Details
-          </h4>
-        </div>
-        <div id="pnlContactDetails5" >
-          <div class="panel-body">
-            <div class="row">
-              <div class="col-sm-5">
-                <label for="txtContact5Name">Name : </label>
-                <input type="text" ng-model="lfc.lead.contacts[4].name"  class="form-control" id="txtContact5Name" placeholder="Enter contact name">
-              </div>
-              <div class="col-sm-4">
-                <label for="txtContact5Desig">Designation : </label>
-                <select ng-model="lfc.lead.contacts[4].designation"  class="form-control" id="txtContact5Desig">
-                  <option>Select Designation</option>
-                  <option>Designation 1</option>
-                  <option>Designation 2</option>
-                  <option>Designation 3</option>
-                  <option>Designation 4</option>
-                </select>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-sm-5">
-                <label for="txtContact5Email">Email : </label>
-                <input type="email" ng-model="lfc.lead.contacts[4].email" class="form-control" id="txtContact5Email" placeholder="Enter email address">
-              </div>
-              <div class="col-sm-4">
-                <label for="txtConta ct5Phone">Phone : </label>
-                <input type="tel" ng-model="lfc.lead.contacts[4].phone" class="form-control" id="txtContact5Phone" placeholder="Enter phone number">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> -->
-
-</div>
 
   </div>
   </div>

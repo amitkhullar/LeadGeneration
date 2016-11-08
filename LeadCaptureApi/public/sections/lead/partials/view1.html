@@ -113,13 +113,16 @@
 
       <div class="row">
         <div class="col-sm-5">
-          <label class="control-label" for="txtProductsInterested">Products Interested : </label>
-          <textarea ng-show="lfc.operation=='edit' || lfc.operation == 'create'" ng-model="lfc.lead.companyInfo.productsOfInterest" class="form-control" rows="2" placeholder="Enter products of interest" id="txtProductsInterested"></textarea>
-          <h6 ng-show="lfc.operation == 'view'">{{lfc.lead.companyInfo.productsOfInterest}}</h6>
+          <label class="control-label" for="txtCompanyScale">Company Scale :</label>
+          <input ng-show="lfc.operation=='edit' || lfc.operation == 'create'" type="text" ng-model="lfc.lead.companyInfo.companyScale" class="form-control" id="txtCompanyScale" placeholder="Enter company scale">
+          <h6 ng-show="lfc.operation == 'view'">{{lfc.lead.companyInfo.companyScale}}</h6>
         </div>
-
+        <div class="col-sm-4">
+          <label class="control-label" for="txtEmployeeCnt">Employee Count :</label>
+          <input ng-show="lfc.operation=='edit' || lfc.operation == 'create'" type="text" ng-model="lfc.lead.companyInfo.employeeCnt" class="form-control" id="txtEmployeeCnt" placeholder="Enter employee count">
+          <h6 ng-show="lfc.operation == 'view'">{{lfc.lead.companyInfo.employeeCnt}}</h6>
+        </div>
       </div>
-
     </div>
   </div>
 

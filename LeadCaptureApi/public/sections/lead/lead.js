@@ -37,59 +37,85 @@ angular.module('myApp.lead',['ngRoute'])
   var path = $location.path().split('/');
   vm.operation = path[path.length-1];
   vm.searchResults = [];
+
   console.log("path : "+path[path.length-1]);
+
+  vm.attachBehavior = function(contacts)
+  {
+    for (var contact of contacts)
+    {
+      if(contact.landline.length == 0)
+      {
+        contact.landline.push({"number":""});
+      }
+      if(contact.mobile.length == 0)
+      {
+        contact.mobile.push({"number":""});
+      }
+
+      contact.addLandline = function()
+                          {
+                            console.log('add landline');
+                            this.landline.push({number:""});
+                          };
+      contact.removeLandline = function()
+                          {
+                            this.landline.pop();
+                          };
+      contact.addMobile = function()
+                          {
+                            this.mobile.push({number:""});
+                          };
+      contact.removeMobile = function()
+                          {
+                            this.mobile.pop();
+                          };
+    }
+  }
+
 
   if(vm.operation == 'create')
   {
       console.log("create section");
 
       vm.lead = {
-    companyInfo       :  {
-                          companyName:"",currentStatus:"",industryVertical:"",
-                          subIndustryVertical:"",aboutCompany:"",
-                          contactSource:"",productsOfInterest:"",
-                          companyType:""
-                         },
+                    companyInfo       :  {
+                                          companyName:"",currentStatus:"",industryVertical:"",
+                                          subIndustryVertical:"",aboutCompany:"",
+                                          contactSource:"",
+                                          companyType:"",
+                                          companyScale:"",employeeCnt:""
+                                         },
 
-    contacts          :  [],
+                    contacts          :  [{name:"",designation:"",email:"",landline:[{number:""}],mobile:[{number:""}]}],
 
-    address           :  {
-                          building:"",town:"",city:"",state:"",pin:""
-                         },
+                    address           :  {
+                                          building:"",town:"",city:"",state:"",pin:""
+                                         }
 
-    additionalProfile :  {
-                         companyScale:"",employeeCnt:"",travelBudget:"",
-                         vendorCount:"",vendorHandlingCount:"",transactionCnt:"",
-                         mailingDate: new Date()
-                         }
+                  };
 
-  };
+      vm.attachBehavior(vm.lead.contacts);
 
-  //     vm.lead =  {
-  //   companyInfo       :  {
-  //                         companyName:"Test data",currentStatus:"Email Sent",industryVertical:"BFSI",
-  //                         aboutCompany:"Test description",
-  //                         contactSource:"Naukri",productsOfInterest:"Test Product",
-  //                         companyType:"Startups"
-  //                        },
-  //
-  //   contacts          :  [{name:"contact 1",designation:"Designation 1", email:"contact1@lead.com", phone : "9999999999"},
-  //                         {name:"contact 2",designation:"Designation 2", email:"contact2@lead.com", phone : "9999999998"}],
-  //
-  //   address           :  {
-  //                         building:"building1",town:"town1",city:"New delhi",state:"Delhi",pin:"110018"
-  //                        },
-  //
-  //   additionalProfile :  {
-  //                        companyScale:"scale1",employeeCnt:"10000",travelBudget:"3243243",
-  //                        vendorCount:"1000",vendorHandlingCount:"100",transactionCnt:"200000000",
-  //                        mailingDate: new Date()
-  //                        }
-  //
-  // };
    }
 
 
+
+   vm.addContact = function(){
+
+     var contactsBehavior = [];
+
+     vm.lead.contacts.push({name:"",designation:"",email:"",landline:[{number:""}],mobile:[{number:""}]
+                           });
+
+    vm.attachBehavior(vm.lead.contacts);
+   }
+
+   vm.removeContact = function()
+   {
+     vm.lead.contacts.pop();
+
+   }
 
    vm.getLeads = function(){
 
@@ -130,23 +156,26 @@ angular.module('myApp.lead',['ngRoute'])
         companyInfo       :  {
                               companyName:response.lead.companyName,currentStatus:response.lead.currentStatus,industryVertical:response.lead.industryVertical,
                               aboutCompany:response.lead.aboutCompany,
-                              contactSource:response.lead.contactSource,productsOfInterest:response.lead.productsOfInterest,
-                              companyType:response.lead.companyType
+                              contactSource:response.lead.contactSource,
+                              companyType:response.lead.companyType,
+                              companyScale:response.lead.companyScale,
+                              employeeCnt:response.lead.employeeCount
                              },
 
         contacts          :  response.contacts,
 
         address           :  {
                                building:response.lead.addressBuilding,town:response.lead.addressTownStreet,city:response.lead.addressCity,state:response.lead.addressState,pin:response.lead.addressPincode
-                             },
-
-        additionalProfile :  {
-                              companyScale:response.lead.companyScale,employeeCnt:response.lead.employeeCount,travelBudget:response.lead.travelBudget,
-                              vendorCount:response.lead.vendorCount,vendorHandlingCount:response.lead.vendorHandlerCount,transactionCnt:response.lead.transactionCount,
-                              mailingDate: new Date()
                              }
 
       };
+
+      if(vm.lead.contacts.length == 0)
+      {
+        vm.lead.contacts.push({name:"",designation:"",email:"",landline:[{number:""}],mobile:[{number:""}]});
+      }
+      vm.attachBehavior(vm.lead.contacts);
+
 
     })
     .error(function(){

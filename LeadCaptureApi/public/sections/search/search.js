@@ -113,7 +113,7 @@ angular.module('myApp.search',['ngRoute'])
       $http.post(myConfig.url+"/api/leads/search",data,{})
       .success(function (response, status, headers) {
 
-          console.log("data "+response);
+          console.log("data "+response.length);
           vm.searchResults = response;
           vm.searchInitiated = true;
       });
