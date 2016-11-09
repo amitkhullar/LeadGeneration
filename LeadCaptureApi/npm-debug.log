@@ -1,0 +1,87 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   'socket.io@1.4.5ls' ]
+2 info using npm@2.14.7
+3 info using node@v4.2.2
+4 verbose install initial load of /Users/amitkhullar/Desktop/Dev/LeadDataOrganizer/LeadCaptureApi/package.json
+5 warn package.json leadcaptureapi@1.0.0 No repository field.
+6 warn package.json leadcaptureapi@1.0.0 No README data
+7 verbose installManyTop reading scoped package data from /Users/amitkhullar/Desktop/Dev/LeadDataOrganizer/LeadCaptureApi/node_modules/body-parser/package.json
+8 verbose installManyTop reading scoped package data from /Users/amitkhullar/Desktop/Dev/LeadDataOrganizer/LeadCaptureApi/node_modules/browserify/package.json
+9 verbose installManyTop reading scoped package data from /Users/amitkhullar/Desktop/Dev/LeadDataOrganizer/LeadCaptureApi/node_modules/excel-parser/package.json
+10 verbose installManyTop reading scoped package data from /Users/amitkhullar/Desktop/Dev/LeadDataOrganizer/LeadCaptureApi/node_modules/exceljs/package.json
+11 verbose installManyTop reading scoped package data from /Users/amitkhullar/Desktop/Dev/LeadDataOrganizer/LeadCaptureApi/node_modules/express/package.json
+12 verbose installManyTop reading scoped package data from /Users/amitkhullar/Desktop/Dev/LeadDataOrganizer/LeadCaptureApi/node_modules/mongoose/package.json
+13 verbose installManyTop reading scoped package data from /Users/amitkhullar/Desktop/Dev/LeadDataOrganizer/LeadCaptureApi/node_modules/mpromise/package.json
+14 verbose installManyTop reading scoped package data from /Users/amitkhullar/Desktop/Dev/LeadDataOrganizer/LeadCaptureApi/node_modules/serve-static/package.json
+15 verbose installManyTop reading scoped package data from /Users/amitkhullar/Desktop/Dev/LeadDataOrganizer/LeadCaptureApi/node_modules/socket.io/package.json
+16 verbose installManyTop reading scoped package data from /Users/amitkhullar/Desktop/Dev/LeadDataOrganizer/LeadCaptureApi/node_modules/socket.io-stream/package.json
+17 verbose readDependencies loading dependencies from /Users/amitkhullar/Desktop/Dev/LeadDataOrganizer/LeadCaptureApi/package.json
+18 silly cache add args [ 'socket.io@1.4.5ls', null ]
+19 verbose cache add spec socket.io@1.4.5ls
+20 silly cache add parsed spec Result {
+20 silly cache add   raw: 'socket.io@1.4.5ls',
+20 silly cache add   scope: null,
+20 silly cache add   name: 'socket.io',
+20 silly cache add   rawSpec: '1.4.5ls',
+20 silly cache add   spec: '1.4.5-ls',
+20 silly cache add   type: 'version' }
+21 silly addNamed socket.io@1.4.5-ls
+22 verbose addNamed "1.4.5-ls" is a plain semver version for socket.io
+23 silly mapToRegistry name socket.io
+24 silly mapToRegistry using default registry
+25 silly mapToRegistry registry https://registry.npmjs.org/
+26 silly mapToRegistry uri https://registry.npmjs.org/socket.io
+27 verbose addNameVersion registry:https://registry.npmjs.org/socket.io not in flight; fetching
+28 verbose request uri https://registry.npmjs.org/socket.io
+29 verbose request no auth needed
+30 info attempt registry request try #1 at 10:51:42 PM
+31 verbose request id 5981472a799d76c4
+32 verbose etag "AKPM52QLIHD7DOH51ZE4G2QL1"
+33 http request GET https://registry.npmjs.org/socket.io
+34 http 304 https://registry.npmjs.org/socket.io
+35 verbose headers { date: 'Wed, 09 Nov 2016 17:21:43 GMT',
+35 verbose headers   via: '1.1 varnish',
+35 verbose headers   'cache-control': 'max-age=300',
+35 verbose headers   etag: '"AKPM52QLIHD7DOH51ZE4G2QL1"',
+35 verbose headers   age: '210',
+35 verbose headers   connection: 'keep-alive',
+35 verbose headers   'x-served-by': 'cache-sin6927-SIN',
+35 verbose headers   'x-cache': 'HIT',
+35 verbose headers   'x-cache-hits': '5',
+35 verbose headers   'x-timer': 'S1478712103.815861,VS0,VE0',
+35 verbose headers   vary: 'Accept-Encoding' }
+36 silly get cb [ 304,
+36 silly get   { date: 'Wed, 09 Nov 2016 17:21:43 GMT',
+36 silly get     via: '1.1 varnish',
+36 silly get     'cache-control': 'max-age=300',
+36 silly get     etag: '"AKPM52QLIHD7DOH51ZE4G2QL1"',
+36 silly get     age: '210',
+36 silly get     connection: 'keep-alive',
+36 silly get     'x-served-by': 'cache-sin6927-SIN',
+36 silly get     'x-cache': 'HIT',
+36 silly get     'x-cache-hits': '5',
+36 silly get     'x-timer': 'S1478712103.815861,VS0,VE0',
+36 silly get     vary: 'Accept-Encoding' } ]
+37 verbose etag https://registry.npmjs.org/socket.io from cache
+38 verbose get saving socket.io to /Users/amitkhullar/.npm/registry.npmjs.org/socket.io/.cache.json
+39 verbose stack Error: version not found: socket.io@1.4.5-ls
+39 verbose stack     at setData (/usr/local/lib/node_modules/npm/lib/cache/add-named.js:137:12)
+39 verbose stack     at RES (/usr/local/lib/node_modules/npm/node_modules/inflight/inflight.js:23:14)
+39 verbose stack     at f (/usr/local/lib/node_modules/npm/node_modules/once/once.js:17:25)
+39 verbose stack     at fixName (/usr/local/lib/node_modules/npm/lib/cache/add-named.js:29:5)
+39 verbose stack     at saved (/usr/local/lib/node_modules/npm/lib/cache/caching-client.js:173:7)
+39 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/graceful-fs/polyfills.js:210:7
+39 verbose stack     at FSReqWrap.oncomplete (fs.js:82:15)
+40 verbose statusCode 404
+41 verbose cwd /Users/amitkhullar/Desktop/Dev/LeadDataOrganizer/LeadCaptureApi
+42 error Darwin 16.0.0
+43 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "install" "socket.io@1.4.5ls"
+44 error node v4.2.2
+45 error npm  v2.14.7
+46 error version not found: socket.io@1.4.5-ls
+47 error If you need help, you may report this error at:
+47 error     <https://github.com/npm/npm/issues>
+48 verbose exit [ 1, true ]

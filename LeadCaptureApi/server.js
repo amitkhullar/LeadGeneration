@@ -53,36 +53,38 @@ var path = require('path');
 var fs = require('fs');
 var Excel = require('exceljs');
 var filename = "";
+var flg = false;
 
-io.of('/api/uploads').on('connection', function(socket) {
+io.on('connection', function(socket) {
+
   console.log('new connection for uploads established');
-  socket.emit('info', { msg: 'The world is round, there is no up or down.' });
+  console.log(socket.id);
 
 
   socket.on('disconnect', function(){
     console.log('user disconnected');
   });
 
-  ss(socket).on('start-upload', function(stream, data) {
-    console.log("start upload hit");
-    filename = path.basename(data.name);
-    console.log("file : "+filename);
-    stream.pipe(fs.createWriteStream(filename));
-  });
+  if(!flg)
+  {
+    ss(socket).on('start-upload', function(stream, data) {
+      console.log("start upload hit");
+      filename = path.basename(data.name);
+      console.log("file : "+filename);
+      stream.pipe(fs.createWriteStream(filename));
+    });
 
   socket.on('start-processing',function(){
-
+      flg = false;
       console.log("start processing"+socket);
       uploadRepo.filename = filename;
       uploadRepo.server = server;
+      uploadRepo.socket = socket;
       uploadRepo.process();
 
   });
-
-  socket.on('get-progress',function(){
-    uploadRepo.socket = socket;
-
-  });
+  flg = true;
+}
 
 
 });
