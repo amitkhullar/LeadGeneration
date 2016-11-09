@@ -80,10 +80,7 @@ io.of('/api/uploads').on('connection', function(socket) {
   });
 
   socket.on('get-progress',function(){
-    // console.log("get progress listener");
-    // console.log("progress"+uploadRepo.progress);
     uploadRepo.socket = socket;
-
 
   });
 

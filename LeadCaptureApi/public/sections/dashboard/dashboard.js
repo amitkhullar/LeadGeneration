@@ -8,7 +8,7 @@ angular.module('myApp.dashboard',['ngRoute'])
     controller: 'DashboardCntrl'
   });
 }])
-.controller('DashboardCntrl', function($http,myConfig)
+.controller('DashboardCntrl', function($http,myConfig,commonBehaviors)
 {
 
   var vm = this;
@@ -21,7 +21,17 @@ angular.module('myApp.dashboard',['ngRoute'])
 
   }
 
-  vm.searchResults = [];
+  vm.toggle = function(e){
+
+    if(vm[e.currentTarget.id] == '-')
+    {
+      vm[e.currentTarget.id] = '';
+    }
+    else {
+      vm[e.currentTarget.id] = '-';
+    }
+
+  };
 
   vm.getLeadStatistics = function(){
 
@@ -42,6 +52,10 @@ angular.module('myApp.dashboard',['ngRoute'])
 
   vm.getLeadStatistics();
 
+
+  vm.searchResults = [];
+
+
   vm.getLeads = function(){
 
     var data = this.search;
@@ -53,14 +67,13 @@ angular.module('myApp.dashboard',['ngRoute'])
     .then(function(response) {
 
         console.log("data "+response.data);
-        vm.searchResults = response.data;
+        vm.searchResults =  response.data;
 
     });
 
   };
 
   vm.getLeads();
-
 
 
 

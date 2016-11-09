@@ -24,7 +24,14 @@ angular.module('myApp', [
 
 })
 
-.controller('TopBarCntrl', function() {
+.factory('commonBehaviors',function($http,myConfig){
 
+  var gridFactory = {};
+
+
+  
+
+
+  return gridFactory;
 
 });
