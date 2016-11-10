@@ -134,6 +134,7 @@ angular.module('myApp.search',['ngRoute'])
 
     $("#searchLink").click(function(){
 
+      searchFactory.showProgress = true;
       vm.searchLeads();
 
     });
