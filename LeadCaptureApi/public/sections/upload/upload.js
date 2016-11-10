@@ -14,7 +14,7 @@ angular.module('myApp.upload',['ngRoute','ngFileUpload'])
 
 .controller('UploadCntrl',function (myConfig) {
 
-  var socket = io.connect(myConfig.url,{reconnection:false});
+  var socket = io.connect(myConfig.url);
   var vm = this;
   vm.showDuplicate = false;
   socket.on('progress-report',function(data){
