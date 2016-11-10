@@ -1,4 +1,4 @@
-<div >
+<div ng-init="mac.section='dashboard';">
   <div id="page-wrapper">
       <div class="row">
           <div class="col-lg-12">
@@ -38,7 +38,12 @@
                               <i class="fa fa-shopping-cart fa-5x"></i>
                           </div>
                           <div class="col-xs-9 text-right">
-                              <div class="huge">{{dc.leadStats.leads_responded}}</div>
+                            <div ng-show="dc.showProgress" class="loader-inner ball-pulse">
+                              <div></div>
+                              <div></div>
+                              <div></div>
+                            </div>
+                              <div ng-show="!dc.showProgress" class="huge">{{dc.leadStats.leads_responded}}</div>
                               <div>Leads Responded!</div>
                           </div>
                       </div>
@@ -60,7 +65,12 @@
                               <i class="fa fa-support fa-5x"></i>
                           </div>
                           <div class="col-xs-9 text-right">
-                              <div class="huge">{{dc.leadStats.pending_action}}</div>
+                            <div ng-show="dc.showProgress" class="loader-inner ball-pulse">
+                              <div></div>
+                              <div></div>
+                              <div></div>
+                            </div>
+                              <div ng-show="!dc.showProgress" class="huge">{{dc.leadStats.pending_action}}</div>
                               <div>Action Pending!</div>
                           </div>
                       </div>

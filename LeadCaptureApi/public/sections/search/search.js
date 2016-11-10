@@ -4,13 +4,12 @@ angular.module('myApp.search',['ngRoute'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/leads/search', {
-    templateUrl: 'public/sections/search/index.html',
-    controller: 'LeadSearchCntrl'
+    templateUrl: 'public/sections/search/index.html'
   });
 
 }])
 
-.controller('LeadSearchCntrl', function($http,myConfig) {
+.controller('LeadSearchCntrl', function($http,myConfig,searchFactory) {
 
     var search = {
 
@@ -20,7 +19,7 @@ angular.module('myApp.search',['ngRoute'])
 
     var vm = this;
     vm.searchText = "";
-    vm.searchResults = [];
+
     vm.filters = { rules : {
         companyName : {value:"",operator:"",regex:""},
         addressPincode : {value:"",operator:"",regex:""},
@@ -104,21 +103,41 @@ angular.module('myApp.search',['ngRoute'])
 
     }
 
-    vm.searchInitiated = false;
-
     vm.searchLeads = function(){
 
       var data = vm.filters;
       console.log(data);
+      searchFactory.searchResults = [];
+      searchFactory.showProgress = true;
       $http.post(myConfig.url+"/api/leads/search",data,{})
       .success(function (response, status, headers) {
 
-          console.log("data "+response.length);
-          vm.searchResults = response;
-          vm.searchInitiated = true;
+          console.log("data "+response);
+          searchFactory.searchResults = response;
+          searchFactory.searchInitiated = true;
+          searchFactory.showProgress = false;
+      })
+      .error(function(err){
+
+        searchFactory.showProgress = false;
+
       });
 
     };
+
+
+    // $(document).ready(function(){
+    //
+    //   vm.searchLeads();
+    //
+    // })
+
+    $("#searchLink").click(function(){
+
+      vm.searchLeads();
+
+    });
+
 
 
 

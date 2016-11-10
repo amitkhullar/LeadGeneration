@@ -8,7 +8,7 @@ angular.module('myApp.dashboard',['ngRoute'])
     controller: 'DashboardCntrl'
   });
 }])
-.controller('DashboardCntrl', function($http,myConfig,commonBehaviors)
+.controller('DashboardCntrl', function($http,myConfig)
 {
 
   var vm = this;
@@ -20,7 +20,7 @@ angular.module('myApp.dashboard',['ngRoute'])
     pending_action : 0
 
   }
-
+  vm.showProgress = false;
   vm.toggle = function(e){
 
     if(vm[e.currentTarget.id] == '-')
@@ -57,7 +57,7 @@ angular.module('myApp.dashboard',['ngRoute'])
 
 
   vm.getLeads = function(){
-
+    vm.showProgress = true;
     var data = this.search;
     var config = {
 
@@ -68,6 +68,7 @@ angular.module('myApp.dashboard',['ngRoute'])
 
         console.log("data "+response.data);
         vm.searchResults =  response.data;
+        vm.showProgress = false;
 
     });
 

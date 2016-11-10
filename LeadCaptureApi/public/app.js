@@ -5,12 +5,13 @@ angular.module('myApp', [
   'myApp.lead',
   'myApp.dashboard',
   'myApp.search',
+  'myApp.searchResults',
   'myApp.upload',
   'ngRoute',
   'myApp.version'
 ])
 .constant("myConfig", {
-        "url": "http://139.59.24.29"
+        "url": "http://localhost:8005"
 })
 .config(['$locationProvider','$routeProvider', function($locationProvider,$routeProvider) {
   $locationProvider.hashPrefix('!');
@@ -24,14 +25,14 @@ angular.module('myApp', [
 
 })
 
-.factory('commonBehaviors',function($http,myConfig){
+.factory('searchFactory',function($http,myConfig){
 
-  var gridFactory = {};
+  var searchFactory = {
+    searchResults : [],
+    searchInitiated : false,
+    showProgress : false
+  }
 
-
-
-
-
-  return gridFactory;
+  return searchFactory;
 
 });

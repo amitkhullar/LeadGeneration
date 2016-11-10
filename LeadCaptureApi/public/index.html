@@ -23,6 +23,9 @@
     <!-- Morris Charts CSS -->
     <link href="public/vendor/morrisjs/morris.css" rel="stylesheet">
 
+
+    <link rel="stylesheet" type="text/css" href="public/bower_components/loaders.css/loaders.css"/>
+
     <!-- Custom Fonts -->
     <link href="public/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
@@ -37,7 +40,7 @@
 
 <body ng-app="myApp">
 
-    <div id="wrapper">
+    <div ng-controller="MainCntrl as mac" id="wrapper">
 
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
@@ -60,6 +63,7 @@
         </nav>
 
         <div ng-view></div>
+
 
         <!-- /#page-wrapper -->
 
@@ -95,6 +99,7 @@
     <script src="public/sections/lead/lead.js"></script>
     <script src="public/sections/dashboard/dashboard.js"></script>
     <script src="public/sections/search/search.js"></script>
+    <script src="public/sections/search/result.js"></script>
     <script src="public/sections/upload/upload.js"></script>
     <script src="public/components/version/version.js"></script>
     <script src="public/components/version/version-directive.js"></script>

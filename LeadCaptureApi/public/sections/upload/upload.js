@@ -17,12 +17,6 @@ angular.module('myApp.upload',['ngRoute','ngFileUpload'])
   var vm = this;
   vm.showDuplicate = false;
 
-  socket.on('connect',function(){
-
-    console.log("connected for uploads");
-
-  })
-
   socket.on('progress-report',function(data){
 
     console.log(data);
@@ -36,8 +30,8 @@ angular.module('myApp.upload',['ngRoute','ngFileUpload'])
 
   });
 
-  socket.once('connect',function () {
-
+  socket.on('connect',function () {
+    console.log("connected for uploads");
     $('#file').change(function(e) {
       var file = e.target.files[0];
       var stream = ss.createStream();

@@ -7,25 +7,20 @@ angular.module('myApp.lead',['ngRoute'])
 .config(['$routeProvider', function($routeProvider) {
 
   $routeProvider.when('/leads/create', {
-    templateUrl: 'public/sections/lead/manage.html',
-    controller: 'LeadFormCntrl'
+    templateUrl: 'public/sections/lead/manage.html'
 
   }).when('/leads/:leadId/edit',{
-    templateUrl: 'public/sections/lead/manage.html',
-    controller: 'LeadFormCntrl'
+    templateUrl: 'public/sections/lead/manage.html'
 
   }).when('/leads/:leadId/view',{
-    templateUrl: 'public/sections/lead/manage.html',
-    controller: 'LeadFormCntrl'
+    templateUrl: 'public/sections/lead/manage.html'
 
   }).when('/leads',{
-    templateUrl: 'public/sections/lead/index.html',
-    controller: 'LeadFormCntrl'
+    templateUrl: 'public/sections/lead/index.html'
 
   })
   .when('/leads/:leadId/delete',{
-    templateUrl: 'public/sections/lead/manage.html',
-    controller: 'LeadFormCntrl'
+    templateUrl: 'public/sections/lead/manage.html'
 
   });
 
@@ -116,9 +111,9 @@ angular.module('myApp.lead',['ngRoute'])
      vm.lead.contacts.pop();
 
    }
-
+   vm.showProgress = false;
    vm.getLeads = function(){
-
+     vm.showProgress = true;
      console.log("lfc leads");
      var data = this.search;
      var config = {};
@@ -128,6 +123,7 @@ angular.module('myApp.lead',['ngRoute'])
 
          console.log("data "+response.data);
          vm.searchResults = response.data;
+         vm.showProgress = false;
 
      });
 

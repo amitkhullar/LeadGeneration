@@ -1,0 +1,60 @@
+{
+  "name": "loaders.css",
+  "version": "0.1.2",
+  "description": "Loading animations in pure css",
+  "main": "loaders.css",
+  "style": "loaders.css",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/ConnorAtherton/loaders.css.git"
+  },
+  "keywords": [
+    "css",
+    "loaders",
+    "animation",
+    "animate"
+  ],
+  "author": {
+    "name": "Connor Atherton"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ConnorAtherton/loaders.css/issues"
+  },
+  "homepage": "https://github.com/ConnorAtherton/loaders.css",
+  "devDependencies": {
+    "coffee-script": "^1.9.1",
+    "gulp": "^3.8.10",
+    "gulp-autoprefixer": "^2.0.0",
+    "gulp-cssmin": "^0.1.6",
+    "gulp-jade": "^0.10.0",
+    "gulp-plumber": "1.0.1",
+    "gulp-rename": "^1.2.0",
+    "gulp-sass": "^2.1.1",
+    "gulp-util": "^3.0.3",
+    "scss-lint": "0.0.0"
+  },
+  "gitHead": "940bd92550c3b783d65a6983d0aaf21ed68722c4",
+  "_id": "loaders.css@0.1.2",
+  "scripts": {},
+  "_shasum": "3a9fb43726c73334a38142af9d0629019b658743",
+  "_from": "loaders.css@*",
+  "_npmVersion": "2.11.3",
+  "_nodeVersion": "0.13.0-pre",
+  "_npmUser": {
+    "name": "connoratherton",
+    "email": "c.liam.atherton@gmail.com"
+  },
+  "dist": {
+    "shasum": "3a9fb43726c73334a38142af9d0629019b658743",
+    "tarball": "https://registry.npmjs.org/loaders.css/-/loaders.css-0.1.2.tgz"
+  },
+  "maintainers": [
+    {
+      "name": "connoratherton",
+      "email": "c.liam.atherton@gmail.com"
+    }
+  ],
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/loaders.css/-/loaders.css-0.1.2.tgz"
+}

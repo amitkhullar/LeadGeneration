@@ -1,10 +1,17 @@
-<div id="page-wrapper" style="min-height:1100px;" ng-controller="LeadSearchCntrl as lsc">
+
+<div ng-init="mac.section = 'search';" id="page-wrapper" style="min-height:1100px;" ng-controller="searchResultsCntrl">
   <div class="row">
       <div class="col-lg-12">
           <h1 class="page-header">Search</h1>
+          <div ng-show="showProgress" class="loader-inner ball-pulse">
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
       </div>
   </div>
-  <div ng-include="'public/sections/search/partials/filters.html'"></div>
+
+  <!-- <div ng-include="'public/sections/search/partials/filters.html'"></div> -->
   <div ng-include="'public/sections/search/partials/grid.html'"></div>
 
 </div>

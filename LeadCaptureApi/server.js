@@ -65,12 +65,12 @@ io.on('connection', function(socket) {
   });
 
 
-    ss(socket).on('start-upload', function(stream, data) {
-      console.log("start upload hit");
-      filename = path.basename(data.name);
-      console.log("file : "+filename);
-      stream.pipe(fs.createWriteStream(filename));
-    });
+  ss(socket).on('start-upload', function(stream, data) {
+    console.log("start upload hit");
+    filename = path.basename(data.name);
+    console.log("file : "+filename);
+    stream.pipe(fs.createWriteStream(filename));
+  });
 
   socket.on('start-processing',function(){
 

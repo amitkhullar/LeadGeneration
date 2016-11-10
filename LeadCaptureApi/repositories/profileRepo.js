@@ -329,7 +329,11 @@ var profileRepo = function () {
       operators.push({"$and" : andFilters})
     }
 
-    return Lead.find({ "$and": operators}).exec();
+    if(operators.length > 0)
+      return Lead.find({ "$and": operators}).exec();
+    else {
+      return Lead.find({}).exec();
+    }
 
   };
 

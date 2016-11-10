@@ -1,4 +1,5 @@
-<div class="col-lg-14" ng-show="lsc.searchResults.length > 0">
+
+<div class="col-lg-14" ng-show="searchResults.length > 0">
                   <div class="panel panel-default">
                       <div class="panel-heading">
                           Profiles
@@ -28,7 +29,7 @@
                               </thead>
                               <tbody>
 
-                                  <tr ng-repeat="record in lsc.searchResults" class="gradeA odd" role="row">
+                                  <tr ng-repeat="record in searchResults" class="gradeA odd" role="row">
                                       <td class="sorting_1">{{record.companyName}}</td>
                                       <td>{{record.industryVertical}}</td>
                                       <td>{{record.contactSource}}</td>
@@ -49,8 +50,8 @@
               </div>
 </div>
 
-<div class="col-lg-10" ng-show="lsc.searchInitiated == true">
-    <div class="panel panel-red" ng-show="lsc.searchResults.length == 0">
+<div class="col-lg-10" ng-show="searchInitiated">
+    <div class="panel panel-red" ng-show="searchResults.length == 0 && !showProgress">
         <div class="panel-heading">
             Information
         </div>
