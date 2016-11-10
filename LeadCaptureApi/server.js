@@ -80,6 +80,8 @@ io.on('connection', function(socket) {
       uploadRepo.filename = filename;
       uploadRepo.server = server;
       uploadRepo.socket = socket;
+      uploadRepo.progress = 0;
+      uploadRepo.duplicate = 0;
       uploadRepo.process();
 
   });
