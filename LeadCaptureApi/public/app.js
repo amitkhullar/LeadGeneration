@@ -8,9 +8,10 @@ angular.module('myApp', [
   'myApp.upload',
   'ngRoute',
   'myApp.version'
+  ,'angularUUID2'
 ])
 .constant("myConfig", {
-        "url": "http://139.59.24.29"
+        "url": "http://localhost:8005"
 })
 .config(['$locationProvider','$routeProvider', function($locationProvider,$routeProvider) {
   $locationProvider.hashPrefix('!');

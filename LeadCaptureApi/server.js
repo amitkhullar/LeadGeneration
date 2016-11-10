@@ -51,9 +51,8 @@ var io = require('socket.io').listen(server);
 var ss = require('socket.io-stream');
 var path = require('path');
 var fs = require('fs');
-var Excel = require('exceljs');
 var filename = "";
-var flg = false;
+var uniqueId = "";
 
 io.on('connection', function(socket) {
 
@@ -65,8 +64,7 @@ io.on('connection', function(socket) {
     console.log('user disconnected');
   });
 
-  if(!flg)
-  {
+
     ss(socket).on('start-upload', function(stream, data) {
       console.log("start upload hit");
       filename = path.basename(data.name);
@@ -75,7 +73,7 @@ io.on('connection', function(socket) {
     });
 
   socket.on('start-processing',function(){
-      flg = false;
+
       console.log("start processing"+socket);
       uploadRepo.filename = filename;
       uploadRepo.server = server;
@@ -85,8 +83,7 @@ io.on('connection', function(socket) {
       uploadRepo.process();
 
   });
-  flg = true;
-}
+
 
 
 });

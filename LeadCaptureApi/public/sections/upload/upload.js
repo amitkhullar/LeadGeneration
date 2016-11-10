@@ -4,8 +4,7 @@ angular.module('myApp.upload',['ngRoute','ngFileUpload'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/leads/upload', {
-    templateUrl: 'public/sections/upload/index.html',
-    controller: 'UploadCntrl'
+    templateUrl: 'public/sections/upload/index.html'
   });
 
 }])
@@ -17,6 +16,13 @@ angular.module('myApp.upload',['ngRoute','ngFileUpload'])
   var socket = io.connect(myConfig.url);
   var vm = this;
   vm.showDuplicate = false;
+
+  socket.on('connect',function(){
+
+    console.log("connected for uploads");
+
+  })
+
   socket.on('progress-report',function(data){
 
     console.log(data);
