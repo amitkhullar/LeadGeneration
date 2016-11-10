@@ -11,7 +11,7 @@ angular.module('myApp', [
   'myApp.version'
 ])
 .constant("myConfig", {
-        "url": "http://139.59.24.29/"
+        "url": "http://139.59.24.29"
 })
 .config(['$locationProvider','$routeProvider', function($locationProvider,$routeProvider) {
   $locationProvider.hashPrefix('!');
