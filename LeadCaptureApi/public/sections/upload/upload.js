@@ -33,6 +33,7 @@ angular.module('myApp.upload',['ngRoute','ngFileUpload'])
     }
     socket.emit('get-progress');
 
+
   });
 
   socket.once('connect',function () {
