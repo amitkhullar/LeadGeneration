@@ -12,14 +12,19 @@ angular.module('myApp.upload',['ngRoute','ngFileUpload'])
 
 
 
-.controller('UploadCntrl',function () {
+.controller('UploadCntrl',function (myConfig) {
 
-  var socket = io.connect('http://139.59.24.29',{reconnection:false});
-
+  var socket = io.connect(myConfig.url,{reconnection:false});
+  var vm = this;
+  vm.showDuplicate = false;
   socket.on('progress-report',function(data){
 
     console.log(data);
-    $("#processingProgress").html("").html("Processed :"+data.progress + ' records...');
+    $("#processingProgress").html("").html("Processed :"+data.message.processed + ' records...');
+    if(data.message.duplicate)
+    {
+      $("#duplicate").html("").html(data.message.duplicate + ' duplicate records...');
+    }
     socket.emit('get-progress');
 
   });

@@ -79,8 +79,6 @@ var profileRepo = function () {
     var getPromise = Lead.find({}).sort({ createdAt: -1 }).exec();
     return getPromise;
 
-
-
   };
 
 
@@ -221,6 +219,24 @@ var profileRepo = function () {
 
     });
 
+
+  };
+
+  ctx.isDuplicate = function(data){
+
+    var leadPromise = Lead.find ({"companyName":data.companyInfo.companyName}).exec();
+
+    return leadPromise.then((profile)=>{
+
+      if(profile.length > 0)
+      {
+        return true;
+      }
+      else {
+        return false;
+      }
+
+    });
 
   };
 

@@ -10,6 +10,7 @@ this.filename = "";
 this.batchSize = 20;
 ctx.server = {};
 ctx.progress = 0;
+ctx.duplicate = 0;
 ctx.io = require('socket.io')(ctx.server);
 ctx.socket = {};
 this.process = function(){
@@ -75,11 +76,27 @@ this.process = function(){
             }
           }
 
-          // console.log("lead"+leadData.companyInfo.companyName);
+          profileRepo.isDuplicate(leadData).then((response)=>{
+            console.log("duplicate : "+response);
+            if(response)
+              ctx.duplicate+=1;
+            else {
+              profileRepo.insert(leadData);
+            }
+            ctx.progress+=1;
+            ctx.socket.emit('progress-report',{ "message": {"processed":ctx.progress,"duplicate":ctx.duplicate} });
 
-          profileRepo.insert(leadData);
-          ctx.progress = rowNumber;
-          ctx.socket.emit('progress-report',{ "progress": parseInt(ctx.progress)});
+          });
+
+          // if(!profileRepo.isDuplicate(leadData))
+          // {
+          //   profileRepo.insert(leadData);
+          // }
+          // else {
+          //     ctx.duplicate+=1;
+          // }
+
+
           // console.log(ctx.progress);
 
         }
