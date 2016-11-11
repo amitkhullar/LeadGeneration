@@ -126,11 +126,12 @@ angular.module('myApp.search',['ngRoute'])
     };
 
 
-    $(document).ready(function(){
-
-      vm.searchLeads();
-
-    })
+    // $(document).ready(function(){
+    //
+    //   console.log("section"+mac.section);
+    //   vm.searchLeads();
+    //
+    // })
 
     $("#searchLink").click(function(){
 
