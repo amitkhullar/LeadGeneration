@@ -6,7 +6,7 @@ angular.module('myApp.searchResults',[])
 
     $scope.searchResults = [];
     $scope.searchInitiated = false;
-    $scope.showProgress = false;
+    $scope.showProgress = true;
 
     $scope.$watch(function () { return searchFactory.searchResults }, function (newValue, oldValue) {
         if (newValue !== oldValue) $scope.searchResults = newValue;

@@ -126,18 +126,17 @@ angular.module('myApp.search',['ngRoute'])
     };
 
 
-    // $(document).ready(function(){
-    //
-    //   vm.searchLeads();
-    //
-    // })
+    $(document).ready(function(){
+
+      vm.searchLeads();
+
+    })
 
     $("#searchLink").click(function(){
 
-      searchFactory.showProgress = true;
       vm.searchLeads();
 
-    });
+    })
 
 
 
