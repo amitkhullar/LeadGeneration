@@ -21,7 +21,7 @@ const schema = new mongoose.Schema({
   addressPincode:{ type: String, maxlength: [8, 'Only 8 characters or less are allowed'] },
 
   companyScale:{ type: String, maxlength: [100, 'Only 100 characters or less are allowed'] },
-  employeeCount:{ type: Number },
+  employeeCount:{ type: Number, default:0 },
   mailingDate:{ type: Date, default: null},
 
   completed: { type: Boolean, default: false },

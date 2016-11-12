@@ -1383,17 +1383,46 @@
   </div>
 </div>
 <div class="row" style="margin-bottom:10px;">
-  <div id="dataTables-example_filter" class="dataTables_filter col-sm-10" style="margin-left:10px;">
+  <div id="dataTables-example_filter" class="dataTables_filter col-sm-11" style="margin-left:10px;">
     <label>
       <button type="button" value="employeeCount" id="andForEN" ng-click="lsc.selectOperator($event,'orForEN');lsc.searchLeads();" class="btn btn-primary btn-circle">AND</button>
       <button type="button" value="employeeCount" id="orForEN" ng-click="lsc.selectOperator($event,'andForEN');lsc.searchLeads();" class="btn btn-warning btn-circle">OR</button>
       </label>
-      No. of employees :<input ng-disabled="lsc.filters.rules['employeeCount'].operator == ''" ng-change="lsc.searchLeads()" ng-model="lsc.filters.rules.employeeCount.value" type="search" class="form-control input-sm" placeholder="" aria-controls="dataTables-example">
+      No. of employees :
+
+      <select ng-disabled="lsc.filters.rules['employeeCount'].operator == ''" ng-change="lsc.searchLeads();" ng-model="lsc.filters.rules.employeeCount.value"  class="form-control">
+        <option value="">Select employee range</option>
+        <option>1-50</option>
+        <option>51-100</option>
+        <option>101-250</option>
+        <option>251-500</option>
+        <option>501-1000</option>
+        <option>1001-2500</option>
+        <option>2501-5000</option>
+        <option>5001 +</option>
+
+      </select>
   </div>
 </div>
 
 <div class="row" style="padding-bottom:10px;">
+  <div id="dataTables-example_filter" class="dataTables_filter  col-sm-11" style="margin-left:10px;">
+    <label>
+      <button value="withContacts_name" id="andForCNT" ng-click="lsc.selectOperator($event,'orForCNT');lsc.searchLeads();" type="button" class="btn btn-primary btn-circle">AND</button>
+      <button value="withContacts_name" id="orForCNT" ng-click="lsc.selectOperator($event,'andForCNT');lsc.searchLeads();" type="button" class="btn btn-warning btn-circle">OR</button>
+    </label>
+    By Contact Name :<input ng-disabled="lsc.filters.rules['withContacts_name'].operator == ''" ng-change="lsc.searchLeads();" ng-model="lsc.filters.rules.withContacts_name.value" type="search" class="form-control input-sm" placeholder="" aria-controls="dataTables-example">
+  </div>
+</div>
 
+<div class="row" style="padding-bottom:10px;">
+  <div id="dataTables-example_filter" class="dataTables_filter  col-sm-11" style="margin-left:10px;">
+    <label>
+      <button value="withContacts_designation" id="andForCND" ng-click="lsc.selectOperator($event,'orForCND');lsc.searchLeads();" type="button" class="btn btn-primary btn-circle">AND</button>
+      <button value="withContacts_designation" id="orForCND" ng-click="lsc.selectOperator($event,'andForCND');lsc.searchLeads();" type="button" class="btn btn-warning btn-circle">OR</button>
+    </label>
+    By Contact Designation :<input ng-disabled="lsc.filters.rules['withContacts_designation'].operator == ''" ng-change="lsc.searchLeads();" ng-model="lsc.filters.rules.withContacts_designation.value" type="search" class="form-control input-sm" placeholder="" aria-controls="dataTables-example">
+  </div>
 </div>
 <!-- <div class="row" style="padding-bottom:10px;">
   <div class="dataTables_filter col-lg-2">

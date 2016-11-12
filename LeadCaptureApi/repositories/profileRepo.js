@@ -187,31 +187,30 @@ var profileRepo = function () {
 
     };
 
-
-    Lead.findOneAndUpdate(profileId, newLead, {new: true}, function(err, lead){
+    Lead.update({_id:profileId}, newLead, {}, function(err, numberAffected){
         if(err){
             console.log("Something wrong when updating data!"+err);
             return { message: 'error updating lead with id : '+profileId };
         }
-
+        console.log("updated lead"+profileId+" with affected rows : "+numberAffected);
         for(var contact of updatedLead.contacts)
         {
-          contact.lead = lead._id;
+          contact.lead = profileId;
         }
 
-        Contact.collection.remove({lead: lead._id});
+        Contact.collection.remove({lead: profileId});
 
 
         Contact.collection.insertMany(updatedLead.contacts,function(err,inserted)
         {
             if(err)
             {
-              return res.json({ message: 'error updating lead with id : '+lead._id });
+              return res.json({ message: 'error updating lead with id : '+profileId });
             }
             else
             {
 
-              return { message: 'lead updated! with id : '+lead._id };
+              return { message: 'lead updated! with id : '+profileId };
             }
 
         });
@@ -251,7 +250,7 @@ var profileRepo = function () {
 
     var contactSources = rules.contactSource.value;
     var companyTypes = rules.companyType.value;
-
+    var contactRules = {};
     companyTypes.forEach((item,index)=>{
 
         var exp = new RegExp(["^", companyTypes[index], "$"].join(""), "i")
@@ -283,6 +282,21 @@ var profileRepo = function () {
     exp = new RegExp(["^", rules.addressState.value, "$"].join(""), "i");
     rules.addressState.regex = exp;
 
+    exp = new RegExp(["^.*", rules.withContacts_name.value, ".*$"].join(""), "i");
+    rules.withContacts_name.regex = exp;
+
+    exp = new RegExp(["^.*", rules.withContacts_designation.value, ".*$"].join(""), "i");
+    rules.withContacts_designation.regex = exp;
+
+
+    // delete rules.contactName;
+    // delete rules.contactDesignation;
+    //
+    // exp = new RegExp(["^", contactRules.name.value, "$"].join(""), "i");
+    // contactRules.name.regex = exp;
+    // exp = new RegExp(["^", rules.contactDesignation.value, "$"].join(""), "i");
+    // contactRules.designation.regex = exp;
+
     rules.employeeCount.regex = rules.employeeCount.value;
 
     var andFilters = [];
@@ -296,6 +310,28 @@ var profileRepo = function () {
           ele[filter] = { "$in" : rules[filter].regex };
           andFilters.push(ele);
         }
+        else if (filter.includes("_")){
+          var ele = {};
+          var newFilter  = filter.replace("_",".");
+
+          ele[newFilter] = rules[filter].regex;
+          console.log(ele[newFilter].$in);
+          andFilters.push(ele);
+        }
+        else if(rules[filter].value.includes("-")){
+          var ele = {};
+          var values = rules[filter].regex.split("-");
+          console.log("split values"+values);
+          ele[filter] = {"$gte":parseInt(values[0]),"$lt":parseInt(values[1])+1};
+          andFilters.push(ele);
+        }
+        else if(rules[filter].value.includes("+")){
+          var ele = {};
+          var values = rules[filter].regex.split("+");
+          console.log("split values"+values);
+          ele[filter] = {"$gte":parseInt(values[0])};
+          andFilters.push(ele);
+        }
         else {
           var ele = {};
           ele[filter] = rules[filter].regex;
@@ -307,6 +343,28 @@ var profileRepo = function () {
         if(Array.isArray(rules[filter].regex)){
           var ele = {};
           ele[filter] = { "$in" : rules[filter].regex };
+          orFilters.push(ele);
+        }
+        else if (filter.includes("_")){
+          var ele = {};
+          var newFilter  = filter.replace("_",".");
+
+          ele[newFilter] = rules[filter].regex;
+          console.log(ele[newFilter].$in);
+          orFilters.push(ele);
+        }
+        else if(rules[filter].value.includes("-")){
+          var ele = {};
+          var values = rules[filter].regex.split("-");
+          console.log("split values"+values);
+          ele[filter] = {"$gte":parseInt(values[0]),"$lt":parseInt(values[1])+1};
+          orFilters.push(ele);
+        }
+        else if(rules[filter].value.includes("+")){
+          var ele = {};
+          var values = rules[filter].regex.split("+");
+          console.log("split values"+values);
+          ele[filter] = {"$gte":parseInt(values[0])};
           orFilters.push(ele);
         }
         else {
@@ -329,9 +387,24 @@ var profileRepo = function () {
       operators.push({"$and" : andFilters})
     }
 
+
     if(operators.length > 0)
-      return Lead.find({ "$and": operators}).exec();
+      {
+        console.log("filter passed");
+        return Lead.aggregate([
+        { "$lookup": {
+            "from": "contacts",
+            "localField": "_id",
+            "foreignField": "lead",
+            "as": "withContacts"
+        }},
+        { $match : { "$and": operators} }
+
+       ]).exec()
+        // return Lead.find({ "$and": operators}).exec();
+    }
     else {
+      console.log("no filter passed");
       return Lead.find({}).exec();
     }
 

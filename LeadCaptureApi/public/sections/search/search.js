@@ -11,15 +11,7 @@ angular.module('myApp.search',['ngRoute'])
 
 .controller('LeadSearchCntrl', function($http,myConfig,searchFactory) {
 
-    var search = {
-
-
-
-    };
-
     var vm = this;
-    vm.searchText = "";
-
     vm.filters = { rules : {
         companyName : {value:"",operator:"",regex:""},
         addressPincode : {value:"",operator:"",regex:""},
@@ -28,7 +20,9 @@ angular.module('myApp.search',['ngRoute'])
         industryVertical : {value:"",operator:"",regex:""},
         companyType : {value:["smes","startups","mnc","enterprise"],operator:"",regex:[]},
         contactSource : {value:["linkedin","naukri","directory","others","employees"],operator:"",regex:[]},
-        employeeCount : {value:"",operator:"",regex:""}
+        employeeCount : {value:"",operator:"",regex:""},
+        withContacts_name : {value:"",operator:"",regex:""},
+        withContacts_designation : {value:"",operator:"",regex:""}
     }};
 
     vm.companyTypeFilter = function(lead){
@@ -114,7 +108,6 @@ angular.module('myApp.search',['ngRoute'])
 
           console.log("data "+response);
           searchFactory.searchResults = response;
-          searchFactory.searchInitiated = true;
           searchFactory.showProgress = false;
       })
       .error(function(err){
@@ -126,12 +119,11 @@ angular.module('myApp.search',['ngRoute'])
     };
 
 
-    // $(document).ready(function(){
-    //
-    //   console.log("section"+mac.section);
-    //   vm.searchLeads();
-    //
-    // })
+    $(document).ready(function(){
+
+      vm.searchLeads();
+
+    })
 
     $("#searchLink").click(function(){
 

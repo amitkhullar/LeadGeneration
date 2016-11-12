@@ -28,7 +28,7 @@ router.route('/leads/search')
 .post((req,res) =>
 {
 
-  profileRepo.search(req.body.rules).then((response)=>{ console.log("search :"+response); res.json(response);});
+  profileRepo.search(req.body.rules).then((response)=>{res.json(response);});
 
 });
 
