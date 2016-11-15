@@ -1,15 +1,7 @@
 'use strict';
 
 angular.module('myApp.search',['ngRoute'])
-
-.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/leads/search', {
-    templateUrl: 'public/sections/search/index.html'
-  });
-
-}])
-
-.controller('LeadSearchCntrl', function($http,myConfig,searchFactory) {
+.controller('LeadSearchCntrl', function($http,myConfig,commonData) {
 
     var vm = this;
     vm.filters = { rules : {
@@ -101,18 +93,18 @@ angular.module('myApp.search',['ngRoute'])
 
       var data = vm.filters;
       console.log(data);
-      searchFactory.searchResults = [];
-      searchFactory.showProgress = true;
+      commonData.searchResults = [];
+      commonData.showProgress = true;
       $http.post(myConfig.url+"/api/leads/search",data,{})
       .success(function (response, status, headers) {
 
           console.log("data "+response);
-          searchFactory.searchResults = response;
-          searchFactory.showProgress = false;
+          commonData.searchResults = response;
+          commonData.showProgress = false;
       })
       .error(function(err){
 
-        searchFactory.showProgress = false;
+        commonData.showProgress = false;
 
       });
 

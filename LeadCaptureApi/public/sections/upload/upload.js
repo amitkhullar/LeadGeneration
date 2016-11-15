@@ -1,16 +1,6 @@
 'use strict';
 
 angular.module('myApp.upload',['ngRoute','ngFileUpload'])
-
-.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/leads/upload', {
-    templateUrl: 'public/sections/upload/index.html'
-  });
-
-}])
-
-
-
 .controller('UploadCntrl',function (myConfig) {
 
   var socket = io.connect(myConfig.url);

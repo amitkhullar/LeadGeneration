@@ -1,0 +1,94 @@
+
+  <div class="form" ng-controller="LoginCntrl as lgc">
+      <h1>Revenueleap - Lead Managment</h1>
+      <ul class="tab-group">
+          <li id="form-signup" ng-class="lgc.tab == '#form-signup' ? 'logintab active' : 'logintab';" ><a ng-click="lgc.tab = '#form-signup';" >Sign Up</a></li>
+          <li id="form-login" ng-class="lgc.tab == '#form-login' ? 'logintab active' : 'logintab';" ><a ng-click="lgc.tab = '#form-login';console.log(lgc.tab);" >Log In</a></li>
+      </ul>
+
+      <div>
+        <div ng-show="lgc.tab == '#form-signup';" id="form-signup">
+          <h1>Sign Up for Free</h1>
+
+
+
+          <div class="top-row">
+            <div ng-class="lgc.validations.signup.fname == true ? 'form-group' : 'form-group has-error has-feedback';">
+              <label class="login-label">
+                First Name<span class="req">*</span>
+              </label>
+              <input class="form-control" ng-model="lgc.userDetails.fname" type="text" required autocomplete="off" />
+              <span ng-show="lgc.validations.signup.fname == false" class="glyphicon glyphicon-remove form-control-feedback"></span>
+            </div>
+
+            <div ng-class="lgc.validations.signup.lname == true ? 'form-group' : 'form-group has-error has-feedback';">
+              <label>
+                Last Name<span class="req">*</span>
+              </label>
+              <input class="form-control" ng-model="lgc.userDetails.lname" type="text"required autocomplete="off"/>
+              <span ng-show="lgc.validations.signup.lname == false" class="glyphicon glyphicon-remove form-control-feedback"></span>
+            </div>
+          </div>
+
+          <div ng-class="lgc.validations.signup.email == true ? 'form-group' : 'form-group has-error has-feedback';">
+            <label>
+              Email Address<span class="req">*</span>
+            </label>
+            <input class="form-control" ng-model="lgc.userDetails.email" type="email"required autocomplete="off"/>
+            <span ng-show="lgc.validations.signup.email == false" class="glyphicon glyphicon-remove form-control-feedback"></span>
+          </div>
+
+          <div ng-class="lgc.validations.signup.password == true ? 'form-group' : 'form-group has-error has-feedback';">
+            <label>
+              Set A Password<span class="req">*</span>
+            </label>
+            <input class="form-control" ng-model="lgc.userDetails.password" type="password"required autocomplete="off"/>
+            <span ng-show="lgc.validations.signup.password == false" class="glyphicon glyphicon-remove form-control-feedback"></span>
+          </div>
+
+          <div class="field-wrap">
+            <label ng-show="lgc.signupResponseMessage.length > 0">
+              {{lgc.signupResponseMessage}}
+            </label>
+
+          </div>
+
+          <button ng-click="lgc.signup()" class="button button-block"/>Get Started</button>
+
+
+        </div>
+
+        <div ng-show="lgc.tab == '#form-login';" id="form-login">
+          <h1>Welcome !</h1>
+
+            <div ng-class="lgc.validations.login.email == true ? 'form-group' : 'form-group has-error has-feedback';">
+            <label>
+              Email Address<span class="req">*</span>
+            </label>
+            <input  class="has-error form-control"  ng-model="lgc.credentials.email" type="email" required autocomplete="off" />
+            <span ng-show="lgc.validations.login.email == false" class="glyphicon glyphicon-remove form-control-feedback"></span>
+          </div>
+
+          <div ng-class="lgc.validations.login.password == true ? 'form-group' : 'form-group has-error has-feedback';">
+            <label>
+              Password<span class="req">*</span>
+            </label>
+            <input class="form-control" ng-model="lgc.credentials.password" type="password" required autocomplete="off" />
+            <span ng-show="lgc.validations.login.password == false" class="glyphicon glyphicon-remove form-control-feedback"></span>
+          </div>
+          <div class="field-wrap">
+            <label ng-show="lgc.responseMessage.length > 0">
+              {{lgc.responseMessage}}
+            </label>
+
+          </div>
+
+          <!-- <p class="forgot"><a href="#">Forgot Password?</a></p> -->
+
+          <button ng-click="lgc.login()" class="button button-block"/>Log In</button>
+
+        </div>
+
+      </div><!-- tab-content -->
+
+</div> <!-- /form -->

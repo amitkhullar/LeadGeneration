@@ -11,6 +11,11 @@
 
     <title>Lead Management - Revenue Leap</title>
 
+    <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+
+
     <!-- Bootstrap Core CSS -->
     <link href="public/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -22,6 +27,9 @@
 
     <!-- Morris Charts CSS -->
     <link href="public/vendor/morrisjs/morris.css" rel="stylesheet">
+
+    <!-- Login CSS -->
+
 
 
     <link rel="stylesheet" type="text/css" href="public/bower_components/loaders.css/loaders.css"/>
@@ -36,6 +44,8 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <link href="public/bower_components/custom/login.css" rel="stylesheet">
+
 </head>
 
 <body ng-app="myApp">
@@ -43,19 +53,19 @@
     <div ng-controller="MainCntrl as mac" id="wrapper">
 
         <!-- Navigation -->
-        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-            <div class="navbar-header">
+        <nav ng-show="mac.isLoggedIn == true" class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div  class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Lead Management</a>
+                <a class="navbar-brand" href="#!/dashboard/home">Lead Management</a>
             </div>
             <!-- /.navbar-header -->
 
-            <div ng-include="'public/sections/common/topbar-new.html'"></div>
+            <div  ng-include="'public/sections/common/topbar-new.html'"></div>
             <!-- /.navbar-top-links -->
 
             <div ng-include="'public/sections/common/sidebar.html'"></div>
@@ -96,16 +106,20 @@
     <!-- Custom Theme JavaScript -->
     <script src="public/dist/js/sb-admin-2.js"></script>
     <script src="public/app.js"></script>
+
     <script src="public/sections/lead/lead.js"></script>
     <script src="public/sections/dashboard/dashboard.js"></script>
     <script src="public/sections/search/search.js"></script>
     <script src="public/sections/search/result.js"></script>
     <script src="public/sections/upload/upload.js"></script>
+    <script src="public/sections/login/login.js"></script>
     <script src="public/components/version/version.js"></script>
     <script src="public/components/version/version-directive.js"></script>
     <script src="public/components/version/interpolate-filter.js"></script>
     <script src="socket.io/socket.io.js"></script>
     <script src="public/js/socket.io-stream.js"></script>
+
+
 
 
 

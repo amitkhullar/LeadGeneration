@@ -33,6 +33,7 @@ app.use(function(req, res, next) {
 // register all routers
 // all routes are prefixed with /api
 app.use('/api', require('./routes/lead'));
+app.use('/api', require('./routes/login'));
 
 var serveStatic = require('serve-static');
 app.use(serveStatic(__dirname, {'index': ['/public/index.html']}))

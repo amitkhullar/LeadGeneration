@@ -4,27 +4,6 @@
 
 angular.module('myApp.lead',['ngRoute'])
 
-.config(['$routeProvider', function($routeProvider) {
-
-  $routeProvider.when('/leads/create', {
-    templateUrl: 'public/sections/lead/manage.html'
-
-  }).when('/leads/:leadId/edit',{
-    templateUrl: 'public/sections/lead/manage.html'
-
-  }).when('/leads/:leadId/view',{
-    templateUrl: 'public/sections/lead/manage.html'
-
-  }).when('/leads',{
-    templateUrl: 'public/sections/lead/index.html'
-
-  })
-  .when('/leads/:leadId/delete',{
-    templateUrl: 'public/sections/lead/manage.html'
-
-  });
-
-}])
 
 .controller('LeadFormCntrl', function($http,$routeParams,$location,$window,myConfig) {
 
