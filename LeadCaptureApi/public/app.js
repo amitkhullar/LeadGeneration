@@ -12,7 +12,7 @@ angular.module('myApp', [
   'myApp.login'
 ])
 .constant("myConfig", {
-        "url": "http://localhost:8005"
+        "url": "http://139.59.24.29"
 })
 .config(['$locationProvider','$routeProvider', function($locationProvider,$routeProvider) {
   $locationProvider.hashPrefix('!');
