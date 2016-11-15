@@ -8,7 +8,9 @@ var userRepo = function () {
 
   ctx.signin = function(credentials){
 
+    console.log(credentials);
     var userPromise = User.find({"email":credentials.email}).then((user)=>{
+
 
         if(Object.keys(user).length > 0)
         {
@@ -26,6 +28,14 @@ var userRepo = function () {
             return {error : "Invalid username or password."};
           }
         }
+        else {
+          return {error : "Invalid username or password."};
+        }
+
+    })
+    .catch((err)=>{
+
+      return {error : err};
 
     });
     return userPromise;
