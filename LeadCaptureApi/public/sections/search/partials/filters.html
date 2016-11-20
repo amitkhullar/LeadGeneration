@@ -1,5 +1,14 @@
 <div  ng-controller="LeadSearchCntrl as lsc">
 
+  <div class="row" style="padding-bottom:10px;">
+    <div id="dataTables-example_filter" class="dataTables_filter  col-sm-11" style="margin-left:10px;">
+      <label>
+        <button value="createdAt" id="andForCDT" ng-click="lsc.selectOperator($event,'orForCDT');lsc.searchLeads();" type="button" class="btn btn-primary btn-circle">AND</button>
+        <button value="createdAt" id="orForCDT" ng-click="lsc.selectOperator($event,'andForCDT');lsc.searchLeads();" type="button" class="btn btn-warning btn-circle">OR</button>
+      </label>
+      By Date of entry :<input id="dateValue" ng-disabled="lsc.filters.rules['createdAt'].operator == ''" ng-change="lsc.searchLeads();" ng-model="lsc.filters.rules.createdAt.value" type="date" class="form-control input-sm" placeholder="" aria-controls="dataTables-example">
+    </div>
+  </div>
 <div class="row" style="margin-bottom:10px;">
   <div id="dataTables-example_filter" class="dataTables_filter  col-sm-11" style="margin-left:10px;">
     <label>
@@ -1382,12 +1391,12 @@
     </div>
   </div>
 </div>
+</label>
 <div class="row" style="margin-bottom:10px;">
   <div id="dataTables-example_filter" class="dataTables_filter col-sm-11" style="margin-left:10px;">
     <label>
       <button type="button" value="employeeCount" id="andForEN" ng-click="lsc.selectOperator($event,'orForEN');lsc.searchLeads();" class="btn btn-primary btn-circle">AND</button>
       <button type="button" value="employeeCount" id="orForEN" ng-click="lsc.selectOperator($event,'andForEN');lsc.searchLeads();" class="btn btn-warning btn-circle">OR</button>
-      </label>
       No. of employees :
 
       <select ng-disabled="lsc.filters.rules['employeeCount'].operator == ''" ng-change="lsc.searchLeads();" ng-model="lsc.filters.rules.employeeCount.value"  class="form-control">
@@ -1424,6 +1433,7 @@
     By Contact Designation :<input ng-disabled="lsc.filters.rules['withContacts_designation'].operator == ''" ng-change="lsc.searchLeads();" ng-model="lsc.filters.rules.withContacts_designation.value" type="search" class="form-control input-sm" placeholder="" aria-controls="dataTables-example">
   </div>
 </div>
+
 <!-- <div class="row" style="padding-bottom:10px;">
   <div class="dataTables_filter col-lg-2">
   <button ng-show="lsc.searchResults.length == 0" ng-click="lsc.searchLeads()" type="button" class="btn btn-primary btn-sm "><span >Start Searching...</span></button>

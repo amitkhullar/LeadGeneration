@@ -288,6 +288,7 @@ var profileRepo = function () {
     exp = new RegExp(["^.*", rules.withContacts_designation.value, ".*$"].join(""), "i");
     rules.withContacts_designation.regex = exp;
 
+    rules.createdAt.regex = rules.createdAt.value;
 
     // delete rules.contactName;
     // delete rules.contactDesignation;
@@ -301,16 +302,17 @@ var profileRepo = function () {
 
     var andFilters = [];
     var orFilters = [];
+    console.log("filter array creation");
     for(var filter in rules)
     {
       if(rules[filter].operator == 'and')
       {
-        if(Array.isArray(rules[filter].regex)){
+        if(rules[filter].type == 'array'){
           var ele = {};
           ele[filter] = { "$in" : rules[filter].regex };
           andFilters.push(ele);
         }
-        else if (filter.includes("_")){
+        else if (rules[filter].type=='nested'){
           var ele = {};
           var newFilter  = filter.replace("_",".");
 
@@ -318,19 +320,30 @@ var profileRepo = function () {
           console.log(ele[newFilter].$in);
           andFilters.push(ele);
         }
-        else if(rules[filter].value.includes("-")){
+        else if(rules[filter].type=='range'){
           var ele = {};
           var values = rules[filter].regex.split("-");
           console.log("split values"+values);
           ele[filter] = {"$gte":parseInt(values[0]),"$lt":parseInt(values[1])+1};
           andFilters.push(ele);
         }
-        else if(rules[filter].value.includes("+")){
+        else if(rules[filter].type=='range' && rules[filter].value.includes("+")){
           var ele = {};
           var values = rules[filter].regex.split("+");
           console.log("split values"+values);
           ele[filter] = {"$gte":parseInt(values[0])};
           andFilters.push(ele);
+        }
+        else if(rules[filter].type=='date'){
+          var ele = {};
+          var values = rules[filter].regex.split("-");
+          var startDate = new Date(rules[filter].regex);
+          console.log("start date: "+startDate);
+          var endDate = new Date(rules[filter].regex);
+          endDate.setDate(endDate.getDate() + 1);
+          console.log("end date"+endDate);
+          ele[filter] = {"$gte":startDate,"$lt":endDate};
+          orFilters.push(ele);
         }
         else {
           var ele = {};
@@ -340,12 +353,12 @@ var profileRepo = function () {
       }
       if(rules[filter].operator == 'or')
       {
-        if(Array.isArray(rules[filter].regex)){
+        if(rules[filter].type=='array'){
           var ele = {};
           ele[filter] = { "$in" : rules[filter].regex };
           orFilters.push(ele);
         }
-        else if (filter.includes("_")){
+        else if (rules[filter].type=='nested'){
           var ele = {};
           var newFilter  = filter.replace("_",".");
 
@@ -353,18 +366,29 @@ var profileRepo = function () {
           console.log(ele[newFilter].$in);
           orFilters.push(ele);
         }
-        else if(rules[filter].value.includes("-")){
+        else if(rules[filter].type=='range'){
           var ele = {};
           var values = rules[filter].regex.split("-");
           console.log("split values"+values);
           ele[filter] = {"$gte":parseInt(values[0]),"$lt":parseInt(values[1])+1};
           orFilters.push(ele);
         }
-        else if(rules[filter].value.includes("+")){
+        else if(rules[filter].type=='range' && rules[filter].value.includes("+")){
           var ele = {};
           var values = rules[filter].regex.split("+");
           console.log("split values"+values);
           ele[filter] = {"$gte":parseInt(values[0])};
+          orFilters.push(ele);
+        }
+        else if(rules[filter].type=='date'){
+          var ele = {};
+          var values = rules[filter].regex.split("-");
+          var startDate = new Date(rules[filter].regex);
+          console.log("start date: "+startDate);
+          var endDate = new Date(rules[filter].regex);
+          endDate.setDate(endDate.getDate() + 1);
+          console.log("end date"+endDate);
+          ele[filter] = {"$gte":startDate,"$lt":endDate};
           orFilters.push(ele);
         }
         else {

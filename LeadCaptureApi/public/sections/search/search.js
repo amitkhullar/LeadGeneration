@@ -1,20 +1,21 @@
 'use strict';
 
 angular.module('myApp.search',['ngRoute'])
-.controller('LeadSearchCntrl', function($http,myConfig,commonData) {
+.controller('LeadSearchCntrl', function($http,myConfig,commonData,$scope) {
 
     var vm = this;
     vm.filters = { rules : {
-        companyName : {value:"",operator:"",regex:""},
-        addressPincode : {value:"",operator:"",regex:""},
-        addressCity:{value:"",operator:"",regex:""},
-        addressState:{value:"",operator:"",regex:""},
-        industryVertical : {value:"",operator:"",regex:""},
-        companyType : {value:["smes","startups","mnc","enterprise"],operator:"",regex:[]},
-        contactSource : {value:["linkedin","naukri","directory","others","employees"],operator:"",regex:[]},
-        employeeCount : {value:"",operator:"",regex:""},
-        withContacts_name : {value:"",operator:"",regex:""},
-        withContacts_designation : {value:"",operator:"",regex:""}
+        companyName : {value:"",operator:"",regex:"",type:"string"},
+        addressPincode : {value:"",operator:"",regex:"",type:"string"},
+        addressCity:{value:"",operator:"",regex:"",type:"string"},
+        addressState:{value:"",operator:"",regex:"",type:"string"},
+        industryVertical : {value:"",operator:"",regex:"",type:"string"},
+        companyType : {value:["smes","startups","mnc","enterprise"],operator:"",regex:[],type:"array"},
+        contactSource : {value:["linkedin","naukri","directory","others","employees"],operator:"",regex:[],type:"array"},
+        employeeCount : {value:"",operator:"",regex:"",type:"range"},
+        withContacts_name : {value:"",operator:"",regex:"",type:"nested"},
+        withContacts_designation : {value:"",operator:"",regex:"",type:"nested"},
+        createdAt : {value:"",operator:"",regex:"",type:"date"}
     }};
 
     vm.companyTypeFilter = function(lead){
@@ -26,6 +27,7 @@ angular.module('myApp.search',['ngRoute'])
         }
 
     }
+
 
     vm.selectCheckbox = function($event,checkboxType){
 
@@ -88,13 +90,18 @@ angular.module('myApp.search',['ngRoute'])
       }
 
     }
-
+;
     vm.searchLeads = function(){
 
       var data = vm.filters;
       console.log(data);
       commonData.searchResults = [];
       commonData.showProgress = true;
+      // if(data.rules.createdAt.value)
+      // {
+      //   data.rules.createdAt.value.setDate(data.rules.createdAt.value.getDate() + 1);
+      //   console.log(data.rules.createdAt.value);
+      // }
       $http.post(myConfig.url+"/api/leads/search",data,{})
       .success(function (response, status, headers) {
 
